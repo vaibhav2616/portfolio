@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#E2DCD2" stroke-width="0.8"/>
+    </pattern>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#16130F"/>
+    </filter>
+  </defs>
+  <rect width="800" height="500" fill="#FDFBF7"/>
+  <rect width="800" height="500" fill="url(#grid)"/>
+
+  <rect x="15" y="15" width="770" height="470" rx="10" fill="none" stroke="#16130F" stroke-width="2.5"/>
+
+  <!-- Badge / Header -->
+  <rect x="35" y="35" width="320" height="34" rx="6" fill="#2D5BE3" filter="url(#shadow)"/>
+  <text x="50" y="58" font-family="'DM Mono', monospace" font-size="13" font-weight="600" fill="#FFFFFF">SYSTEM BLUEPRINT · 04 INVENTORY ENGINE</text>
+
+  <text x="35" y="105" font-family="'Bricolage Grotesque', sans-serif" font-size="24" font-weight="800" fill="#16130F">Organic Sabziwala Real-Time Stock Engine</text>
+  <text x="35" y="128" font-family="'DM Mono', monospace" font-size="12" fill="#6F6A62">B2B &amp; B2C Multi-Channel Stock Reconciliation → Redis Cache Invalidation → Warehouse POS</text>
+
+  <!-- Flowchart Diagram -->
+  <!-- Node 1: Order Streams -->
+  <g transform="translate(45, 170)">
+    <rect width="190" height="150" rx="8" fill="#FFFFFF" stroke="#16130F" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="12" width="85" height="20" rx="4" fill="#DBEAFE"/>
+    <text x="18" y="26" font-family="'DM Mono', monospace" font-size="10" font-weight="600" fill="#1D4ED8">ORDER STREAMS</text>
+    <text x="12" y="58" font-family="'Bricolage Grotesque', sans-serif" font-size="16" font-weight="700" fill="#16130F">Multi-Channel</text>
+    <text x="12" y="80" font-family="'DM Mono', monospace" font-size="11" fill="#4F4A42">• Consumer mobile app</text>
+    <text x="12" y="98" font-family="'DM Mono', monospace" font-size="11" fill="#4F4A42">• B2B wholesale buyers</text>
+    <text x="12" y="116" font-family="'DM Mono', monospace" font-size="11" fill="#4F4A42">• Offline warehouse POS</text>
+    <text x="12" y="138" font-family="'DM Mono', monospace" font-size="10" font-weight="600" fill="#1D4ED8">🛒 ₹12L+ THROUGHPUT</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 245 245 L 290 245" stroke="#16130F" stroke-width="2.5" fill="none"/>
+  <polygon points="295,245 285,240 285,250" fill="#16130F"/>
+
+  <!-- Node 2: Reconciliation & Validation Engine -->
+  <g transform="translate(305, 170)">
+    <rect width="210" height="150" rx="8" fill="#FFFFFF" stroke="#16130F" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="12" width="105" height="20" rx="4" fill="#FEF3C7"/>
+    <text x="18" y="26" font-family="'DM Mono', monospace" font-size="10" font-weight="600" fill="#B45309">STOCK ARBITER</text>
+    <text x="12" y="58" font-family="'Bricolage Grotesque', sans-serif" font-size="16" font-weight="700" fill="#16130F">Sync Engine</text>
+    <text x="12" y="80" font-family="'DM Mono', monospace" font-size="11" fill="#4F4A42">• Unit conversion (kg/crates)</text>
+    <text x="12" y="98" font-family="'DM Mono', monospace" font-size="11" fill="#4F4A42">• Concurrency lock on cart</text>
+    <text x="12" y="116" font-family="'DM Mono', monospace" font-size="11" fill="#4F4A42">• Redis cache invalidation</text>
+    <text x="12" y="138" font-family="'DM Mono', monospace" font-size="10" font-weight="600" fill="#B45309">🚫 ZERO PHANTOM STOCK</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 525 245 L 565 245" stroke="#16130F" stroke-width="2.5" fill="none"/>
+  <polygon points="575,245 565,240 565,250" fill="#16130F"/>
+
+  <!-- Node 3: Warehouse & POS Sync -->
+  <g transform="translate(585, 170)">
+    <rect width="170" height="150" rx="8" fill="#FFFFFF" stroke="#16130F" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="12" y="12" width="95" height="20" rx="4" fill="#DCFCE7"/>
+    <text x="18" y="26" font-family="'DM Mono', monospace" font-size="10" font-weight="600" fill="#15803D">WAREHOUSE</text>
+    <text x="12" y="58" font-family="'Bricolage Grotesque', sans-serif" font-size="16" font-weight="700" fill="#16130F">Node Dispatch</text>
+    <text x="12" y="80" font-family="'DM Mono', monospace" font-size="11" fill="#4F4A42">• Physical stock parity</text>
+    <text x="12" y="98" font-family="'DM Mono', monospace" font-size="11" fill="#4F4A42">• Real-time dispatching</text>
+    <text x="12" y="116" font-family="'DM Mono', monospace" font-size="11" fill="#4F4A42">• Automated replenishment</text>
+    <text x="12" y="138" font-family="'DM Mono', monospace" font-size="10" font-weight="600" fill="#15803D">✅ 100% ORDER PARITY</text>
+  </g>
+
+  <!-- Bottom Stamp / Metadata -->
+  <rect x="45" y="360" width="710" height="85" rx="6" fill="#F4EFE6" stroke="#16130F" stroke-width="1.5"/>
+  <text x="65" y="390" font-family="'DM Mono', monospace" font-size="11" font-weight="600" fill="#16130F">[IMAGE PLACEHOLDER] ERP Warehouse Management &amp; Stock Sync Metrics</text>
+  <text x="65" y="412" font-family="'DM Mono', monospace" font-size="10.5" fill="#6F6A62">Engineered by Vaibhav Rastogi · Replace with high-res ERP dashboard screenshots when available.</text>
+  <text x="65" y="430" font-family="'DM Mono', monospace" font-size="10" font-weight="600" fill="#2D5BE3">VERIFIED: Live In-Production at Organic Sabziwala</text>
+</svg>
+
