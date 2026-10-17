@@ -1,0 +1,97 @@
+/* About: a 3D Kobo, landscape. Uses the portfolio tokens; falls back if missing. */
+.ab2{--ab-ink:var(--ink,#16130F);--ab-ink3:var(--ink3,#6F6A62);--ab-blue:var(--blue,#2D5BE3);--ab-read:var(--read,Literata,Georgia,serif);--ab-mono:var(--mono,"DM Mono",monospace);--ab-hard:var(--hard,4px 4px 0 #16130F)}
+.ab2 .sh{margin-bottom:28px}
+
+/* ---------- the device ---------- */
+.ab2-scene{position:relative;perspective:1600px;display:grid;place-items:center;padding:14px 0 52px;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.ab2-scene.drag{cursor:grabbing}
+.ab2-kobo{--d:12px;--rx:-3deg;--ry:-6deg;position:relative;width:min(100%,980px);aspect-ratio:16/10;transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(var(--ry))}
+.ab2-slab{position:absolute;inset:0;border-radius:26px;background:#161618}
+.ab2-face{position:absolute;inset:0;border-radius:26px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.ab2-face *{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.ab2-front{background:linear-gradient(160deg,#2A2A2D,#1B1B1D 60%);transform:translateZ(calc(var(--d)/2));display:grid;grid-template-columns:minmax(0,1fr) 64px;padding:20px 0 20px 20px;box-shadow:inset 0 0 0 1px #ffffff12}
+.ab2-back{transform:rotateY(180deg) translateZ(calc(var(--d)/2));background:radial-gradient(#ffffff0a 1px,transparent 1.5px) 0 0/7px 7px,linear-gradient(200deg,#232325,#151517);overflow:visible}
+.ab2-back .ab2-logo{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font:700 26px/1 var(--body,system-ui);letter-spacing:-.04em;color:#0e0e0f;text-shadow:0 1px 0 #ffffff1a,0 -1px 0 #000}
+.ab2-sheen{position:absolute;inset:0;border-radius:26px;pointer-events:none;background:linear-gradient(var(--sheen,120deg),rgba(255,255,255,.1),transparent 38%,transparent 70%,rgba(255,255,255,.04))}
+
+/* side buttons */
+.ab2-grip{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.ab2-grip button{width:14px;height:72px;border-radius:7px;border:0;background:linear-gradient(90deg,#141415,#2E2E31);box-shadow:inset 0 0 0 1px #ffffff14,0 1px 0 #00000080;cursor:pointer;padding:0}
+.ab2-grip button:focus-visible{outline:3px solid var(--ab-blue);outline-offset:3px}
+
+/* ---------- e-ink screen ---------- */
+.ab2-screen{position:relative;border-radius:5px;overflow:hidden;background:#E8E6DF;background-image:radial-gradient(rgba(0,0,0,.035) .6px,transparent .8px);background-size:3px 3px;box-shadow:inset 0 1px 3px rgba(0,0,0,.45);color:#222;font-family:var(--ab-read);display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.5fr);grid-template-rows:minmax(0,1fr) auto;min-height:0}
+.ab2-screen.flash::after{content:"";position:absolute;inset:0;animation:ab2eink .3s steps(1) forwards;pointer-events:none}
+@keyframes ab2eink{0%{background:rgba(20,20,20,.22)}50%{background:rgba(244,242,236,.9)}100%{background:transparent}}
+.ab2-lib{display:grid;align-content:start;gap:2px;padding:18px 14px;border-right:1px solid rgba(0,0,0,.14);overflow:hidden}
+.ab2-lib h3{display:flex;justify-content:space-between;align-items:baseline;font:600 17px/1 var(--ab-read);margin:0 0 8px}
+.ab2-lib h3 small{font:400 11px var(--ab-read);color:#666}
+.ab2-bk{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:center;border:0;border-bottom:1px solid rgba(0,0,0,.12);background:none;padding:7px 6px;text-align:left;cursor:pointer;color:#222;font:inherit;min-height:44px;border-radius:4px}
+.ab2-bk:last-child{border-bottom:0}
+.ab2-bk[data-b="4"] b{white-space:nowrap;overflow:hidden;text-overflow:clip}
+.ab2-bk b{display:block;font:600 14px/1.2 var(--ab-read)}
+.ab2-bk em{display:block;font:400 12px/1.25 var(--ab-read);font-style:normal;color:#555;margin-top:2px}
+.ab2-bk[aria-selected="true"]{background:rgba(0,0,0,.07);outline:1.5px solid #222}
+.ab2-bk:hover b{text-decoration:underline}
+.ab2-bk:focus-visible{outline:3px solid var(--ab-blue);outline-offset:1px}
+.ab2-cov{display:block;width:36px;height:52px;object-fit:cover;border-radius:2px;position:relative;box-shadow:1px 1px 0 rgba(0,0,0,.35);filter:grayscale(1) contrast(1.08);background:#2a2a2a}
+.ab2-cov--redacted{background:#ece9e1;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25),1px 1px 0 rgba(0,0,0,.35)}
+.ab2-cov--redacted i{position:absolute;left:5px;right:5px;top:12px;height:5px;background:#222;box-shadow:0 9px 0 #222,0 18px 0 #222}
+.ab2-bk{grid-template-columns:36px minmax(0,1fr)}
+
+.ab2-page{position:relative;padding:24px 30px 14px;display:block;outline:0;overflow:auto}
+.ab2-page>*+*{margin-top:10px}
+.ab2-page .foot{clear:both;padding-top:4px}
+.ab2-page .pcov{float:right;width:96px;height:auto;margin:0 0 10px 18px;border-radius:2px;box-shadow:2px 2px 0 rgba(0,0,0,.3);filter:grayscale(1) contrast(1.08)}
+.ab2-page .ch{font:400 11px/1 var(--ab-read);letter-spacing:.14em;text-transform:uppercase;color:#777}
+.ab2-page h3{font:600 clamp(22px,2.6vw,32px)/1.12 var(--ab-read);margin:0;letter-spacing:-.01em}
+.ab2-page p{margin:0;font:400 16px/1.55 var(--ab-read);max-width:48ch}
+.ab2-page .foot{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:4px;font:500 11px var(--ab-mono);letter-spacing:.08em;text-transform:uppercase;color:#555}
+.ab2-page .foot a{color:#16130F;background:#FFD23F;border:1.5px solid #16130F;border-radius:999px;padding:6px 12px;text-decoration:none;min-height:32px;display:inline-flex;align-items:center;letter-spacing:.04em}
+.ab2-page .foot a:hover{background:#16130F;color:#FFD23F}
+.ab2-page .bars{display:inline-block;background:#222;color:#222;border-radius:2px;padding:0 4px;user-select:none}
+.ab2-st{grid-column:1/-1;display:flex;justify-content:space-between;font:400 11px/1 var(--ab-read);color:#555;padding:9px 16px 11px;border-top:1px solid rgba(0,0,0,.1)}
+
+/* ---------- stickers on the back: Semi's pictures ---------- */
+.ab2-pst{position:absolute;width:var(--w,110px);transform:rotate(var(--rot,0deg));cursor:pointer;border:0;padding:5px;background:#fff;border-radius:6px;box-shadow:0 3px 6px rgba(0,0,0,.4);transition:transform .25s cubic-bezier(.3,1.4,.5,1)}
+.ab2-pst img{display:block;width:100%;height:auto;border-radius:3px;pointer-events:none}
+.ab2-pst::after{content:"";position:absolute;right:0;bottom:0;width:14px;height:14px;background:linear-gradient(135deg,transparent 50%,#e9e3d6 50%);clip-path:polygon(100% 0,0 100%,100% 100%);transition:width .2s,height .2s}
+.ab2-pst:hover,.ab2-pst:focus-visible{transform:rotate(calc(var(--rot,0deg) * .3)) scale(1.08) translateY(-3px);z-index:3}
+.ab2-pst:hover::after{width:24px;height:24px}
+.ab2-pst:focus-visible{outline:3px solid var(--ab-blue);outline-offset:2px}
+
+.ab2-flip{position:absolute;right:0;bottom:4px;z-index:4}
+.ab2-flip button{border:1.5px solid var(--ab-ink);background:var(--card,#fff);border-radius:999px;height:38px;padding:0 16px;font:700 13px var(--body,system-ui);cursor:pointer;box-shadow:var(--hard-sm,2px 2px 0 #16130F)}
+.ab2-hint{text-align:center;font:500 11px var(--ab-mono);letter-spacing:.06em;color:var(--ab-ink3);margin-top:-30px}
+
+/* ---------- postcard ---------- */
+.ab2-card{position:relative;margin-top:44px;background:#FFFDF6;border:1.5px solid var(--ab-ink);border-radius:var(--r-paper,6px);box-shadow:var(--ab-hard);padding:22px 26px;display:grid;gap:8px}
+.ab2-to{font:500 11px var(--ab-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ab-ink3)}
+.ab2-big{margin:0;font:800 clamp(22px,3.2vw,34px)/1.05 var(--display,"Bricolage Grotesque",sans-serif);letter-spacing:-.02em;color:var(--ab-ink);max-width:24ch}
+.ab2-pm{position:absolute;right:40px;bottom:14px;width:78px;height:78px;border-radius:50%;border:2px solid rgba(45,91,227,.5);display:grid;place-items:center;text-align:center;font:500 9px/1.3 var(--ab-mono);color:rgba(45,91,227,.75);transform:rotate(-12deg)}
+
+/* ---------- phone: the Kobo stands upright ---------- */
+@media (max-width:700px){
+  .ab2-scene{padding-bottom:0}
+  .ab2-flip{position:static;margin-top:16px}
+  .ab2-hint{margin-top:10px}
+  .ab2-kobo{aspect-ratio:auto;height:580px;width:min(100%,380px)}
+  .ab2-front{grid-template-columns:minmax(0,1fr) 34px;padding:14px 0 14px 12px}
+  .ab2-grip button{width:10px;height:52px}
+  .ab2-screen{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr) auto}
+  .ab2-lib{border-right:0;border-bottom:1px solid rgba(0,0,0,.14);padding:10px;grid-template-columns:1fr 1fr;gap:0 8px}
+  .ab2-lib h3{grid-column:1/-1;font-size:15px}
+  .ab2-bk{grid-template-columns:26px minmax(0,1fr);gap:8px;padding:5px 4px;min-height:44px;border-bottom:0}
+  .ab2-bk:nth-of-type(5){grid-column:1/-1}
+  .ab2-cov{width:26px;height:38px}
+  .ab2-cov--redacted i{left:4px;right:4px;top:8px;height:4px;box-shadow:0 7px 0 #222,0 14px 0 #222}
+  .ab2-page .pcov{display:none}
+  .ab2-bk b{font-size:12.5px}.ab2-bk em{display:none}
+  .ab2-page{padding:14px 14px 10px;gap:8px}
+  .ab2-page h3{font-size:21px}
+  .ab2-page p{font-size:14.5px}
+  .ab2-pst{--w:84px !important}
+  .ab2-pm{display:none}
+  .ab2-card{padding:18px}
+}
+@media (prefers-reduced-motion:reduce){.ab2-screen.flash::after{animation:none}.ab2-pst,.ab2-pst::after{transition:none}}
