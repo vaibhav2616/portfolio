@@ -67,7 +67,7 @@
 .sm-tourbar[hidden]{display:none}
 .sm-tourbar button{border:0; background:#fff; color:#16130F; border-radius:999px; padding:8px 12px; font:600 12.5px "Bricolage Grotesque", system-ui, sans-serif; cursor:pointer}
 @media (max-width:760px){ .sm-tourbar{bottom:auto; top:74px} }
-@media (max-width:760px){ #semi-say{left:12px!important; right:12px; top:auto!important; bottom:calc(env(safe-area-inset-bottom,0px) + 12px); max-width:none; border-radius:14px} }
+@media (max-width:760px){ #semi-say{left:12px!important; right:12px; top:auto!important; bottom:calc(env(safe-area-inset-bottom,0px) + 68px)!important; max-width:none; border-radius:14px} }
 #semi[hidden],#semi-say[hidden]{display:none}
 .sm-mini{width:24px; height:24px; flex:none}
 @media (max-width:760px){ #semi{width:46px; height:46px} }
@@ -205,6 +205,7 @@ section.s{position:relative; scroll-margin-top:78px}
 .hero h1 mark::after{content:""; position:absolute; left:0; right:0; bottom:.04em; height:.14em; background:var(--yellow); z-index:-1; border-radius:4px}
 .hero .sub{margin:22px 0 0; max-width:40ch; color:var(--ink2); font-size:19px; line-height:1.5}
 .hero .cta{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+@media (max-width:440px){ .hero .cta{flex-direction:column; align-items:stretch; width:min(100%,280px); margin-inline:auto; gap:8px} .hero .cta .btn{width:100%; justify-content:center; text-align:center; height:44px; font-size:14px} }
 .btn{display:inline-flex; align-items:center; gap:8px; height:48px; padding:0 20px; border-radius:999px; border:1.5px solid var(--ink); background:var(--card); font:800 15px var(--display); text-decoration:none; cursor:pointer; box-shadow:var(--hard-sm); transition:transform .12s cubic-bezier(.3,.7,.3,1), box-shadow .12s cubic-bezier(.3,.7,.3,1)}
 .btn:hover{transform:translate(-1px,-1px); box-shadow:var(--hard)}
 .btn:active{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink)}
@@ -289,6 +290,16 @@ section.s{position:relative; scroll-margin-top:78px}
 .proof a{font-weight:700}
 .slip-f{display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; padding:14px 22px; font:500 12px var(--mono); color:var(--ink2)}
 @media (max-width:700px){ .slip-cols{display:none} .sline{grid-template-columns:1fr; padding:0 16px} .srow{grid-template-columns:56px minmax(0,1fr); gap:12px} .srow .q,.sline .pf{display:none} .kc{width:52px} .proof{padding-left:22px} .slip-h .meta{text-align:left} }
+@media (max-width:480px){
+  .slip-h{padding:16px 14px}
+  .sline{padding:0 12px}
+  .srow{grid-template-columns:46px minmax(0,1fr); gap:10px; padding:12px 0}
+  .kc{width:44px; height:36px; font-size:11px}
+  .it b{font-size:15px}
+  .it span{font-size:13px}
+  .proof{padding-left:12px; font-size:13px}
+  .slip-f{padding:12px 14px; font-size:12px; flex-direction:column; gap:4px; text-align:center}
+}
 
 /* ---------- CASE FILES: work ---------- */
 .files{padding-block:var(--sec) 0}
@@ -316,6 +327,14 @@ html[data-unfinished="soon"] .folder.wip{filter:saturate(.45)}
 .case .peek{position:absolute; left:10%; right:14%; top:-30px; height:38px; background:#fff; border-radius:3px; box-shadow:0 -2px 6px rgba(0,0,0,.12); z-index:-1; overflow:hidden}
 .case .peek img{width:100%; object-fit:cover; object-position:top left}
 @media (max-width:900px){ .cabinet{grid-template-columns:1fr 1fr; row-gap:40px} .stamp{top:auto; bottom:30px; font-size:14px} }
+@media (max-width:580px){
+  .cabinet{grid-template-columns:1fr; row-gap:26px; margin-top:28px}
+  .case{aspect-ratio:auto; min-height:140px; transform:none !important}
+  .case .fold{padding:20px 18px 18px}
+  .case .stamp{top:14px; bottom:auto; right:16px; font-size:13px; padding:4px 9px}
+  .case b{font-size:17px; margin-top:4px; max-width:calc(100% - 90px); display:block}
+  .case small{font-size:12px; margin-top:6px; display:block}
+}
 .dossier{margin-top:34px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.15fr); gap:0; background:#C9DCF2; border:1.5px solid var(--ink); border-radius:var(--r-ui); box-shadow:var(--hard); overflow:hidden}
 .ev{padding:28px; position:relative; background:#B9D0EC}
 .ev .photo{background:#fff; padding:10px 10px 34px; transform:rotate(-2deg); box-shadow:0 14px 24px -14px rgba(0,0,0,.5); position:relative}
@@ -334,6 +353,19 @@ html[data-unfinished="soon"] .folder.wip{filter:saturate(.45)}
 .rap .go{display:inline-flex; margin-top:14px; height:42px; align-items:center; padding:0 16px; border-radius:999px; background:var(--ink); color:#fff; font:800 14px var(--display); text-decoration:none}
 .rap .go.wip{background:transparent; color:var(--ink2); border:1.5px dashed var(--ink3)}
 @media (max-width:860px){ .dossier{grid-template-columns:1fr} }
+@media (max-width:600px){
+  .dossier{margin-top:24px; border-radius:12px}
+  .ev{padding:18px 14px}
+  .ev .photo{padding:12px 10px 28px}
+  .ev .photo img, .ev .photo .tile{max-height:220px; object-fit:cover}
+  .fyi{margin-top:16px; padding:12px 14px; font-size:13px; max-width:none}
+  .rap{padding:20px 16px 24px; background-image:repeating-linear-gradient(transparent 0 27px, #D8E3F2 27px 28px)}
+  .rap h3{font-size:24px}
+  .dossier .rap dl{grid-template-columns:1fr; row-gap:4px; column-gap:0; margin:14px 0 20px; font-size:14px; line-height:28px}
+  .dossier .rap dt{font-weight:700; color:var(--blue); margin-top:8px; font-size:12px; letter-spacing:.06em; line-height:1.4}
+  .dossier .rap dd{margin:0 0 6px; font-size:14.5px; line-height:1.45}
+  .dossier .rap .go{width:100%; justify-content:center; text-align:center}
+}
 
 /* ---------- RECEIPT: career ---------- */
 .till{padding-block:var(--sec) 0}
@@ -359,6 +391,18 @@ html[data-receipt="empty"] .proofs{display:none}
 .print.go{animation-play-state:running}
 @keyframes prt{from{clip-path:inset(0 0 100% 0)} to{clip-path:inset(0 0 0 0)}}
 @media (max-width:860px){ .till-in{grid-template-columns:1fr} }
+@media (max-width:580px){
+  .proofs{grid-template-columns:1fr; margin-top:22px}
+  .proofs div{padding:16px 0 !important; border-right:none !important}
+  .proofs b{font-size:36px}
+}
+@media (max-width:480px){
+  .receipt{padding:22px 14px 26px; font-size:12.5px}
+  .receipt h3{font-size:19px}
+  .receipt .ln{gap:6px}
+  .receipt .ln small{font-size:11px}
+  .receipt .tot{font-size:16px}
+}
 
 /* ---------- ALSO INSIDE: about ---------- */
 .inside{padding-top:var(--sec); padding-bottom:clamp(180px, 18vw, 240px)}
@@ -426,6 +470,7 @@ html[data-objs="stickers"] .objs{grid-template-columns:1fr}
 .grip button{width:12px; height:56px; border-radius:6px; border:0; background:linear-gradient(90deg,#141415,#2E2E31); box-shadow:inset 0 0 0 1px #ffffff14, 0 1px 0 #00000080; cursor:pointer; padding:0}
 .khint{text-align:center; font:500 11px var(--mono); letter-spacing:.06em; color:var(--ink3); margin-top:6px}
 @media (max-width:860px){ .shelf{grid-template-columns:1fr} .postcard{grid-template-columns:1fr} .postcard .msg{border-right:0; border-bottom:1.5px dashed var(--ink3)} .kobo{--w:270px; --h:360px} }
+@media (max-width:700px){ .ab2-big{max-width:100%!important} }
 
 /* ---------- RETURN LABEL: say hi ---------- */
 .ret{padding-block:var(--sec) 150px}
@@ -904,49 +949,57 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
 </section>
 <div class="wrap"></div>
 
-<!-- ============ PACKING SLIP ============ -->
-<section class="s slipsec" id="slip" data-dock="Packing slip">
+<!-- ============ [PLACEHOLDER: WORK SERVICES PACKING SLIP] ============ -->
+<!-- Target for future updates: #slip / #slipRows / window.PORTFOLIO_SERVICES -->
+<section class="s slipsec" id="slip" data-dock="Packing slip" data-placeholder="work-services-packing-slip">
   <div class="wrap">
     <div class="slip">
       <div class="slip-h"><div><div class="lbl">Packing slip</div><h2>What you're getting</h2></div><div class="meta">ORDER #VR-SYS<br>4 SYSTEMS · 0 DOWNTIME<br>PACKED IN GHAZIABAD / NCR</div></div>
       <div class="slip-cols"><span>Qty</span><span>Item</span><span>Description</span><span style="text-align:right">Proof</span></div>
-      <div id="slipRows"></div>
+      <div id="slipRows" data-placeholder="work-services-rows"></div>
       <div class="slip-f"><span>Click an item to see the proof.</span><span>No returns. Exchanges welcome.</span></div>
     </div>
   </div>
 </section>
 <div class="wrap"></div>
 
-<!-- ============ CASE FILES ============ -->
-<section class="s files" id="files" data-dock="Case files">
+<!-- ============ [PLACEHOLDER: WORK CASE FILES CABINET & DOSSIER] ============ -->
+<!-- Target for future updates: #files / #cabinet / #dossier / window.PORTFOLIO_PROJECTS -->
+<section class="s files" id="files" data-dock="Case files" data-placeholder="work-case-files">
   <div class="wrap">
     <div class="sh"><div class="lbl">Work</div><h2>Four case files</h2><p>Two solved. Two still open. Pick one and read the rap sheet.</p></div>
-    <div class="cabinet" id="cabinet"></div>
-    <div class="dossier" id="dossier" aria-live="polite"></div>
+    <div class="cabinet" id="cabinet" data-placeholder="work-case-cabinet"></div>
+    <div class="dossier" id="dossier" aria-live="polite" data-placeholder="work-case-dossier"></div>
   </div>
 </section>
 <div class="wrap"></div>
 
-<!-- ============ RECEIPT ============ -->
-<section class="s till" id="till" data-dock="Receipt">
+<!-- ============ [PLACEHOLDER: CAREER RECEIPT & HIGHLIGHT PROOFS] ============ -->
+<!-- Target for future updates: #till / #receipt / window.PORTFOLIO_CAREER -->
+<section class="s till" id="till" data-dock="Receipt" data-placeholder="career-receipt-section">
   <div class="wrap till-in">
     <div><div class="sh" style="margin-bottom:0"><div class="lbl">Career</div><h2>Itemised, like a receipt.</h2><p>Every place I've designed, built and shipped, with the total at the bottom. No refunds.</p></div>
-      <div class="proofs"><div><b>200+</b><span>paying users on CoWork, from a 24-hour demo</span></div><div><b>98%</b><span>test coverage across production endpoints (Pytest + Swagger)</span></div><div><b>₹12L</b><span>a day in payments through SALT's flows</span></div></div></div>
-    <div class="receipt print" id="receipt">
+      <div class="proofs" data-placeholder="career-proof-metrics">
+        <div data-placeholder="career-proof-1"><b>200+</b><span>paying users on CoWork, from a 24-hour demo</span></div>
+        <div data-placeholder="career-proof-2"><b>98%</b><span>test coverage across production endpoints (Pytest + Swagger)</span></div>
+        <div data-placeholder="career-proof-3"><b>₹12L</b><span>a day in payments through SALT's flows</span></div>
+      </div>
+    </div>
+    <div class="receipt print" id="receipt" data-placeholder="career-receipt-ticket">
       <h3>VAIBHAV &amp; CO.</h3>
       <div class="c">GHAZIABAD / NCR · OPEN LATE<br>CASHIER: EMO</div>
       <hr>
-      <div class="ln"><span>ORGANIC SABZIWALA<small>Backend Systems Intern · Grocery Platform</small></span><span>DEC 2025–MAY 2026</span></div>
-      <div class="ln"><span>SAARTHI (PATENT FILED)<small>Lead Architect · AR/VR Cultural Heritage</small></span><span>DEC 2024</span></div>
-      <div class="ln"><span>INNOTECH 2024<small>Platform Lead &amp; Project Finalist</small></span><span>2024</span></div>
-      <div class="ln"><span>QUALIFIED GATE 2026<small>Computer Science &amp; IT · National Exam</small></span><span>2026</span></div>
-      <div class="ln"><span>KIET GROUP OF INSTITUTIONS<small>B.Tech Information Technology · CGPA 8.3</small></span><span>2023–2027</span></div>
+      <div class="ln" data-placeholder="career-milestone-1"><span>ORGANIC SABZIWALA<small>Backend Systems Intern · Grocery Platform</small></span><span>DEC 2025–MAY 2026</span></div>
+      <div class="ln" data-placeholder="career-milestone-2"><span>SAARTHI (PATENT FILED)<small>Lead Architect · AR/VR Cultural Heritage</small></span><span>DEC 2024</span></div>
+      <div class="ln" data-placeholder="career-milestone-3"><span>INNOTECH 2024<small>Platform Lead &amp; Project Finalist</small></span><span>2024</span></div>
+      <div class="ln" data-placeholder="career-milestone-4"><span>QUALIFIED GATE 2026<small>Computer Science &amp; IT · National Exam</small></span><span>2026</span></div>
+      <div class="ln" data-placeholder="career-milestone-5"><span>KIET GROUP OF INSTITUTIONS<small>B.Tech Information Technology · CGPA 8.3</small></span><span>2023–2027</span></div>
       <hr>
-      <div class="ln"><span>ST. ANTHONY'S SCHOOL<small>Senior Secondary CBSE · 85%</small></span><span>2021–2022</span></div>
+      <div class="ln" data-placeholder="career-milestone-6"><span>ST. ANTHONY'S SCHOOL<small>Senior Secondary CBSE · 85%</small></span><span>2021–2022</span></div>
       <hr>
-      <div class="ln tot" id="total"><span>TOTAL</span><span>4+ YRS</span></div>
-      <div class="ln"><span>ITEMS</span><span>5 TEAMS</span></div>
-      <div class="ln"><span>PAID IN</span><span>CHAI</span></div>
+      <div class="ln tot" id="total" data-placeholder="career-total-time"><span>TOTAL</span><span>4+ YRS</span></div>
+      <div class="ln" data-placeholder="career-teams-count"><span>ITEMS</span><span>5 TEAMS</span></div>
+      <div class="ln" data-placeholder="career-paid-currency"><span>PAID IN</span><span>CHAI</span></div>
       <div class="bc"></div>
       <div class="c">THANK YOU FOR READING<br>PLEASE COME AGAIN</div>
     </div>
@@ -1058,6 +1111,226 @@ const store = {
 };
 const pick = a => a[Math.floor(Math.random()*a.length)];
 const press = (group, btn) => $$('button', group).forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+
+/* ==========================================================================
+   ================== [PLACEHOLDER CONFIGURATION: WORK & PROJECTS] ==================
+   🎯 TARGET ZONE FOR FUTURE UPDATES:
+   Update your projects, case studies, packing slip services, and career milestones here.
+   Any changes made to this configuration automatically synchronize across:
+   1. The 3D Unboxing Box Cards (CASES7 in #contents)
+   2. The Cabinet File Folders (#cabinet)
+   3. The Rap Sheet Dossier (#dossier)
+   4. The Services Packing Slip (#slipRows)
+   5. The Career Receipt & Proofs (#receipt & #till)
+   ========================================================================== */
+
+window.PORTFOLIO_PROJECTS = [
+  /* --------------------------------------------------------------------------
+     [PROJECT PLACEHOLDER 01]: Case 01 (Deep-dive: cowork/)
+     Target: Project 01 across Unboxing cards, Cabinet & Dossier
+     -------------------------------------------------------------------------- */
+  {
+    id: 'sre',
+    num: '01',
+    badge: 'AI SRE',
+    caseNo: 'CASE NO. SRE-99',
+    name: 'Autonomous SRE & Auto-Triage',
+    company: 'AI SRE Lab · 2026',
+    companyShort: 'AI SRE Lab',
+    subtitle: 'AI-driven pipeline consuming Kafka error telemetry & auto-generating Jira bugs.',
+    solved: true,
+    rotation: '-2deg',
+    sceneCoords: { cx: 362, cy: 300, r: -9, z: 3 },
+    statNum: '99.9%',
+    statLabel: 'telemetry uptime',
+    colors: { acc: '#1E8A4C', acc2: '#2FA866' },
+    img: 'assets/placeholder-sre.svg',
+    caption: 'Exhibit A: Architecture Blueprint & Telemetry Stream',
+    href: 'cowork/',
+    summary: false,
+    fyi: 'Bugs should be diagnosed and ticketed before the first customer report arrives.',
+    rows: [
+      ['Suspect', 'Streaming error logs overwhelming on-call developers with false alarms.'],
+      ['Witnesses', 'Payment microservices & distributed nodes.'],
+      ['Method', 'Multi-agent CrewAI pipeline consuming Kafka topics, parsing logs, and creating Jira bugs via MCP.'],
+      ['Verdict', 'Eliminated manual triage; sub-second incident categorization across all payment nodes.']
+    ]
+  },
+
+  /* --------------------------------------------------------------------------
+     [PROJECT PLACEHOLDER 02]: Case 02 (Deep-dive: salt/)
+     Target: Project 02 across Unboxing cards, Cabinet & Dossier
+     -------------------------------------------------------------------------- */
+  {
+    id: 'payment',
+    num: '02',
+    badge: 'Payment Engine',
+    caseNo: 'CASE NO. PAY-26',
+    name: 'Distributed Payment Processing Engine',
+    company: 'FinTech · 2026',
+    companyShort: 'FinTech',
+    subtitle: 'ACID-compliant transaction processing microservice broadcasting telemetry via Kafka.',
+    solved: true,
+    rotation: '2deg',
+    sceneCoords: { cx: 452, cy: 368, r: 3, z: 5 },
+    statNum: '<100ms',
+    statLabel: 'P99 latency',
+    colors: { acc: '#29445B', acc2: '#3D6684' },
+    img: 'assets/placeholder-payment.svg',
+    caption: 'Exhibit B: ACID Transaction Boundaries & Event Sequencing',
+    href: 'salt/',
+    summary: true,
+    fyi: 'In financial logic, consistency is not negotiable. Lock early, broadcast reliably.',
+    rows: [
+      ['Suspect', 'Dual-write inconsistencies and race conditions during high-volume financial transactions.'],
+      ['Method', 'Isolated synchronous financial logic within Django ORM with PostgreSQL ACID guarantees; offloaded polling to FastAPI.'],
+      ['Verdict', 'Zero double-spending; broadcast structured latency metrics and telemetry via Kafka in real-time.'],
+      ['Status', 'Production-ready architecture; tested with 98% Pytest coverage.']
+    ]
+  },
+
+  /* --------------------------------------------------------------------------
+     [PROJECT PLACEHOLDER 03]: Case 03 (Deep-dive: toddle/)
+     Target: Project 03 across Unboxing cards, Cabinet & Dossier
+     -------------------------------------------------------------------------- */
+  {
+    id: 'chassis',
+    num: '03',
+    badge: 'Pizza API',
+    caseNo: 'CASE NO. PIZZA-25',
+    name: 'Pizza Delivery REST API',
+    company: 'FastAPI · Vesuvio Hearth',
+    companyShort: 'FastAPI · Vesuvio Hearth',
+    subtitle: 'Production-ready FastAPI backend with JWT auth, order workflows & <100ms latency.',
+    solved: true,
+    rotation: '-1deg',
+    sceneCoords: { cx: 568, cy: 268, r: 7, z: 4 },
+    statNum: '<100ms',
+    statLabel: 'P99 latency',
+    colors: { acc: '#E5484F', acc2: '#F7767B' },
+    img: 'assets/cascading_stack_showcase.png',
+    caption: 'Exhibit C: Vesuvio Hearth Artisanal Ecosystem & Dispatch Deck',
+    href: 'toddle/',
+    summary: false,
+    fyi: 'Real-time delivery platforms live or die on database latency. Clean boundaries keep queries under 100ms.',
+    rows: [
+      ['Suspect', 'Order dispatch bottlenecks and database latency spikes during high-concurrency peak delivery runs.'],
+      ['Witnesses', '100+ concurrent stress test users & PostgreSQL connection pool.'],
+      ['Method', 'Built production-grade RESTful FastAPI backend with SQLAlchemy ORM, JWT role authentication, and Docker containerization.'],
+      ['Verdict', 'Achieved <100ms P99 query latency; 98% Pytest coverage with automated Swagger API documentation.'],
+      ['Status', '13/13 test suites passing; 25-min live dispatch tracker live.']
+    ]
+  },
+
+  /* --------------------------------------------------------------------------
+     [PROJECT PLACEHOLDER 04]: Case 04 (Deep-dive: atlassian/)
+     Target: Project 04 across Unboxing cards, Cabinet & Dossier
+     -------------------------------------------------------------------------- */
+  {
+    id: 'sabziwala',
+    num: '04',
+    badge: 'Organic Sabziwala',
+    caseNo: 'CASE NO. OS-25',
+    name: 'Organic Sabziwala Inventory Engine',
+    company: 'Organic Sabziwala · 2025–26',
+    companyShort: 'Organic Sabziwala',
+    subtitle: 'Restructured backend data flows, eliminating negative stock and unit mismatches.',
+    solved: true,
+    rotation: '3deg',
+    sceneCoords: { cx: 668, cy: 362, r: -5, z: 6 },
+    statNum: '₹12L+',
+    statLabel: 'inventory flow stabilized',
+    colors: { acc: '#2D5BE3', acc2: '#4C82F2' },
+    img: 'assets/placeholder-sabziwala.svg',
+    caption: 'Exhibit D: Real-time B2B/B2C Stock Sync Blueprint',
+    href: 'atlassian/',
+    summary: true,
+    fyi: 'Physical grocery moves fast. If your inventory validation lags, stock goes negative.',
+    rows: [
+      ['Suspect', 'Negative inventory and unit mismatches during concurrent B2B and B2C grocery runs.'],
+      ['Method', 'Restructured backend data flows, validation boundaries, and request/response pipelines.'],
+      ['Verdict', '100% order synchronization accuracy; zero phantom stock across multiple warehouse nodes.'],
+      ['Status', 'Full production deployment.']
+    ]
+  }
+];
+
+/* --------------------------------------------------------------------------
+   [SERVICES PLACEHOLDERS]: Packing slip service rows
+   Target: Services & Proofs displayed in the Packing Slip (#slip)
+   -------------------------------------------------------------------------- */
+window.PORTFOLIO_SERVICES = [
+  {
+    key: 'b',
+    caseId: 'sre',
+    tag: 'SRE AUTO-TRIAGE',
+    title: 'Build',
+    role: 'Autonomous SRE & Self-Healing Pipelines.',
+    proof: 'AI-Driven SRE & Triage: Built an autonomous pipeline streaming error logs via Kafka with CrewAI multi-agent triage and MCP Jira ticket generation.',
+    href: 'https://github.com/vaibhav2616',
+    ctaText: 'Explore SRE Pipeline'
+  },
+  {
+    key: 'r',
+    caseId: 'chassis',
+    tag: 'MICROSERVICE CHASSIS',
+    title: 'Architecture',
+    role: 'Clean Architecture & Transactional Outbox.',
+    proof: 'Enterprise Microservice Chassis: Production-ready modular backend in FastAPI with background relay worker eliminating dual-write problems.',
+    href: 'https://github.com/vaibhav2616',
+    ctaText: 'Inspect Chassis Specs'
+  },
+  {
+    key: 'd',
+    caseId: 'payment',
+    tag: 'PAYMENT ENGINE',
+    title: 'Data Integrity',
+    role: 'ACID Transactions & Distributed Locking.',
+    proof: 'Payment Processing Engine: Secure Django ORM microservice with Redis distributed idempotency locks handling concurrent financial flows.',
+    href: 'https://github.com/vaibhav2616',
+    ctaText: 'View Payment Engine'
+  },
+  {
+    key: 's',
+    caseId: 'sabziwala',
+    tag: 'ORGANIC SABZIWALA',
+    title: 'Scale',
+    role: 'High-throughput async log ingestion.',
+    proof: 'AI Log Analyzer: Decoupled high-volume log streaming using FastAPI, Celery, CrewAI, and Elasticsearch with sub-200ms latency.',
+    href: 'https://github.com/vaibhav2616',
+    ctaText: 'See Log Analyzer'
+  }
+];
+
+/* --------------------------------------------------------------------------
+   [CAREER PLACEHOLDERS]: Highlight stats and receipt milestones
+   Target: Career Proofs (#till .proofs) and Receipt (#receipt)
+   -------------------------------------------------------------------------- */
+window.PORTFOLIO_CAREER = {
+  proofStats: [
+    { num: '200+', label: 'paying users on CoWork, from a 24-hour demo' },
+    { num: '98%', label: 'test coverage across production endpoints (Pytest + Swagger)' },
+    { num: '₹12L', label: "a day in payments through SALT's flows" }
+  ],
+  receiptHeader: {
+    company: 'VAIBHAV & CO.',
+    tagline: 'GHAZIABAD / NCR · OPEN LATE',
+    cashier: 'EMO'
+  },
+  milestones: [
+    { title: 'ORGANIC SABZIWALA', subtitle: 'Backend Systems Intern · Grocery Platform', period: 'DEC 2025–MAY 2026' },
+    { title: 'SAARTHI (PATENT FILED)', subtitle: 'Lead Architect · AR/VR Cultural Heritage', period: 'DEC 2024' },
+    { title: 'INNOTECH 2024', subtitle: 'Platform Lead & Project Finalist', period: '2024' },
+    { title: 'QUALIFIED GATE 2026', subtitle: 'Computer Science & IT · National Exam', period: '2026' },
+    { title: 'KIET GROUP OF INSTITUTIONS', subtitle: 'B.Tech Information Technology · CGPA 8.3', period: '2023–2027' },
+    { title: "ST. ANTHONY'S SCHOOL", subtitle: 'Senior Secondary CBSE · 85%', period: '2021–2022' }
+  ],
+  totals: {
+    totalTime: '4+ YRS',
+    teamsCount: '5 TEAMS',
+    paidIn: 'CHAI'
+  }
+};
 
 /* ================= Semi renderer ================= */
 const hex = h => { h = h.replace('#',''); return [0,2,4].map(i => parseInt(h.substr(i,2),16)); };
@@ -1379,17 +1652,12 @@ const box = document.createElement('div'), stage = document.createElement('div')
 function setBox(){} function openBox(){} function boxTick(){} function fit(){}
 function fromBox(k){ openCase(k, true); }
 /* ================= packing slip ================= */
-const SVC = [
-  ['b','Build','Autonomous SRE & Self-Healing Pipelines.','AI-Driven SRE & Triage: Built an autonomous pipeline streaming error logs via Kafka with CrewAI multi-agent triage and MCP Jira ticket generation.','https://github.com/vaibhav2616','Explore SRE Pipeline'],
-  ['r','Architecture','Clean Architecture & Transactional Outbox.','Enterprise Microservice Chassis: Production-ready modular backend in FastAPI with background relay worker eliminating dual-write problems.','https://github.com/vaibhav2616','Inspect Chassis Specs'],
-  ['d','Data Integrity','ACID Transactions & Distributed Locking.','Payment Processing Engine: Secure Django ORM microservice with Redis distributed idempotency locks handling concurrent financial flows.','https://github.com/vaibhav2616','View Payment Engine'],
-  ['s','Scale','High-throughput async log ingestion.','AI Log Analyzer: Decoupled high-volume log streaming using FastAPI, Celery, CrewAI, and Elasticsearch with sub-200ms latency.','https://github.com/vaibhav2616','See Log Analyzer']
-];
-const PROOF_TAG = {b:'SRE AUTO-TRIAGE', r:'MICROSERVICE CHASSIS', d:'PAYMENT ENGINE', s:'ORGANIC SABZIWALA'};
-$('#slipRows').innerHTML = SVC.map(([k,n,d,p,href,a]) => `<div class="sline"><button class="srow" type="button" data-k="${k}" aria-expanded="false" aria-controls="pf-${k}"><span class="q">1 ×</span><span class="kc" aria-hidden="true"><span>${k.toUpperCase()}</span></span><span class="it"><b>${n}</b><span>${d}</span></span></button>${href ? `<a class="pf" href="${href}">SEE ${PROOF_TAG[k].toUpperCase()} →</a>` : ''}</div><div class="proof" id="pf-${k}"><div><p>${p} ${href ? `<a href="${href}">${a} →</a>` : '<span style="color:var(--ink3)">File still being written.</span>'}</p></div></div>`).join('');
+const SVC = window.PORTFOLIO_SERVICES.map(s => [s.key, s.title, s.role, s.proof, s.href, s.ctaText]);
+const PROOF_TAG = Object.fromEntries(window.PORTFOLIO_SERVICES.map(s => [s.key, s.tag]));
+$('#slipRows').innerHTML = window.PORTFOLIO_SERVICES.map((s, i) => `<div class="sline" data-placeholder="service-row-${s.key}"><button class="srow" type="button" data-k="${s.key}" aria-expanded="false" aria-controls="pf-${s.key}"><span class="q">1 ×</span><span class="kc" aria-hidden="true"><span>${s.key.toUpperCase()}</span></span><span class="it"><b>${s.title}</b><span>${s.role}</span></span></button>${s.href ? `<a class="pf" href="${s.href}">SEE ${s.tag.toUpperCase()} →</a>` : ''}</div><div class="proof" id="pf-${s.key}"><div><p>${s.proof} ${s.href ? `<a href="${s.href}">${s.ctaText} →</a>` : '<span style="color:var(--ink3)">File still being written.</span>'}</p></div></div>`).join('');
 $$('.proof').forEach(p => p.inert = true);
 let presses = 0;
-const SLIP2CASE = {b:'sre', r:'chassis', d:'payment', s:'sabziwala'};
+const SLIP2CASE = Object.fromEntries(window.PORTFOLIO_SERVICES.map(s => [s.key, s.caseId]));
 let keyAc = null;
 function keyClick(){
   try { if (localStorage.getItem('gacha:mute') === '1') return; } catch (e) {}
@@ -1424,21 +1692,21 @@ addEventListener('keydown', e => {
 });
 
 /* ================= case files ================= */
-const CASES = [
-  {k:'sre', tab:'CASE NO. SRE-99', name:'Autonomous SRE & Auto-Triage', co:'AI SRE Lab', solved:true, r:'-2deg', img:'assets/placeholder-sre.svg', cap:'Exhibit A: Architecture Blueprint & Telemetry Stream',
-   rows:[['Suspect','Streaming error logs overwhelming on-call developers with false alarms.'],['Witnesses','Payment microservices & distributed nodes.'],['Method','Multi-agent CrewAI pipeline consuming Kafka topics, parsing logs, and creating Jira bugs via MCP.'],['Verdict','Eliminated manual triage; sub-second incident categorization across all payment nodes.']], href:'cowork/',
-   fyi:'Bugs should be diagnosed and ticketed before the first customer report arrives.'},
-  {k:'payment', tab:'CASE NO. PAY-26', name:'Distributed Payment Processing Engine', co:'FinTech', solved:true, r:'2deg', img:'assets/placeholder-payment.svg', cap:'Exhibit B: ACID Transaction Boundaries & Event Sequencing',
-   rows:[['Suspect','Dual-write inconsistencies and race conditions during high-volume financial transactions.'],['Method','Isolated synchronous financial logic within Django ORM with PostgreSQL ACID guarantees; offloaded polling to FastAPI.'],['Verdict','Zero double-spending; broadcast structured latency metrics and telemetry via Kafka in real-time.'],['Status','Production-ready architecture; tested with 98% Pytest coverage.']], href:'salt/',
-   fyi:'In financial logic, consistency is not negotiable. Lock early, broadcast reliably.'},
-  {k:'chassis', tab:'CASE NO. PIZZA-25', name:'Pizza Delivery REST API', co:'FastAPI · Vesuvio Hearth', solved:true, r:'-1deg', img:'assets/cascading_stack_showcase.png', cap:'Exhibit C: Vesuvio Hearth Artisanal Ecosystem & Dispatch Deck',
-   rows:[['Suspect','Order dispatch bottlenecks and database latency spikes during high-concurrency peak delivery runs.'],['Witnesses','100+ concurrent stress test users & PostgreSQL connection pool.'],['Method','Built production-grade RESTful FastAPI backend with SQLAlchemy ORM, JWT role authentication, and Docker containerization.'],['Verdict','Achieved <100ms P99 query latency; 98% Pytest coverage with automated Swagger API documentation.'],['Status','13/13 test suites passing; 25-min live dispatch tracker live.']], href:'toddle/',
-   fyi:'Real-time delivery platforms live or die on database latency. Clean boundaries keep queries under 100ms.'},
-  {k:'sabziwala', tab:'CASE NO. OS-25', name:'Organic Sabziwala Inventory Engine', co:'Organic Sabziwala', solved:true, r:'3deg', img:'assets/placeholder-sabziwala.svg', cap:'Exhibit D: Real-time B2B/B2C Stock Sync Blueprint',
-   rows:[['Suspect','Negative inventory and unit mismatches during concurrent B2B and B2C grocery runs.'],['Method','Restructured backend data flows, validation boundaries, and request/response pipelines.'],['Verdict','100% order synchronization accuracy; zero phantom stock across multiple warehouse nodes.'],['Status','Full production deployment.']], href:'atlassian/',
-   fyi:'Physical grocery moves fast. If your inventory validation lags, stock goes negative.'}
-];
-$('#cabinet').innerHTML = CASES.map((c,i) => `<button class="case${c.solved ? '' : ' wip'}" type="button" data-case="${c.k}" style="--r:${c.r}" aria-controls="dossier"><span class="peek">${c.img ? `<img src="${c.img}" alt="">` : ''}</span><span class="fold" data-tab="${c.tab}"><span class="stamp ${c.solved ? 'solved' : 'open'}">${c.solved ? 'SOLVED' : 'OPEN'}</span><b>${c.name}</b><small>${c.co} · file 0${i+1}</small></span></button>`).join('');
+const CASES = window.PORTFOLIO_PROJECTS.map(p => ({
+  k: p.id,
+  tab: p.caseNo,
+  name: p.name,
+  co: p.companyShort || p.company,
+  solved: p.solved,
+  r: p.rotation,
+  img: p.img,
+  cap: p.caption,
+  rows: p.rows,
+  href: p.href,
+  summary: p.summary,
+  fyi: p.fyi
+}));
+$('#cabinet').innerHTML = CASES.map((c,i) => `<button class="case${c.solved ? '' : ' wip'}" type="button" data-case="${c.k}" data-placeholder="cabinet-project-case-${i+1}" style="--r:${c.r}" aria-controls="dossier"><span class="peek">${c.img ? `<img src="${c.img}" alt="">` : ''}</span><span class="fold" data-tab="${c.tab}"><span class="stamp ${c.solved ? 'solved' : 'open'}">${c.solved ? 'SOLVED' : 'OPEN'}</span><b>${c.name}</b><small>${c.co} · file 0${i+1}</small></span></button>`).join('');
 let seenSoon = 0;
 function openCase(k, user){
   const c = CASES.find(c => c.k === k);
@@ -1782,20 +2050,33 @@ const ITEMS = [
   {k:'ears', cx:560, cy:320, w:210, r:10, z:12, dir:1, spin:16, line:'Mechanical keyboard switch. Clicky keys are non-negotiable.'}
 ];
 const ORDER = ['ears','receipt','crane','stamps','chai','pot','book','gunpla','bubble','paper'];
-const CASES7 = [
-  {k:'sre', n:'01', p:'AI SRE', co:'AI SRE Lab · 2026', name:'Autonomous SRE & Auto-Triage', sub:'AI-driven pipeline consuming Kafka error telemetry & auto-generating Jira bugs.', num:'99.9%', lab:'telemetry uptime', acc:'#1E8A4C', acc2:'#2FA866', href:'cowork/', cx:362, cy:300, r:-9, z:3, solved:1},
-  {k:'payment', n:'02', p:'Payment Engine', co:'FinTech · 2026', name:'Distributed Payment Processing Engine', sub:'ACID-compliant transaction processing microservice broadcasting telemetry via Kafka.', num:'<100ms', lab:'P99 latency', acc:'#29445B', acc2:'#3D6684', href:'salt/', cx:452, cy:368, r:3, z:5, summary:1, solved:1},
-  {k:'chassis', n:'03', p:'Pizza API', co:'FastAPI · 2025', name:'Pizza Delivery REST API', sub:'Production-ready FastAPI backend with JWT auth, order workflows & <100ms latency.', num:'<100ms', lab:'P99 latency', acc:'#E5484F', acc2:'#F7767B', href:'toddle/', cx:568, cy:268, r:7, z:4, solved:1},
-  {k:'sabziwala', n:'04', p:'Organic Sabziwala', co:'Organic Sabziwala · 2025–26', name:'Organic Sabziwala Inventory Engine', sub:'Restructured backend data flows, eliminating negative stock and unit mismatches.', num:'₹12L+', lab:'inventory flow stabilized', acc:'#2D5BE3', acc2:'#4C82F2', href:'atlassian/', cx:668, cy:362, r:-5, z:6, summary:1, solved:1}
-];
+const CASES7 = window.PORTFOLIO_PROJECTS.map(p => ({
+  k: p.id,
+  n: p.num,
+  p: p.badge,
+  co: p.company,
+  name: p.name,
+  sub: p.subtitle,
+  num: p.statNum,
+  lab: p.statLabel,
+  acc: p.colors.acc,
+  acc2: p.colors.acc2,
+  href: p.href,
+  cx: p.sceneCoords.cx,
+  cy: p.sceneCoords.cy,
+  r: p.sceneCoords.r,
+  z: p.sceneCoords.z,
+  solved: p.solved ? 1 : 0,
+  summary: p.summary ? 1 : 0
+}));
 const contents = $('#contents');
 contents.innerHTML = ITEMS.map(it => {
   let inner = SVG[it.k] || '';
   if (it.k === 'pot') inner = POT; if (it.k === 'ears') inner = EARS;
   if (it.k === 'stamps') inner = `<span style="display:flex; gap:6px">${['in','jp','mx'].map(k => `<span class="stamp-edge" style="display:block; width:33%">${poster(WORLD[k])}</span>`).join('')}</span>`;
   return `<button class="itm${it.flat ? ' flat' : ''}${it.k === 'pot' ? ' pot2' : ''}" type="button" data-it="${it.k}" ${it.k === 'pot' ? 'id="pot2"' : ''} aria-label="${it.line}" style="left:${it.cx - it.w/2}px; top:0; width:${it.w}px; z-index:${it.z}">${inner}</button>`;
-}).join('') + CASES7.map(c => { const tag = c.href ? 'a' : 'button';
-  return `<${tag} class="cd${c.solved ? '' : ' wip'}" ${c.href ? `href="${c.href}"` : 'type="button"'} data-cd="${c.k}" style="--acc:${c.acc}; --acc2:${c.acc2}; z-index:${c.z}" aria-label="${c.p}, ${c.name}: ${c.sub}${c.solved ? '' : ' Being written.'}">
+}).join('') + CASES7.map((c, i) => { const tag = c.href ? 'a' : 'button';
+  return `<${tag} class="cd${c.solved ? '' : ' wip'}" ${c.href ? `href="${c.href}"` : 'type="button"'} data-cd="${c.k}" data-placeholder="unboxed-card-${i+1}" style="--acc:${c.acc}; --acc2:${c.acc2}; z-index:${c.z}" aria-label="${c.p}, ${c.name}: ${c.sub}${c.solved ? '' : ' Being written.'}">
     <span class="cd-in"><span class="cd-top"><span>${c.n} · ${c.p}</span><span>${c.co}</span></span><span class="cd-name">${c.name}<small>${c.sub}</small></span><span class="cd-bot">${c.num ? `<span class="cd-num">${c.num}<i>${c.lab}</i></span>` : '<span></span>'}<span class="cd-bc"></span></span></span>
     <span class="cd-tag">${c.summary ? 'read summary' : (c.solved ? 'Read it' : 'Soon')}</span><span class="cd-go">${c.summary ? 'Read summary →' : (c.solved ? 'Read the case study →' : 'Being written')}</span></${tag}>`; }).join('')
   + Array.from({length:6}, (_, i) => `<span class="spark" style="left:${[150,330,520,690,860,470][i]}px; top:${[170,120,140,118,180,380][i]}px"><svg viewBox="0 0 20 20"><path d="M10 0C11 7 13 9 20 10 13 11 11 13 10 20 9 13 7 11 0 10 7 9 9 7 10 0Z" fill="#F2B533" stroke="#fff" stroke-width="1.2"/></svg></span>`).join('');
@@ -2544,7 +2825,13 @@ requestAnimationFrame(loop);
 .sf-bot{max-width:1200px; margin:0 auto; padding:16px clamp(16px,3vw,32px) 28px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; border-top:1px dashed #D9CDB6; font:400 13px "Bricolage Grotesque", sans-serif; color:#6F6A62}
 .sf-top{color:var(--sf-ink); text-decoration:none; font-weight:600} .sf-top:hover{text-decoration:underline}
 @media (max-width:900px){ .sf-in{grid-template-columns:1fr 1fr; align-items:start} .sf-sign{grid-column:1/-1} .sf-gift{grid-column:1/-1; margin-top:36px} .sf-hint{right:auto; left:calc(50% - 210px); top:-30px} .gacha{width:190px} }
-@media (max-width:460px){ .sf-hint{left:0; top:-34px} }
+@media (max-width:580px){
+  .sf-in{grid-template-columns:1fr; gap:28px; padding:44px 16px 32px}
+  .sf-col{padding-bottom:0}
+  .sf-hint{left:50% !important; transform:translateX(-50%) rotate(-5deg) !important; top:-32px !important}
+  .sf-bot{flex-direction:column; align-items:center; text-align:center; gap:10px}
+}
+@media (max-width:460px){ .sf-hint{left:50% !important; transform:translateX(-50%) rotate(-5deg) !important; top:-34px} }
 /* reveal */
 .gx{position:fixed; inset:0; z-index:200; display:grid; place-items:center; font-family:"Bricolage Grotesque", system-ui, sans-serif}
 .gx[hidden]{display:none}

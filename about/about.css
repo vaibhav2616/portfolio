@@ -75,6 +75,7 @@
   .ab2-scene{padding-bottom:0}
   .ab2-flip{position:static;margin-top:16px}
   .ab2-hint{margin-top:10px}
+  .ab2-big{max-width:100%}
   .ab2-kobo{aspect-ratio:auto;height:580px;width:min(100%,380px)}
   .ab2-front{grid-template-columns:minmax(0,1fr) 34px;padding:14px 0 14px 12px}
   .ab2-grip button{width:10px;height:52px}

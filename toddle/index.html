@@ -433,17 +433,24 @@ footer{padding-block:28px; font-size:13px; color:var(--ink3)}
 </div>
 
 <main id="top">
-<section class="hero">
+<!-- ==========================================================================
+     [PLACEHOLDER: CASE STUDY DEEP DIVE - PROJECT 03 (PIZZA DELIVERY REST API)]
+     Target zone for future project replacement:
+     - Hero Head & Metadata: .eyebrow, h1, .lede
+     - Problem / Role / What shipped / Results: dl#tldr
+     - Showcase & Endpoints: .stage, #heroFrame, chapters below
+     ========================================================================== -->
+<section class="hero" data-placeholder="case-03-hero">
   <div class="wrap">
     <div class="hero-head">
-      <p class="eyebrow">Case study · FastAPI & PostgreSQL · Vesuvio Hearth Ecosystem</p>
-      <h1>High-throughput order workflows with <span class="hl">FastAPI & SQLAlchemy.</span></h1>
-      <p class="lede">Vesuvio Hearth is a production-grade artisanal pizza e-commerce and delivery ecosystem. I architected and implemented the RESTful backend engine handling role-based authentication, order state transitions, real-time dispatch telemetry, and sub-100ms query performance under concurrent load.</p>
-      <dl class="tldr" id="tldr" data-note="TL;DR: problem, role, what shipped, results." data-tour="1">
-        <div><dt>Problem</dt><dd>Real-time delivery platforms suffer from concurrency bottlenecks and database locking during peak order rushes. State transitions require strict idempotency and zero race conditions.</dd></div>
-        <div><dt>Role</dt><dd>Backend Systems Engineer, 2025. REST schema architecture, SQLAlchemy ORM query optimization, JWT authentication, and Docker containerization.</dd></div>
-        <div><dt>What shipped</dt><dd>Vesuvio Hearth API: Role-based auth workflows (Customer, Crafter, Dispatcher, Admin), dynamic pricing calculations, live 25-minute order tracking engine, and OpenAPI specs.</dd></div>
-        <div><dt>Results</dt><dd><span class="r"><b>&lt;100ms</b> P99 latency verified under 100+ concurrent stress test users</span><span class="r"><b>13 / 13</b> comprehensive test suites passing with 98% Pytest coverage</span><span class="r"><b>70%</b> reduction in deployment setup time via multi-stage Docker containerization</span></dd></div>
+      <p class="eyebrow" data-placeholder="case-03-meta">Case study · FastAPI & PostgreSQL · Vesuvio Hearth Ecosystem</p>
+      <h1 data-placeholder="case-03-title">High-throughput order workflows with <span class="hl">FastAPI & SQLAlchemy.</span></h1>
+      <p class="lede" data-placeholder="case-03-lede">Vesuvio Hearth is a production-grade artisanal pizza e-commerce and delivery ecosystem. I architected and implemented the RESTful backend engine handling role-based authentication, order state transitions, real-time dispatch telemetry, and sub-100ms query performance under concurrent load.</p>
+      <dl class="tldr" id="tldr" data-note="TL;DR: problem, role, what shipped, results." data-tour="1" data-placeholder="case-03-tldr">
+        <div data-placeholder="case-03-problem"><dt>Problem</dt><dd>Real-time delivery platforms suffer from concurrency bottlenecks and database locking during peak order rushes. State transitions require strict idempotency and zero race conditions.</dd></div>
+        <div data-placeholder="case-03-role"><dt>Role</dt><dd>Backend Systems Engineer, 2025. REST schema architecture, SQLAlchemy ORM query optimization, JWT authentication, and Docker containerization.</dd></div>
+        <div data-placeholder="case-03-shipped"><dt>What shipped</dt><dd>Vesuvio Hearth API: Role-based auth workflows (Customer, Crafter, Dispatcher, Admin), dynamic pricing calculations, live 25-minute order tracking engine, and OpenAPI specs.</dd></div>
+        <div data-placeholder="case-03-results"><dt>Results</dt><dd><span class="r"><b>&lt;100ms</b> P99 latency verified under 100+ concurrent stress test users</span><span class="r"><b>13 / 13</b> comprehensive test suites passing with 98% Pytest coverage</span><span class="r"><b>70%</b> reduction in deployment setup time via multi-stage Docker containerization</span></dd></div>
       </dl>
       <div class="tour-cta"><button class="sm-tourbtn" type="button" data-semi-tour><canvas class="sm-mini" width="48" height="48" aria-hidden="true"></canvas>Take the 60-second tour</button><span>Prefer to be walked through it? Emo points at what matters.</span></div>
     </div>
