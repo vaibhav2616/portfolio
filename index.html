@@ -53,8 +53,8 @@
 @media (max-width:880px){ .hn-links,.hn-hi{display:none} .hn-menu{display:flex} .hn-btn .t{display:none} .hn-btn{padding:0 10px 0 5px} .hn-btn.plain,.hn-fb{padding:0 11px} }
 @media (max-width:400px){ .hn-in{gap:6px} .hn-word i{display:none} }
 /* Semi */
-#semi{position:fixed; left:0; top:0; width:64px; height:64px; z-index:99; pointer-events:none; will-change:transform; filter:drop-shadow(0 4px 10px rgba(0,0,0,0.18))}
-#semi-say{position:fixed; left:0; top:0; z-index:97; pointer-events:none; background:#16130F; color:#FBF7EE; border-radius:14px 14px 14px 4px; padding:9px 12px; font:500 14px/1.35 "Bricolage Grotesque", system-ui, sans-serif; max-width:270px; opacity:0; transform:translateY(4px); transition:opacity .2s, transform .2s}
+#semi{position:fixed; left:0; top:0; width:64px; height:64px; z-index:10010 !important; pointer-events:none; will-change:transform; filter:drop-shadow(0 4px 10px rgba(0,0,0,0.18))}
+#semi-say{position:fixed; left:0; top:0; z-index:10015 !important; pointer-events:none; background:#16130F; color:#FBF7EE; border-radius:14px 14px 14px 4px; padding:9px 12px; font:500 14px/1.35 "Bricolage Grotesque", system-ui, sans-serif; max-width:270px; opacity:0; transform:translateY(4px); transition:opacity .2s, transform .2s}
 #semi-say.on{opacity:1; transform:none}
 #semi-say small{display:block; font:500 9.5px/1 "DM Mono", monospace; letter-spacing:.14em; text-transform:uppercase; color:#FFD23F; margin-bottom:5px}
 #semi-say img{width:180px; max-height:200px; object-fit:contain; border-radius:10px; margin-bottom:7px; background:#fff; display:block}
@@ -676,25 +676,104 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
   top: 0;
   width: 64px;
   height: 64px;
-  z-index: 80;
+  z-index: 10010 !important;
   pointer-events: none;
   will-change: transform;
   transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.4, 1);
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.18));
 }
 #semi.cradle-mode {
-  animation: emoCradleRock 2.2s ease-in-out infinite !important;
+  animation: emoCradleRock 2.4s ease-in-out infinite !important;
   transform-origin: 50% 100% !important;
 }
 @keyframes emoCradleRock {
   0%, 100% { transform: rotate(-7deg) translateY(0); }
-  50% { transform: rotate(7deg) translateY(4px); }
+  50% { transform: rotate(7deg) translateY(3px); }
 }
-#semi.emo-giant {
-  z-index: 10001 !important;
-  pointer-events: auto !important;
-  cursor: pointer !important;
-  transform: translate(calc(50vw - 64px), calc(50vh - 120px)) scale(4.2) !important;
-  transition: transform 0.45s cubic-bezier(0.18, 1.25, 0.35, 1) !important;
+
+/* Angry baby stomping & pouting */
+#semi.angry-baby {
+  animation: babyStomp 0.28s ease-in-out infinite alternate !important;
+  filter: drop-shadow(0 4px 12px rgba(229, 36, 36, 0.55)) !important;
+}
+@keyframes babyStomp {
+  0% { transform: translateY(0) rotate(-4deg); }
+  100% { transform: translateY(-4px) rotate(4deg); }
+}
+
+/* Cursor Cradle: cozy hammock hanging directly from cursor pointer */
+.cursor-cradle {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 10008;
+  width: 100px;
+  height: 68px;
+  transform-origin: 50px 4px;
+  animation: cradleGentleRock 2.4s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+@keyframes cradleGentleRock {
+  0%, 100% { transform: rotate(-7deg) translateY(0); }
+  50% { transform: rotate(7deg) translateY(3px); }
+}
+.cradle-snores {
+  position: absolute;
+  right: -4px;
+  top: -10px;
+  pointer-events: none;
+}
+.snore-z {
+  position: absolute;
+  font-family: var(--display, "Bricolage Grotesque", system-ui);
+  font-weight: 800;
+  color: #5C5446;
+  opacity: 0;
+  line-height: 1;
+  animation: snoreFloatUp 2.4s infinite ease-out;
+}
+.snore-z:nth-child(1) { font-size: 13px; right: 10px; animation-delay: 0s; }
+.snore-z:nth-child(2) { font-size: 17px; right: 0px; animation-delay: 0.8s; color: #2D5BE3; }
+.snore-z:nth-child(3) { font-size: 22px; right: -10px; animation-delay: 1.6s; color: #E52424; }
+@keyframes snoreFloatUp {
+  0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+  25% { opacity: 0.9; }
+  80% { opacity: 0.7; }
+  100% { transform: translate(22px, -36px) scale(1.3); opacity: 0; }
+}
+
+/* Small weapons fit for Emo's 64px body */
+.emo-weapon-holder {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 10012;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4));
+  transition: opacity 0.2s ease;
+}
+.emo-weapon-holder.active {
+  animation: weaponRecoil 0.35s ease-in-out infinite alternate;
+}
+@keyframes weaponRecoil {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(2px, -2px) rotate(-10deg); }
+}
+.emo-weapon-holder.buzzing {
+  animation: chainsawBuzz 0.1s linear infinite;
+}
+@keyframes chainsawBuzz {
+  0% { transform: translate(0, 0) rotate(6deg); }
+  50% { transform: translate(-2px, 2px) rotate(-6deg); }
+  100% { transform: translate(0, 0) rotate(6deg); }
 }
 
 #semi-say {
@@ -1298,6 +1377,32 @@ html.emo-blankout .band {
 </aside>
 <canvas id="semi" width="128" height="128" aria-hidden="true"></canvas>
 <div id="semi-say" role="status" aria-live="polite"></div>
+<div id="cursorCradle" class="cursor-cradle" hidden>
+  <svg class="cradle-svg" viewBox="0 0 110 75" width="100" height="68">
+    <defs>
+      <linearGradient id="cradleGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#FFE885"/>
+        <stop offset="100%" stop-color="#FFD23F"/>
+      </linearGradient>
+      <filter id="cradleShadow" x="-10%" y="-10%" width="120%" height="130%">
+        <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>
+      </filter>
+    </defs>
+    <line x1="50" y1="2" x2="20" y2="38" stroke="#16130F" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="50" y1="2" x2="90" y2="38" stroke="#16130F" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="50" cy="3" r="3.5" fill="#16130F"/>
+    <path d="M15 36 Q55 72 95 36 C85 64 25 64 15 36 Z" fill="url(#cradleGrad)" stroke="#16130F" stroke-width="3" filter="url(#cradleShadow)"/>
+    <path d="M22 40 Q55 64 88 40 Q55 52 22 40 Z" fill="#FFFDF8" stroke="#E3DACA" stroke-width="1.5"/>
+    <ellipse cx="32" cy="42" rx="9" ry="5.5" fill="#FFFFFF" stroke="#16130F" stroke-width="1.8" transform="rotate(-15 32 42)"/>
+    <path d="M42 45 Q65 60 86 42 Q65 52 42 45 Z" fill="#88D1F1" stroke="#16130F" stroke-width="1.5"/>
+  </svg>
+  <div class="cradle-snores">
+    <span class="snore-z">z</span>
+    <span class="snore-z">z</span>
+    <span class="snore-z">Z</span>
+  </div>
+</div>
+<div id="emoWeaponHolder" class="emo-weapon-holder" hidden></div>
 
 <aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Your feedback">
   <header><b>Your feedback</b><button type="button" id="fbClose">Close</button></header>
@@ -1567,6 +1672,7 @@ let lastMove = performance.now(), idleFired = false;
 let wandering = false, wanderTarget = null, lastWanderHop = 0, lastTrail = 0;
 let rampageActive = false, blankoutActive = false;
 let lastMouseX = mx, lastMouseY = my, mouseSpeed = 0, lastSpeedCheck = performance.now();
+let lastNaughtySay = 0;
 
 const wake = () => {
   lastMove = performance.now();
@@ -1608,7 +1714,7 @@ addEventListener('pointerdown', wake, {passive:true});
 let lastY = scrollY, lastYT = performance.now();
 addEventListener('scroll', () => { const t = performance.now(), dy = scrollY - lastY;
   if (dy < -900 && t - lastYT < 500) say('Going back? Same. I\'ll be analysing everything I said on the way home.');
-  if (t - lastYT > 400){ lastY = scrollY; lastYT = t; } wake(); }, {passive:true});
+  if (t - lastYT > 400){ lastY = scrollY; lastYT = t; } if (!wandering && !rampageActive) wake(); }, {passive:true});
 
 /* ================= sections, dock, back, nav ================= */
 let secs = [], cur = 0, dest = null, said = new Set(), sayT;
@@ -2206,12 +2312,13 @@ document.addEventListener('click', e => { const a = e.target.closest('a[href="#w
 if (location.hash === '#work') setTimeout(() => { const total = ub.offsetHeight - pin.clientHeight; scrollTo({top: ub.offsetTop + total * AT_WORK, behavior:'auto'}); }, 350);
 
 /* ================= Emo Interactive Emotional Engine ================= */
-let last = performance.now(), lastNudge = 0, lastNaughtySay = 0;
+let last = performance.now(), lastNudge = 0;
 let calmShieldUntil = 0; // ms timestamp for 3-minute immunity
 let balloonsGifted = 0, lastBalloonDelivery = 0;
 let lastFlowerSprout = 0, lastSecretDrop = 0, lastCandyEat = 0, lastPeekaboo = 0;
-let lastAutoScroll = 0, lastGachaVisit = 0;
-let arsenalStep = 0, lastArsenalAction = 0;
+let lastGachaVisit = 0, lastTourStep = 0, tourIndex = 0;
+let attackStep = 0, lastAttackAction = 0;
+let lastBabyRemark = 0;
 
 function spawnEmoTrail(x, y, icon) {
   const p = document.createElement('span');
@@ -2286,35 +2393,8 @@ function spawnCandyNom(x, y) {
   setTimeout(() => c.remove(), 850);
 }
 
-function getWanderTarget() {
-  const points = [];
-  const add = el => {
-    if (!el || el.offsetParent === null) return;
-    const r = el.getBoundingClientRect();
-    if (r.width > 0 && r.height > 0) {
-      points.push({ el, x: r.left + r.width / 2, y: r.top + r.height / 2 });
-    }
-  };
-  add($('#heroH1'));
-  add($('#openBtn'));
-  add($('#workBtn'));
-  add($('.bx-front'));
-  add($('.hn-word'));
-  add($('#semiBtn'));
-  add($('.sf-gift'));
-  add($('.gacha'));
-  $$('.cd').forEach(c => add(c));
-  $$('.itm').forEach(i => add(i));
-  if (!points.length) {
-    return { el: null, x: innerWidth * (0.2 + 0.6 * Math.random()), y: innerHeight * (0.2 + 0.6 * Math.random()) };
-  }
-  return pick(points);
-}
-
 // Color interpolation for gradual ramp-up (50s to 60s)
 function getRampageColor(k) {
-  // k: 0.0 (50s) to 1.0 (60s)
-  // Interpolates from amber-orange to dark glowing crimson
   const r = Math.round(255);
   const g = Math.round(140 * (1 - k) + 20 * k);
   const b = Math.round(20 * (1 - k) + 20 * k);
@@ -2322,15 +2402,15 @@ function getRampageColor(k) {
   return `rgba(${r}, ${g}, ${b}, ${a})`;
 }
 
-// Arsenal projectiles during rampage
-function fireRocket(fromX, fromY) {
+// Small projectiles fitting Emo's 64px body
+function fireMiniRocket(fromX, fromY, toX, toY) {
   const r = document.createElement('div');
   r.className = 'emo-rocket';
   r.textContent = '🚀';
   r.style.left = fromX + 'px';
   r.style.top = fromY + 'px';
-  const tx = (Math.random() - 0.5) * innerWidth * 0.7;
-  const ty = (Math.random() - 0.5) * innerHeight * 0.7;
+  const tx = toX - fromX;
+  const ty = toY - fromY;
   const angle = Math.atan2(ty, tx) * (180 / Math.PI);
   r.style.setProperty('--tx', tx + 'px');
   r.style.setProperty('--ty', ty + 'px');
@@ -2338,8 +2418,8 @@ function fireRocket(fromX, fromY) {
   document.body.appendChild(r);
   setTimeout(() => {
     r.remove();
-    spawnExplosion(fromX + tx, fromY + ty);
-  }, 620);
+    spawnExplosion(toX, toY);
+  }, 500);
 }
 
 function spawnExplosion(x, y) {
@@ -2349,16 +2429,14 @@ function spawnExplosion(x, y) {
   ex.style.left = x + 'px';
   ex.style.top = y + 'px';
   document.body.appendChild(ex);
-  setTimeout(() => ex.remove(), 500);
+  setTimeout(() => ex.remove(), 450);
 }
 
-function fireLaser(fromX, fromY) {
+function fireMiniLaser(fromX, fromY, toX, toY) {
   const l = document.createElement('div');
   l.className = 'emo-laser-line';
-  const targetX = Math.random() * innerWidth;
-  const targetY = Math.random() * innerHeight;
-  const dist = Math.hypot(targetX - fromX, targetY - fromY);
-  const angle = Math.atan2(targetY - fromY, targetX - fromX) * (180 / Math.PI);
+  const dist = Math.hypot(toX - fromX, toY - fromY);
+  const angle = Math.atan2(toY - fromY, toX - fromX) * (180 / Math.PI);
   l.style.left = fromX + 'px';
   l.style.top = fromY + 'px';
   l.style.width = dist + 'px';
@@ -2366,89 +2444,130 @@ function fireLaser(fromX, fromY) {
   document.body.appendChild(l);
   setTimeout(() => {
     l.remove();
-    spawnExplosion(targetX, targetY);
-  }, 350);
+    spawnExplosion(toX, toY);
+  }, 280);
 }
 
-// Full Rampage & Website Blankout Activation
+// Guided Tour Stops across the website: Emo travels to each, window scrolls to follow!
+const TOUR_STOPS = [
+  { sel: '#heroH1', say: "Tour Stop 1: Welcome to Vaibhav's portfolio box! Let's explore!", type: 'greet' },
+  { sel: '#openBtn', say: "Here's the box trigger! Let's water some flowers here! 🌸", type: 'flower' },
+  { sel: '.cd:nth-of-type(1)', say: "Case 01: AI SRE Pipeline! Dropping a secret Easter egg! 🗝️", type: 'secret' },
+  { sel: '.cd:nth-of-type(2)', say: "Case 02: High-Volume Payment Engine! Candy break time! 🍬", type: 'candy' },
+  { sel: '.cd:nth-of-type(3)', say: "Case 03: Pizza Delivery API! More flower power! 🌼", type: 'flower' },
+  { sel: '.cd:nth-of-type(4)', say: "Case 04: Organic Sabziwala! High-throughput architecture! ✨", type: 'secret' },
+  { sel: '#till', say: "Career Receipt! 4+ years of distributed systems engineering! 📜", type: 'peekaboo' },
+  { sel: '#inside', say: "About Vaibhav: reads RFCs cover to cover! Snack break! 🍭", type: 'candy' },
+  { sel: '.gacha', say: "The Parting Gift Gacha! Free unlimited fortune cookies for Emo! 🥠", type: 'gacha' }
+];
+
+// Rampage Attack Targets: Emo physically dashes from element to element with small weapons!
+const ATTACK_STEPS = [
+  { sel: '.cd:nth-of-type(1)', weapon: '🚀', wClass: 'active', say: "Mini Rocket Launcher equipped! 🚀 Take that, Case Study 01!" },
+  { sel: '#openBtn', weapon: '🔫', wClass: 'active', say: "Mini Dual Blasters! 🔫 Pew pew pew at the box button!" },
+  { sel: '#heroH1', weapon: '🪚', wClass: 'buzzing', say: "Mini Buzzing Chainsaw! 🪚 Slicing the headline!" },
+  { sel: '.cd:nth-of-type(2)', weapon: '🔥', wClass: 'active', say: "Mini Flamethrower! 🔥 Toasting the payment engine!" },
+  { sel: '#till', weapon: '⚡', wClass: 'active', say: "Laser Eyes of Fury! ⚡👀 Taste my toddler rage!" },
+  { sel: '.bx-front', weapon: '💣', wClass: '', say: "Mini Virus Bomb planted! 💣 3... 2... 1... BOOM!" }
+];
+
+// Full Rampage & Attack Sequence
 function triggerFullRampage() {
   if (rampageActive || blankoutActive) return;
   rampageActive = true;
   wandering = false;
+  attackStep = 0;
   comp.state = 'angry';
-  companion.classList.add('emo-giant');
   companion.classList.remove('cradle-mode');
   bubble.classList.add('angry-bubble');
   document.documentElement.classList.add('emo-tantrum');
 
-  say("THAT'S IT! 60 SECONDS OF TOTAL NEGLECT! ACTIVATING FULL HAVOC ARSENAL!", null, 5000);
+  say("THAT'S IT! 60 SECONDS OF NEGLECT! EMO IS UNLEASHING HIS MINI ARSENAL!", null, 3500);
 
-  // Arsenal Sequence
-  let tStep = 0;
-  const arsenalTimer = setInterval(() => {
-    if (!rampageActive || blankoutActive) { clearInterval(arsenalTimer); return; }
-    tStep++;
-    const cx = sx + 32, cy = sy + 32;
+  const wHolder = $('#emoWeaponHolder');
 
-    if (tStep === 1) {
-      say("ARSENAL 1/5: TACTICAL ROCKET LAUNCHER! 🚀 TAKE COVER!", null, 2500);
-      fireRocket(cx, cy); fireRocket(cx, cy);
-    } else if (tStep === 2) {
-      say("ARSENAL 2/5: DUAL LASER BLASTERS! 🔫 PEW PEW PEW!", null, 2500);
-      fireLaser(cx, cy); fireLaser(cx, cy); fireLaser(cx, cy);
-    } else if (tStep === 3) {
-      say("ARSENAL 3/5: TURBO CHAINSAW! 🪚 SLICING THE DOM NODES!", null, 2500);
-      for (let i = 0; i < 6; i++) setTimeout(() => spawnEmoTrail(cx + (Math.random()-0.5)*120, cy + (Math.random()-0.5)*120, '⚡'), i * 80);
-    } else if (tStep === 4) {
-      say("ARSENAL 4/5: HELLFIRE FLAMETHROWER! 🔥 INCINERATING TIME-OUTS!", null, 2500);
-      for (let i = 0; i < 8; i++) setTimeout(() => spawnExplosion(cx + (Math.random()-0.5)*200, cy + (Math.random()-0.5)*180), i * 90);
-    } else if (tStep === 5) {
-      say("ARSENAL 5/5: LASER EYES OVERLOAD! ⚡👀 CAN YOU SEE ME NOW?!", null, 2500);
-      comp.laserEyeBeam = true;
-      setTimeout(() => { comp.laserEyeBeam = false; }, 2400);
-    } else if (tStep === 6) {
-      clearInterval(arsenalTimer);
-      plantWebsiteVirusBomb();
+  const attackInterval = setInterval(() => {
+    if (!rampageActive || blankoutActive) {
+      clearInterval(attackInterval);
+      if (wHolder) wHolder.hidden = true;
+      return;
     }
-  }, 1800);
-}
 
-// Plant the website bomb and blank out website into void
-function plantWebsiteVirusBomb() {
-  const bomb = document.createElement('div');
-  bomb.className = 'emo-bomb-item';
-  bomb.id = 'emoVirusBomb';
-  bomb.textContent = '💣';
-  bomb.style.left = (innerWidth / 2) + 'px';
-  bomb.style.top = (innerHeight / 2 - 40) + 'px';
-  document.body.appendChild(bomb);
-
-  let countdown = 3;
-  say(`VIRUS_BOMB.EXE PLANTED! DETONATING IN ${countdown}...`, null, 3000);
-
-  const countInterval = setInterval(() => {
-    countdown--;
-    if (countdown > 0) {
-      say(`VIRUS DETONATING IN ${countdown}...`, null, 1500);
-      bomb.style.transform = `translate(-50%, -50%) scale(${1 + (4 - countdown) * 0.3})`;
-    } else {
-      clearInterval(countInterval);
-      bomb.remove();
+    if (attackStep >= ATTACK_STEPS.length) {
+      clearInterval(attackInterval);
+      if (wHolder) wHolder.hidden = true;
       detonateVirusBomb();
+      return;
     }
-  }, 1000);
+
+    const step = ATTACK_STEPS[attackStep];
+    attackStep++;
+
+    const targetEl = $(step.sel);
+    if (targetEl) {
+      // Smoothly scroll to keep Emo and target in center view!
+      const rect = targetEl.getBoundingClientRect();
+      const targetDocY = window.scrollY + rect.top - (innerHeight * 0.35);
+      window.scrollTo({ top: Math.max(0, targetDocY), behavior: 'smooth' });
+
+      // Move Emo to target element
+      sx = Math.max(30, Math.min(innerWidth - 90, rect.left + rect.width / 2 - 32));
+      sy = Math.max(70, Math.min(innerHeight - 90, rect.top - 40));
+
+      // Equip small weapon
+      if (wHolder) {
+        wHolder.hidden = false;
+        wHolder.textContent = step.weapon;
+        wHolder.className = 'emo-weapon-holder ' + step.wClass;
+      }
+
+      // Execute attack effects on target
+      setTimeout(() => {
+        let shakeTarget = targetEl;
+        if (targetEl.classList.contains('cd')) shakeTarget = targetEl.querySelector('.cd-in') || targetEl;
+        if (shakeTarget) {
+          shakeTarget.classList.add('fluffy-bounce');
+          setTimeout(() => shakeTarget.classList.remove('fluffy-bounce'), 700);
+        }
+
+        const cx = sx + 32, cy = sy + 32;
+        const tx = rect.left + rect.width / 2, ty = rect.top + rect.height / 2;
+
+        if (step.weapon === '🚀') {
+          fireMiniRocket(cx, cy, tx, ty);
+        } else if (step.weapon === '🔫') {
+          fireMiniLaser(cx, cy, tx - 20, ty);
+          fireMiniLaser(cx, cy, tx + 20, ty);
+        } else if (step.weapon === '🪚') {
+          for (let i = 0; i < 5; i++) setTimeout(() => spawnEmoTrail(tx + (Math.random()-0.5)*80, ty + (Math.random()-0.5)*50, '⚡'), i * 70);
+        } else if (step.weapon === '🔥') {
+          for (let i = 0; i < 6; i++) setTimeout(() => spawnExplosion(tx + (Math.random()-0.5)*100, ty + (Math.random()-0.5)*60), i * 80);
+        } else if (step.weapon === '⚡') {
+          comp.laserEyeBeam = true;
+          setTimeout(() => { comp.laserEyeBeam = false; }, 1800);
+          spawnExplosion(tx, ty);
+        }
+      }, 350);
+
+      say(step.say, null, 2400);
+    }
+  }, 2200);
 }
 
+// Detonate virus bomb and transition to the blankout void
 function detonateVirusBomb() {
+  const wHolder = $('#emoWeaponHolder');
+  if (wHolder) wHolder.hidden = true;
+
   for (let i = 0; i < 16; i++) {
-    setTimeout(() => spawnExplosion(innerWidth / 2 + (Math.random() - 0.5) * 400, innerHeight / 2 + (Math.random() - 0.5) * 300), i * 40);
+    setTimeout(() => spawnExplosion(innerWidth / 2 + (Math.random() - 0.5) * 400, innerHeight / 2 + (Math.random() - 0.5) * 300), i * 35);
   }
 
-  // Blank out website completely
   blankoutActive = true;
   document.documentElement.classList.add('emo-blankout');
+  companion.classList.add('angry-baby');
 
-  // Void overlay with floating items from the box
+  // Void overlay with floating items from the unboxed box
   const voidOverlay = document.createElement('div');
   voidOverlay.className = 'emo-void-overlay';
   voidOverlay.id = 'emoVoidOverlay';
@@ -2464,14 +2583,14 @@ function detonateVirusBomb() {
   `;
   document.body.appendChild(voidOverlay);
 
-  // Mount Care Defense HUD
+  // Mount Emergency Care Defense HUD
   const hud = document.createElement('div');
   hud.className = 'care-defense-hud';
   hud.id = 'careDefenseHud';
   hud.innerHTML = `
     <span class="cdh-badge">🚨 EMERGENCY SECURITY DEFENSE SYSTEM</span>
     <h2 class="cdh-title">EMOTIONAL CARE PROTOCOL ACTIVATED</h2>
-    <p class="cdh-desc">Emo went on a destructive rampage after being left unattended! Chase Emo with your cursor and deliver 3 pocket balloons to restore his happiness!</p>
+    <p class="cdh-desc">Emo is throwing a toddler tantrum and hates the cursor! Chase him and give him 3 pocket balloons to calm him down!</p>
     <div class="cdh-status-row">
       <div class="cdh-pocket">
         <span>🎒 Cursor Pocket:</span>
@@ -2492,7 +2611,7 @@ function detonateVirusBomb() {
   curBalloon.textContent = '🎈';
   document.body.appendChild(curBalloon);
 
-  say("THERE! The website is gone! Just you, me, and the void! ...Unless you have balloons?", null, 5000);
+  say("HMPH! 😤 The website is gone! Go away cursor, I HATE YOU!", null, 4000);
 }
 
 // Deliver balloon from pocket to Emo
@@ -2506,7 +2625,7 @@ function deliverPocketBalloon() {
   comp.doHop();
   comp.squash = 0.5;
 
-  // Floating gift balloon animation
+  // Floating gift balloon animation from cursor to Emo
   const gb = document.createElement('div');
   gb.className = 'cursor-pocket-balloon';
   gb.textContent = pick(['🎈', '💖', '🎈']);
@@ -2517,7 +2636,7 @@ function deliverPocketBalloon() {
   setTimeout(() => {
     gb.style.left = sx + 'px';
     gb.style.top = sy + 'px';
-    gb.style.transform = 'scale(1.4)';
+    gb.style.transform = 'scale(1.3)';
     setTimeout(() => gb.remove(), 600);
   }, 20);
 
@@ -2528,19 +2647,21 @@ function deliverPocketBalloon() {
     if (hEl) hEl.textContent = '🎈 🤍 🤍';
     if (pEl) pEl.textContent = '2 Balloons Left 🎈';
     comp.colorTint = 'rgba(255, 120, 0, 0.65)'; // Soften from crimson to amber
-    say("A balloon from your pocket?! ...Hmph! You think ONE balloon fixes 60 seconds of abandonment?!", null, 3500);
+    say("Hmph! One balloon from your pocket?! ...I still hate you, cursor! 😤 (1 / 3)", null, 3500);
   } else if (balloonsGifted === 2) {
     if (hEl) hEl.textContent = '🎈 🎈 🤍';
     if (pEl) pEl.textContent = '1 Balloon Left 🎈';
     comp.colorTint = 'rgba(255, 210, 63, 0.65)'; // Soften to golden
-    say("Is that... a glowing heart balloon?! ...Don't look at me like that, I'm still fierce and menacing!", null, 3500);
+    companion.classList.add('angry-baby-blush');
+    say("Is that... my favorite color heart balloon?! ...N-no! Don't look at me like that, I'm still super mad! 🥺 (2 / 3)", null, 3500);
   } else if (balloonsGifted >= 3) {
     if (hEl) hEl.textContent = '🎈 🎈 🎈 (RESTORED!)';
     if (pEl) pEl.textContent = 'All Balloons Gifted! ✨';
     comp.colorTint = null; // Back to natural Jaipur Blue
     comp.state = 'happy';
+    companion.classList.remove('angry-baby', 'angry-baby-blush');
     bubble.classList.remove('angry-bubble');
-    say("WAHHH! You really DO care about me! I'm so sorry! I'll rebuild the website brick by brick right now!", null, 4000);
+    say("WAAAAAAH! 😭 You really DO love me! I don't hate you anymore! Hold me! ❤️ (3 / 3)", null, 4000);
     setTimeout(rebuildWebsiteBrickByBrick, 1200);
   }
 }
@@ -2560,7 +2681,6 @@ function rebuildWebsiteBrickByBrick() {
     </div>
   `;
 
-  // Grid of golden construction bricks
   const grid = document.createElement('div');
   grid.className = 'brick-rebuild-grid';
   document.body.appendChild(grid);
@@ -2582,10 +2702,8 @@ function rebuildWebsiteBrickByBrick() {
     if (progress >= 100) {
       clearInterval(pInterval);
       setTimeout(() => {
-        // Remove blankout, restore website!
         document.documentElement.classList.remove('emo-blankout', 'emo-tantrum');
         $$('.s').forEach(sec => sec.style.removeProperty('--tear-rot'));
-        companion.classList.remove('emo-giant');
         comp.state = cfg.state === 'angry' ? 'idle' : cfg.state;
         comp.squash = 0.45;
         rampageActive = false;
@@ -2660,7 +2778,7 @@ companion.addEventListener('click', () => {
 function loop(t){
   const dt = Math.min(.05, (t-last)/1000); last = t;
   if (cfg.on){
-    const docked = COARSE || RM;
+    const docked = (COARSE && !matchMedia('(pointer: fine)').matches);
     const idle = (t - lastMove)/1000;
     const isShielded = t < calmShieldUntil;
 
@@ -2676,20 +2794,43 @@ function loop(t){
     }
 
     if (blankoutActive) {
-      // In void: Emo flies around playfully, user chases with cursor
-      const angle = t * 0.003;
-      const targetX = innerWidth / 2 + Math.cos(angle) * (innerWidth * 0.35);
-      const targetY = innerHeight / 2 + Math.sin(angle * 1.5) * (innerHeight * 0.28);
-      sx += (targetX - sx) * Math.min(1, dt * 3.5);
-      sy += (targetY - sy) * Math.min(1, dt * 3.5);
-      companion.style.transform = `translate(${sx}px, ${sy}px) scale(3.4)`;
-      comp.lookAt(mx - sx - 32, my - sy - 32);
+      // In void: Emo acts like an angry baby who hates the cursor!
+      // Size remains cute and normal (NO giant scaling!)
+      const dx = (sx + 32) - mx;
+      const dy = (sy + 32) - my;
+      const dist = Math.hypot(dx, dy);
 
-      // Check distance to cursor for pocket balloon delivery
-      const distToCursor = Math.hypot(mx - (sx + 32), my - (sy + 32));
-      if (distToCursor < 90) {
+      if (dist < 160) {
+        // Cranky baby scurries away from cursor!
+        const fleeSpeed = (160 - dist) * 2.4;
+        sx += (dx / Math.max(1, dist)) * Math.min(220, dt * fleeSpeed);
+        sy += (dy / Math.max(1, dist)) * Math.min(220, dt * fleeSpeed);
+        comp.squash = Math.sin(t * 0.02) * 0.18; // cute stomping feet
+
+        if (t - lastBabyRemark > 3200) {
+          lastBabyRemark = t;
+          say(pick([
+            "Hmph! 😤 Go away cursor! I hate you right now!",
+            "Don't touch me! You left me alone for a whole minute!",
+            "I'm an angry baby and I'm not listening! Lalala! 🙈",
+            "Turn around! We are NOT friends anymore! 😤",
+            "Stop chasing me! You can't bribe me with headpats!"
+          ]), null, 2400);
+        }
+      } else {
+        // Pout in place with arms crossed / stomping
+        const angle = t * 0.002;
+        sx += Math.sin(angle) * 0.6;
+        sy += Math.cos(angle * 1.5) * 0.4;
+      }
+
+      // Check distance to deliver balloon (if user catches Emo within 70px)
+      if (dist < 70) {
         deliverPocketBalloon();
       }
+
+      companion.style.transform = `translate(${sx}px, ${sy}px)`;
+      comp.lookAt(dx, dy); // Look away from cursor (hating cursor)
 
       // Cursor balloon follows cursor
       const curB = $('#cursorBalloon');
@@ -2699,15 +2840,19 @@ function loop(t){
       }
 
     } else if (rampageActive) {
-      // During arsenal detonation before blankout
-      sx = innerWidth / 2 - 32 + (Math.random() - 0.5) * 8;
-      sy = innerHeight / 2 - 100 + (Math.random() - 0.5) * 8;
-      companion.style.transform = `translate(${sx}px, ${sy}px) scale(3.8)`;
-      comp.lookAt(Math.sin(t * 0.008) * 50, Math.cos(t * 0.009) * 25);
-      comp.squash = Math.sin(t * 0.015) * 0.15;
+      // Small weapons are equipped in ATTACK_STEPS, Emo runs from element to element
+      companion.style.transform = `translate(${sx}px, ${sy}px)`;
+      comp.lookAt(Math.sin(t * 0.008) * 40, Math.cos(t * 0.009) * 20);
+
+      const wHolder = $('#emoWeaponHolder');
+      if (wHolder && !wHolder.hidden) {
+        wHolder.style.left = (sx + 40) + 'px';
+        wHolder.style.top = (sy + 18) + 'px';
+      }
 
     } else if (idle >= 50 && idle < 60 && !isShielded && !docked) {
       // 2. Impatience & Gradual Color Transition (50s to 60s)
+      const cradle = $('#cursorCradle'); if (cradle) cradle.hidden = true;
       companion.classList.remove('cradle-mode');
       wandering = false;
       comp.state = 'angry';
@@ -2736,95 +2881,65 @@ function loop(t){
       comp.lookAt(mx - sx - 32, my - sy - 32);
 
     } else if (idle >= 20 && !docked) {
-      // 3. Playful Wanderer & Vibing (20s to 50s, or continuing if shielded)
+      // 3. Guided Tour Across Website: Emo travels to each stop, camera follows him, Emo ALWAYS on screen!
+      const cradle = $('#cursorCradle'); if (cradle) cradle.hidden = true;
       companion.classList.remove('cradle-mode');
       wandering = true;
       comp.colorTint = null;
       if (comp.state === 'sleeping') comp.state = 'idle';
 
-      if (!wanderTarget || t - lastWanderHop > 2800) {
-        wanderTarget = getWanderTarget();
-        lastWanderHop = t;
-        if (wanderTarget && wanderTarget.el) {
-          let targetEl = wanderTarget.el;
-          if (targetEl.classList.contains('cd')) targetEl = targetEl.querySelector('.cd-in') || targetEl;
-          else if (targetEl.classList.contains('case')) targetEl = targetEl.querySelector('.fold') || targetEl;
-          else if (targetEl.firstElementChild && !targetEl.classList.contains('btn') && !targetEl.classList.contains('hn-btn') && !targetEl.id?.startsWith('semi')) targetEl = targetEl.firstElementChild;
+      if (!wanderTarget || t - lastTourStep > 3600) {
+        lastTourStep = t;
+        tourIndex = (tourIndex + 1) % TOUR_STOPS.length;
+        const currentStop = TOUR_STOPS[tourIndex];
+        const targetEl = $(currentStop.sel);
 
-          if (targetEl && !targetEl.classList.contains('fluffy-bounce')) {
-            targetEl.style.setProperty('--emo-tilt', Math.random() > 0.5 ? '1' : '-1');
-            targetEl.classList.add('fluffy-bounce');
-            setTimeout(() => targetEl.classList.remove('fluffy-bounce'), 700);
+        if (targetEl) {
+          // Smoothly scroll camera to keep Emo and landmark centered on screen!
+          const rect = targetEl.getBoundingClientRect();
+          const targetDocY = window.scrollY + rect.top - (innerHeight * 0.38);
+          window.scrollTo({ top: Math.max(0, targetDocY), behavior: 'smooth' });
+
+          wanderTarget = {
+            el: targetEl,
+            x: rect.left + rect.width / 2,
+            y: rect.top - 20
+          };
+
+          // Execute playful landmark action
+          if (currentStop.type === 'flower') {
+            spawnBloomingFlower(rect.left + rect.width / 2, rect.top + 20);
+          } else if (currentStop.type === 'secret') {
+            spawnSecretKey(rect.left + rect.width / 2, rect.top + 20);
+          } else if (currentStop.type === 'candy') {
+            spawnCandyNom(rect.left + rect.width / 2, rect.top + 20);
+          } else if (currentStop.type === 'gacha' && $('.gacha')) {
+            const g = $('.gacha');
+            g.classList.add('turn');
+            setTimeout(() => g.classList.remove('turn'), 800);
+            say(pick([
+              "🥠 Fortune for Emo: 'A wise cursor will soon return with unlimited headpats.'",
+              "🥠 Fortune for Emo: 'Your chaos index will reach peak cuteness today!'",
+              "🥠 Fortune for Emo: 'Beware of idle mice; where there are no clicks, candy flourishes.'",
+              "🥠 Fortune for Emo: 'Today is a glorious day to water flowers and do parkour!'",
+              "🥠 Fortune for Emo: 'The best backend engineers always keep their companion happy.'"
+            ]), null, 4200);
           }
+
+          let bounceEl = targetEl;
+          if (targetEl.classList.contains('cd')) bounceEl = targetEl.querySelector('.cd-in') || targetEl;
+          if (bounceEl && !bounceEl.classList.contains('fluffy-bounce')) {
+            bounceEl.style.setProperty('--emo-tilt', Math.random() > 0.5 ? '1' : '-1');
+            bounceEl.classList.add('fluffy-bounce');
+            setTimeout(() => bounceEl.classList.remove('fluffy-bounce'), 700);
+          }
+
           comp.doHop();
           comp.squash = 0.35;
+          if (currentStop.type !== 'gacha') {
+            say(currentStop.say, null, 2800);
+          }
         }
-      }
-
-      // Playful Activity 1: Water flowers (every 9s)
-      if (t - lastFlowerSprout > 9000) {
-        lastFlowerSprout = t;
-        spawnBloomingFlower(sx + 32, sy + 32);
-        say(pick([
-          "Watering the code garden! 🌸 Look at them bloom!",
-          "Hydrating the microservices! 🌼",
-          "Flower power! 🌻 Vibing all over this page!"
-        ]), null, 2600);
-      }
-
-      // Playful Activity 2: Hide secrets (every 11s)
-      if (t - lastSecretDrop > 11000) {
-        lastSecretDrop = t;
-        spawnSecretKey(sx + 32, sy + 32);
-        say(pick([
-          "I hid a secret Easter egg here! 🗝️ Shhh!",
-          "Secret cache placed! Can you find it? ✨"
-        ]), null, 2600);
-      }
-
-      // Playful Activity 3: Eat candies (every 8s)
-      if (t - lastCandyEat > 8000) {
-        lastCandyEat = t;
-        spawnCandyNom(sx + 32, sy + 32);
-        say(pick([
-          "*nom nom nom* 🍬 Candy break! Mmm, strawberry flavour!",
-          "*crunch* 🍭 Sweet treat while the cursor is away!",
-          "Sugar rush incoming! 🍩 Loving the vibe!"
-        ]), null, 2400);
-      }
-
-      // Playful Activity 4: Peekaboos (every 13s)
-      if (t - lastPeekaboo > 13000) {
-        lastPeekaboo = t;
-        comp.doHop();
-        say(pick([
-          "Boo! Did I startle you? 👀",
-          "Peekaboo! Over here!",
-          "Bet you didn't expect to see me here! 👻"
-        ]), null, 2500);
-      }
-
-      // Playful Activity 5: Smooth autonomous scrolling (every 14s)
-      if (t - lastAutoScroll > 14000) {
-        lastAutoScroll = t;
-        const scrollDelta = Math.random() > 0.5 ? 380 : -380;
-        window.scrollBy({ top: scrollDelta, behavior: 'smooth' });
-        say("Look down here! Let's check out this part of the portfolio! 📜", null, 2500);
-      }
-
-      // Playful Activity 6: Unlimited Gacha Access & Fortunes for Emo
-      if (t - lastGachaVisit > 16000 && $('.gacha')) {
-        lastGachaVisit = t;
-        const g = $('.gacha');
-        g.classList.add('turn');
-        setTimeout(() => g.classList.remove('turn'), 800);
-        say(pick([
-          "🥠 Fortune for Emo: 'A wise cursor will soon return with unlimited headpats.'",
-          "🥠 Fortune for Emo: 'Your chaos index will reach peak cuteness today!'",
-          "🥠 Fortune for Emo: 'Beware of idle mice; where there are no clicks, candy flourishes.'",
-          "🥠 Fortune for Emo: 'Today is a glorious day to water flowers and do parkour!'",
-          "🥠 Fortune for Emo: 'The best backend engineers always keep their companion happy.'"
-        ]), null, 4200);
       }
 
       const wx = wanderTarget ? wanderTarget.x - 32 : innerWidth / 2 - 32;
@@ -2840,21 +2955,31 @@ function loop(t){
       }
 
     } else if (idle >= 5 && idle < 20 && !docked) {
-      // 4. Cradle Sleep Mode (5s to 20s)
+      // 4. Cursor Cradle Mode (5s to 20s): Cozy hammock hanging directly from cursor!
       wandering = false;
       comp.state = 'sleeping';
       companion.classList.add('cradle-mode');
       comp.colorTint = null;
 
-      const tx = mx - 20;
-      const ty = my + 26;
-      sx += (tx - sx) * Math.min(1, dt * 5.2);
-      sy += (ty - sy) * Math.min(1, dt * 5.2);
+      // Position visual hanging cradle attached to cursor
+      const cradle = $('#cursorCradle');
+      if (cradle) {
+        cradle.hidden = false;
+        cradle.style.left = (mx - 50) + 'px';
+        cradle.style.top = (my + 4) + 'px';
+      }
+
+      // Emo sits nestled inside the cradle
+      const tx = mx - 28;
+      const ty = my + 14;
+      sx += (tx - sx) * Math.min(1, dt * 6.5);
+      sy += (ty - sy) * Math.min(1, dt * 6.5);
       companion.style.transform = `translate(${sx}px, ${sy}px)`;
       comp.lookAt(0, 4);
 
     } else {
       // 5. Normal cursor following mode (idle < 5s)
+      const cradle = $('#cursorCradle'); if (cradle) cradle.hidden = true;
       companion.classList.remove('cradle-mode');
       wandering = false;
       comp.colorTint = null;
@@ -2913,6 +3038,10 @@ function loop(t){
         }
       }
     }
+
+    // STRICT VIEWPORT CLAMPING: Emo is ALWAYS on the screen and never vanishes!
+    sx = Math.max(28, Math.min(innerWidth - 88, sx));
+    sy = Math.max(68, Math.min(innerHeight - 88, sy));
 
     comp.draw(dt);
     const bw = bubble.offsetWidth || 200, bh = bubble.offsetHeight || 40;
