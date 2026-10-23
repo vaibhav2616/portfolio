@@ -44,7 +44,7 @@ const PROJECTS: ProjectItem[] = [
     description: 'Autonomous SRE & auto-triage pipeline consuming Kafka error telemetry, evaluating root causes with deep telemetry agents, and opening verified Jira bugs.',
     metric: '98%',
     metricLabel: 'Automated Root Cause Triage Accuracy',
-    link: 'cowork/',
+    link: 'ai-sre/',
     highlights: ['Kafka Telemetry', 'Multi-Agent SRE', 'Jira MCP Auto-Triage'],
   },
   {
@@ -56,7 +56,7 @@ const PROJECTS: ProjectItem[] = [
     description: 'Distributed high-concurrency payment orchestration across Indian & global rails with dual-tier ingress idempotency, transactional outbox Kafka streaming, multi-bank cascading routing, and zero-sum double-entry ledger.',
     metric: 'Δ = ₹0.00',
     metricLabel: 'Zero-Sum Invariant Double-Entry Ledger',
-    link: 'salt/',
+    link: 'payment-engine/',
     highlights: ['Dual-Tier Idempotency', 'Transactional Outbox', 'Circuit Breakers'],
   },
   {
@@ -68,7 +68,7 @@ const PROJECTS: ProjectItem[] = [
     description: 'Production-grade pizza ordering and dispatch engine built with FastAPI, SQLAlchemy ORM, JWT authentication, and live 25-minute delivery tracking.',
     metric: '< 100ms',
     metricLabel: 'P99 Query Response Latency',
-    link: 'toddle/',
+    link: 'pizza-api/',
     highlights: ['FastAPI REST API', 'SQLAlchemy ORM', 'Docker Containers'],
   },
   {
@@ -80,7 +80,7 @@ const PROJECTS: ProjectItem[] = [
     description: 'Predictive insurance pricing pipeline trained with Gradient Boosting and feature crosses (BMI x Smoker), served via async FastAPI endpoints and interactive Streamlit UI in Docker.',
     metric: 'R² = 0.87',
     metricLabel: 'Model Predictive Accuracy',
-    link: 'atlassian/',
+    link: 'insurance-prediction/',
     highlights: ['Gradient Boosting ML', 'FastAPI Async Engine', 'Streamlit UI + Docker'],
   },
 ];
@@ -92,7 +92,7 @@ const PACKING_SLIP_ITEMS: PackingItem[] = [
     item: 'Reliability',
     description: 'Autonomous incident triage and root-cause analysis.',
     proof: 'SEE SRE PIPELINE →',
-    proofLink: 'cowork/',
+    proofLink: 'ai-sre/',
     expandedDetails: 'Kafka telemetry streaming feeding AI diagnostic pipelines that automatically isolate exceptions and file verified Jira tickets via MCP.',
   },
   {
@@ -100,7 +100,7 @@ const PACKING_SLIP_ITEMS: PackingItem[] = [
     item: 'Integrity',
     description: 'Zero double-charges and mathematical zero-sum ledger.',
     proof: 'SEE PAYMENT ENGINE →',
-    proofLink: 'salt/',
+    proofLink: 'payment-engine/',
     expandedDetails: 'Dual-tier Redis+PostgreSQL ingress idempotency combined with transactional outbox event relay and Kirchhoff double-entry invariant validation (Δ = ₹0.00).',
   },
   {
@@ -108,7 +108,7 @@ const PACKING_SLIP_ITEMS: PackingItem[] = [
     item: 'Performance',
     description: 'Sub-100ms P99 queries under concurrent load.',
     proof: 'SEE PIZZA REST API →',
-    proofLink: 'toddle/',
+    proofLink: 'pizza-api/',
     expandedDetails: 'Optimized SQLAlchemy query execution plans with indexing, connection pooling, and JWT role-based access control.',
   },
   {
@@ -116,7 +116,7 @@ const PACKING_SLIP_ITEMS: PackingItem[] = [
     item: 'Machine Learning',
     description: 'Predictive ML pipelines & sub-150ms Streamlit UI.',
     proof: 'SEE INSURANCE PREDICTION →',
-    proofLink: 'atlassian/',
+    proofLink: 'insurance-prediction/',
     expandedDetails: 'Multi-factor feature scaling, interaction cross engineering, and hyperparameter-tuned gradient boosting reaching R² = 0.87 with containerized async FastAPI serving.',
   },
 ];

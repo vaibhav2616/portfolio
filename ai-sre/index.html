@@ -895,9 +895,9 @@ mark{background:linear-gradient(transparent 58%, rgba(255,201,74,.55) 58%); colo
     <a href="../#siteFooter">Say hi <span>RETURN LABEL</span></a>
     <hr>
     <a class="sm" href="./" aria-current="page">AI SRE Pipeline <span>CASE 01 · YOU'RE HERE</span></a>
-    <a class="sm" href="../salt/">Payment Engine <span>CASE 02</span></a>
-    <a class="sm" href="../toddle/">Pizza Delivery API <span>CASE 03</span></a>
-    <a class="sm" href="../atlassian/">Insurance Prediction <span>CASE 04 · SUMMARY</span></a>
+    <a class="sm" href="../payment-engine/">Payment Engine <span>CASE 02</span></a>
+    <a class="sm" href="../pizza-api/">Pizza Delivery API <span>CASE 03</span></a>
+    <a class="sm" href="../insurance-prediction/">Insurance Prediction <span>CASE 04 · SUMMARY</span></a>
   </nav>
 </header>
 
@@ -1444,7 +1444,7 @@ mark{background:linear-gradient(transparent 58%, rgba(255,201,74,.55) 58%); colo
       <blockquote>I designed the first version as a chat box, and it was wrong. Now, before I design a place to ask questions, I check whether the answer should already be on the screen.</blockquote>
       <p class="by">Vaibhav Rastogi, backend systems engineer</p>
     </div>
-    <div class="x-next"><div><p class="x-label">Next case study</p><a href="../salt/">Payment Engine EXIM →</a></div><p class="fine">Product screens are rebuilt from AI SRE Pipeline's interface with made-up people, homes and prices. Field notes, sketches and "before" scenes are reconstructed for this case study. Aisha is a composite of the 20+ brokers I met.</p></div>
+    <div class="x-next"><div><p class="x-label">Next case study</p><a href="../payment-engine/">Distributed Payment Engine →</a></div><p class="fine">Product screens are rebuilt from AI SRE Pipeline's interface with made-up people, homes and prices. Field notes, sketches and "before" scenes are reconstructed for this case study. Aisha is a composite of the 20+ brokers I met.</p></div>
   </div>
 </section>
 </main>
@@ -1632,8 +1632,8 @@ function step(i){
       say('Case 01 tour complete! Traveling to Case 02: High-Throughput Payment Engine in 3... 2... 1... 💳🚀', null, 3400);
       setTimeout(() => {
         if (!touring && sessionStorage.getItem('emo_grand_tour')) {
-          sessionStorage.setItem('emo_grand_tour', 'salt');
-          window.location.href = '../salt/';
+          sessionStorage.setItem('emo_grand_tour', 'payment-engine');
+          window.location.href = '../payment-engine/';
         }
       }, 3000);
       return;
@@ -1925,7 +1925,7 @@ html.gx-open #semi, html.gx-open #semi-say{z-index:210!important}
     </div>
     <nav class="sf-col" aria-label="Work">
       <span class="sf-k">Work</span>
-      <a href="../cowork/">AI SRE Pipeline</a><a href="../salt/">Payment Engine <small>summary</small></a><a href="../toddle/">Pizza Delivery API</a><a href="../atlassian/">Insurance Prediction <small>summary</small></a>
+      <a href="../ai-sre/">AI SRE Pipeline</a><a href="../payment-engine/">Payment Engine <small>summary</small></a><a href="../pizza-api/">Pizza Delivery API</a><a href="../insurance-prediction/">Insurance Prediction <small>summary</small></a>
     </nav>
     <nav class="sf-col" aria-label="Elsewhere">
       <span class="sf-k">Elsewhere</span>

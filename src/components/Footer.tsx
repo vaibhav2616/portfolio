@@ -28,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({
             className="inline-flex items-center gap-2 group font-mono text-sm tracking-tight"
           >
             <span className="font-bold text-kraft-900 group-hover:text-amber-700 transition">
-              hj.
+              vr.
             </span>
             <span className="bg-red-500/10 text-red-700 text-xs px-2 py-0.5 rounded font-mono font-bold tracking-wider uppercase border border-red-500/30">
               FRAGILE
@@ -70,7 +70,7 @@ export const Footer: React.FC<FooterProps> = ({
           <ul className="space-y-2 text-xs font-sans text-kraft-700">
             <li>
               <a
-                href="cowork/"
+                href="ai-sre/"
                 onClick={() => sound.playClick()}
                 className="hover:text-kraft-950 hover:underline"
               >
@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({
             </li>
             <li>
               <a
-                href="salt/"
+                href="payment-engine/"
                 onClick={() => sound.playClick()}
                 className="hover:text-kraft-950 hover:underline"
               >
@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({
             </li>
             <li>
               <a
-                href="toddle/"
+                href="pizza-api/"
                 onClick={() => sound.playClick()}
                 className="hover:text-kraft-950 hover:underline"
               >
@@ -97,7 +97,7 @@ export const Footer: React.FC<FooterProps> = ({
             </li>
             <li>
               <a
-                href="atlassian/"
+                href="insurance-prediction/"
                 onClick={() => sound.playClick()}
                 className="hover:text-kraft-950 hover:underline"
               >

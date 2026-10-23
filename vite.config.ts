@@ -13,10 +13,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        cowork: resolve(__dirname, 'cowork/index.html'),
-        salt: resolve(__dirname, 'salt/index.html'),
-        toddle: resolve(__dirname, 'toddle/index.html'),
-        atlassian: resolve(__dirname, 'atlassian/index.html'),
+        aiSre: resolve(__dirname, 'ai-sre/index.html'),
+        paymentEngine: resolve(__dirname, 'payment-engine/index.html'),
+        pizzaApi: resolve(__dirname, 'pizza-api/index.html'),
+        insurancePrediction: resolve(__dirname, 'insurance-prediction/index.html'),
       },
     },
   },

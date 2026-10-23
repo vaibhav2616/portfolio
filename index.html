@@ -912,10 +912,10 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
     <a href="#inside">About me <span>ALSO INSIDE</span></a>
     <a href="#siteFooter">Say hi <span>RETURN LABEL</span></a>
     <hr>
-    <a class="sm" href="cowork/">AI SRE Pipeline <span>CASE 01</span></a>
-    <a class="sm" href="salt/">Payment Engine <span>CASE 02</span></a>
-    <a class="sm" href="toddle/">Pizza Delivery API <span>CASE 03</span></a>
-    <a class="sm" href="atlassian/">Insurance Prediction <span>CASE 04</span></a>
+    <a class="sm" href="ai-sre/">AI SRE Pipeline <span>CASE 01</span></a>
+    <a class="sm" href="payment-engine/">Payment Engine <span>CASE 02</span></a>
+    <a class="sm" href="pizza-api/">Pizza Delivery API <span>CASE 03</span></a>
+    <a class="sm" href="insurance-prediction/">Insurance Prediction <span>CASE 04</span></a>
   </nav>
 </header>
 
@@ -1126,7 +1126,7 @@ const press = (group, btn) => $$('button', group).forEach(b => b.setAttribute('a
 
 window.PORTFOLIO_PROJECTS = [
   /* --------------------------------------------------------------------------
-     [PROJECT PLACEHOLDER 01]: Case 01 (Deep-dive: cowork/)
+     [PROJECT PLACEHOLDER 01]: Case 01 (Deep-dive: ai-sre/)
      Target: Project 01 across Unboxing cards, Cabinet & Dossier
      -------------------------------------------------------------------------- */
   {
@@ -1146,7 +1146,7 @@ window.PORTFOLIO_PROJECTS = [
     colors: { acc: '#1E8A4C', acc2: '#2FA866' },
     img: 'assets/placeholder-sre.svg',
     caption: 'Exhibit A: Architecture Blueprint & Telemetry Stream',
-    href: 'cowork/',
+    href: 'ai-sre/',
     summary: false,
     fyi: 'Bugs should be diagnosed and ticketed before the first customer report arrives.',
     rows: [
@@ -1158,7 +1158,7 @@ window.PORTFOLIO_PROJECTS = [
   },
 
   /* --------------------------------------------------------------------------
-     [PROJECT PLACEHOLDER 02]: Case 02 (Deep-dive: salt/)
+     [PROJECT PLACEHOLDER 02]: Case 02 (Deep-dive: payment-engine/)
      Target: Project 02 across Unboxing cards, Cabinet & Dossier
      -------------------------------------------------------------------------- */
   {
@@ -1178,7 +1178,7 @@ window.PORTFOLIO_PROJECTS = [
     colors: { acc: '#E06A26', acc2: '#F58238' },
     img: 'assets/payment-engine-hero.jpg',
     caption: 'Exhibit B: PaymentEngine Institutional Chassis & Transaction Lifecycle',
-    href: 'salt/',
+    href: 'payment-engine/',
     summary: true,
     fyi: 'In financial logic, consistency is not negotiable. Lock early, broadcast reliably.',
     rows: [
@@ -1190,7 +1190,7 @@ window.PORTFOLIO_PROJECTS = [
   },
 
   /* --------------------------------------------------------------------------
-     [PROJECT PLACEHOLDER 03]: Case 03 (Deep-dive: toddle/)
+     [PROJECT PLACEHOLDER 03]: Case 03 (Deep-dive: pizza-api/)
      Target: Project 03 across Unboxing cards, Cabinet & Dossier
      -------------------------------------------------------------------------- */
   {
@@ -1210,7 +1210,7 @@ window.PORTFOLIO_PROJECTS = [
     colors: { acc: '#E5484F', acc2: '#F7767B' },
     img: 'assets/cascading_stack_showcase.png',
     caption: 'Exhibit C: Vesuvio Hearth Artisanal Ecosystem & Dispatch Deck',
-    href: 'toddle/',
+    href: 'pizza-api/',
     summary: false,
     fyi: 'Real-time delivery platforms live or die on database latency. Clean boundaries keep queries under 100ms.',
     rows: [
@@ -1223,7 +1223,7 @@ window.PORTFOLIO_PROJECTS = [
   },
 
   /* --------------------------------------------------------------------------
-     [PROJECT PLACEHOLDER 04]: Case 04 (Deep-dive: atlassian/)
+     [PROJECT PLACEHOLDER 04]: Case 04 (Deep-dive: insurance-prediction/)
      Target: Project 04 across Unboxing cards, Cabinet & Dossier
      -------------------------------------------------------------------------- */
   {
@@ -1243,7 +1243,7 @@ window.PORTFOLIO_PROJECTS = [
     colors: { acc: '#059669', acc2: '#10B981' },
     img: 'assets/placeholder-insurance.svg',
     caption: 'Exhibit D: Multi-Factor ML Pipeline & Containerized Streamlit UI',
-    href: 'atlassian/',
+    href: 'insurance-prediction/',
     summary: true,
     fyi: 'Predictive pricing requires capturing compound risk without sacrificing real-time calculation latency.',
     rows: [
@@ -1267,7 +1267,7 @@ window.PORTFOLIO_SERVICES = [
     title: 'Build',
     role: 'Autonomous SRE & Self-Healing Pipelines.',
     proof: 'AI-Driven SRE & Triage: Built an autonomous pipeline streaming error logs via Kafka with CrewAI multi-agent triage and MCP Jira ticket generation.',
-    href: 'cowork/',
+    href: 'ai-sre/',
     ctaText: 'Explore SRE Pipeline'
   },
   {
@@ -1287,7 +1287,7 @@ window.PORTFOLIO_SERVICES = [
     title: 'Data Integrity',
     role: 'Dual-Tier Idempotency & Zero-Sum Ledger (Δ = ₹0.00).',
     proof: 'PaymentEngine: Institutional-grade payment chassis with Redis distributed locks, Transactional Outbox Kafka streaming, and multi-bank cascading routing.',
-    href: 'salt/',
+    href: 'payment-engine/',
     ctaText: 'View Payment Engine'
   },
   {
@@ -1297,7 +1297,7 @@ window.PORTFOLIO_SERVICES = [
     title: 'Machine Learning',
     role: 'Predictive ML Pipelines & Sub-150ms Streamlit UI.',
     proof: 'Insurance Premium Prediction: Gradient boosting regression pipeline reaching R² = 0.87 (+22% accuracy boost over baseline) deployed via async FastAPI and interactive Streamlit.',
-    href: 'atlassian/',
+    href: 'insurance-prediction/',
     ctaText: 'View Insurance ML Model'
   }
 ];
@@ -1720,7 +1720,7 @@ function openCase(k, user){
   $('#dossier').innerHTML = `<div class="ev"><div class="photo"><span class="clip"></span>${c.img ? `<img src="${c.img}" alt="${c.cap}">` : `<div class="tile" style="background:${c.tileBg}">${c.tile}</div>`}<span>${c.cap}</span></div><div class="fyi">FYI: ${c.fyi}</div></div>
     <div class="rap"><h3>RAP SHEET</h3><div class="no">${c.tab} · ${c.co.toUpperCase()}</div><dl>${c.rows.map(([a,b]) => `<dt>${a}:</dt><dd>${b}</dd>`).join('')}</dl>${c.href ? `<a class="go" href="${c.href}">${c.summary ? 'Read summary →' : 'Read the full file →'}</a>` : `<span class="go wip" data-soon>Still being written</span>`}</div>`;
   if (!user) return;
-  if ((k === 'cowork' || k === 'sre') && !once.has('ai')){ once.add('ai'); react('ai', true); }
+  if ((k === 'ai-sre' || k === 'sre') && !once.has('ai')){ once.add('ai'); react('ai', true); }
   else if (!c.solved && !c.href){ seenSoon++; react(seenSoon > 1 ? 'soon2' : 'soon', true); }
   else say(c.fyi);
 }
@@ -2550,8 +2550,8 @@ const PAGE_TOUR_LANDMARKS = [
     fallbackSel: '#files',
     say: "Grand tour traveling to Case 01: AI SRE Pipeline in 3... 2... 1... 🚀",
     isHop: true,
-    url: 'cowork/',
-    nextChain: 'salt/'
+    url: 'ai-sre/',
+    nextChain: 'payment-engine/'
   }
 ];
 
@@ -2615,7 +2615,7 @@ function loop(t){
           clearTimeout(tourHopTimer);
           tourHopTimer = setTimeout(() => {
             if (wandering && (performance.now() - lastMove) / 1000 >= 20) {
-              sessionStorage.setItem('emo_grand_tour', lm.nextChain || 'salt/');
+              sessionStorage.setItem('emo_grand_tour', lm.nextChain || 'payment-engine/');
               window.location.href = lm.url;
             }
           }, 3200);
@@ -2889,7 +2889,7 @@ html.gx-open #semi, html.gx-open #semi-say{z-index:210!important}
     </div>
     <nav class="sf-col" aria-label="Work">
       <span class="sf-k">Work</span>
-      <a href="cowork/">AI SRE Pipeline</a><a href="salt/">Payment Engine</a><a href="toddle/">Pizza Delivery API</a><a href="atlassian/">Insurance Prediction</a>
+      <a href="ai-sre/">AI SRE Pipeline</a><a href="payment-engine/">Payment Engine</a><a href="pizza-api/">Pizza Delivery API</a><a href="insurance-prediction/">Insurance Prediction</a>
     </nav>
     <nav class="sf-col" aria-label="Elsewhere">
       <span class="sf-k">Elsewhere</span>

@@ -48,7 +48,7 @@ An interactive, tactile unboxing portfolio built with physical parcel animations
 - **Core:** HTML5, CSS3 / Modern CSS (3D Transforms, Container Queries), TypeScript, Vite
 - **Frontend / Styling:** Vanilla JS performance-optimized engine + React 18 / Tailwind CSS
 - **Audio:** Native HTML5 Web Audio API (Zero audio asset requests, procedural sound synthesis)
-- **Deployment:** Multi-page Vite Rollup build (`index.html`, `/cowork/`, `/salt/`, `/toddle/`, `/atlassian/`)
+- **Deployment:** Multi-page Vite Rollup build (`index.html`, `/ai-sre/`, `/payment-engine/`, `/pizza-api/`, `/insurance-prediction/`)
 
 ---
 

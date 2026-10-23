@@ -1,7 +1,7 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <style>.flag,#fbOpen,.hn-fb{display:none!important}</style>
 <meta charset="utf-8">
-<title>Insurance Premium Prediction · Case Study by Vaibhav Rastogi</title>
+<title>Distributed Payment Processing Engine · Case Study by Vaibhav Rastogi</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&display=swap"><style>
 /* ================= global nav + Semi: identical on every page ================= */
 .hn{--hn-paper:#FBF7EE; --hn-card:#FFFFFF; --hn-ink:#16130F; --hn-ink2:#4F4A42; --hn-ink3:#6F6A62; --hn-line:#E3DACA; --hn-yellow:#FFD23F; --hn-kraft:#C8935A; --hn-hover:#F0E7D6;
@@ -117,7 +117,7 @@ figure{margin:0} figcaption{margin-top:12px; font-size:14px; color:var(--ink3); 
 .next .k{font:500 11px var(--mono); letter-spacing:.12em; text-transform:uppercase; color:var(--ink3)}
 footer{padding:0 0 40px; font-size:13px; color:var(--ink3)}
 @media (max-width:760px){ .tldr > div{grid-template-columns:1fr; gap:4px} .nums{grid-template-columns:1fr} .two{grid-template-columns:1fr} .steps{grid-template-columns:1fr 1fr} }
-</style><style>:root{--acc:#0C66E4}</style>
+</style><style>:root{--acc:#0062E1}</style>
 <header class="hn" id="hn">
   <div class="hn-in">
     <a class="hn-back" href="../#work" aria-label="Back to the work" title="Back to the work">‹</a>
@@ -149,64 +149,92 @@ footer{padding:0 0 40px; font-size:13px; color:var(--ink3)}
     <a href="../#inside">About me <span>ALSO INSIDE</span></a>
     <a href="../#siteFooter">Say hi <span>RETURN LABEL</span></a>
     <hr>
-    <a class="sm" href="../cowork/">AI SRE Pipeline <span>CASE 01</span></a>
-    <a class="sm" href="../salt/">Payment Engine <span>CASE 02</span></a>
-    <a class="sm" href="../toddle/">Pizza Delivery API <span>CASE 03</span></a>
-    <a class="sm" href="./" aria-current="page">Insurance Prediction <span>CASE 04 · SUMMARY</span></a>
+    <a class="sm" href="../ai-sre/">AI SRE Pipeline <span>CASE 01</span></a>
+    <a class="sm" href="./" aria-current="page">Payment Engine <span>CASE 02 · CURRENT</span></a>
+    <a class="sm" href="../pizza-api/">Pizza Delivery API <span>CASE 03</span></a>
+    <a class="sm" href="../insurance-prediction/">Insurance Prediction <span>CASE 04 · SUMMARY</span></a>
   </nav>
 </header>
 <main id="top">
 <!-- ==========================================================================
-     [CASE STUDY SUMMARY - PROJECT 04: INSURANCE PREMIUM PREDICTION]
-     GitHub: https://github.com/vaibhav2616/Insurance-Premium-Prediction
-     - Hero Head & Metadata: .eb, h1
-     - Problem / Role / What I made / Results: dl.tldr
-     - Figures & Metric Callouts: .w figure, .nums
+     CASE STUDY: PROJECT 02 - DISTRIBUTED PAYMENT PROCESSING SYSTEM
+     Institutional-Grade High-Throughput Financial Transaction Chassis
+     GitHub: https://github.com/vaibhav2616/distributed-payment-processing-engine
      ========================================================================== -->
-<section class="top" data-placeholder="case-04-hero"><div class="w">
-  <p class="eb" data-placeholder="case-04-meta"><b>Case 04</b> · Insurance Premium Prediction · Machine Learning &amp; Deployment</p>
-  <h1 data-placeholder="case-04-title">Predicting Insurance Premiums with ML, FastAPI &amp; Streamlit.</h1>
-  <p class="soon"><i>Production Spec</i><span><b>End-to-end Machine Learning Pipeline &amp; Deployment</b> achieving R² = 0.87, sub-150ms prediction latency, and interactive Streamlit UI. View repository on <a href="https://github.com/vaibhav2616/Insurance-Premium-Prediction" target="_blank" rel="noopener">GitHub ↗</a>.</span></p>
-  <dl class="tldr" data-note="Machine Learning regression pipeline, sub-150ms inference, and Streamlit user interface." data-placeholder="case-04-tldr">
-    <div data-placeholder="case-04-problem"><dt>Problem</dt><dd>Traditional actuarial pricing tables rely on static heuristics and coarse categorization, leading to inaccurate quotes, lack of transparent risk factor attribution, and high calculation latency for client quotes.</dd></div>
-    <div data-placeholder="case-04-role"><dt>Role</dt><dd>Machine Learning &amp; Backend Engineer · Engineered multi-factor feature preprocessing, trained and tuned gradient boosted regression models, developed async FastAPI prediction endpoints, and containerized the Streamlit UI with Docker.</dd></div>
-    <div data-placeholder="case-04-shipped"><dt>What I made</dt><dd>An end-to-end ML pipeline predicting insurance premiums based on multi-variable biometrics and lifestyle indicators, deployed via asynchronous FastAPI REST endpoints and tested by 10+ users on a real-time Streamlit dashboard.</dd></div>
-    <div data-placeholder="case-04-results"><dt>Results</dt><dd><span class="r"><b>R² = 0.87 accuracy score</b>, improving prediction accuracy by 22% over baseline multiple regression.</span><span class="r"><b>Sub-150ms prediction latency</b> tested across 10+ users with real-time parameter visualization.</span><span class="r"><b>1000+ requests handled</b> with 30% lower latency through async FastAPI optimizations.</span><span class="src">Source: <a href="https://github.com/vaibhav2616/Insurance-Premium-Prediction" target="_blank" rel="noopener" style="color:var(--acc);font-weight:600">vaibhav2616/Insurance-Premium-Prediction</a></span></dd></div>
+<section class="top" data-placeholder="case-02-hero"><div class="w">
+  <p class="eb" data-placeholder="case-02-meta"><b>Case 02</b> · Distributed Financial Systems · 2024–25 · Architecture &amp; Telemetry</p>
+  <h1 data-placeholder="case-02-title">Institutional-grade high-throughput financial transaction chassis.</h1>
+  <p class="soon"><i>Production Chassis</i><span><b>PaymentEngine:</b> Engineered for distributed high-concurrency payment orchestration across Indian &amp; Global clearing rails. <a href="https://github.com/vaibhav2616/distributed-payment-processing-engine" target="_blank" rel="noopener">GitHub: vaibhav2616/distributed-payment-processing-engine ↗</a></span></p>
+  <dl class="tldr" data-note="TL;DR: problem, role, what shipped, results." data-placeholder="case-02-tldr">
+    <div data-placeholder="case-02-problem"><dt>Problem</dt><dd>High-concurrency financial payment flows face double-charging under network retries, dual-write inconsistencies between database commits and event stream publishing, and cascading bank gateway failures during traffic spikes.</dd></div>
+    <div data-placeholder="case-02-role"><dt>Role</dt><dd>Backend Systems Engineer &amp; Architect. Designed dual-tier ingress idempotency, transactional outbox pattern with Kafka streaming, multi-acquirer cascading routing with circuit breakers, and an immutable zero-sum double-entry ledger.</dd></div>
+    <div data-placeholder="case-02-shipped"><dt>What shipped</dt><dd>PaymentEngine chassis: Redis distributed locks + PostgreSQL unique key constraints, atomic Unit-of-Work state transitions (PENDING → AUTHORIZED → CAPTURED), Transactional Outbox buffer draining via FOR UPDATE SKIP LOCKED, Smart Multi-Acquirer Gateway Cascade (HDFC, ICICI, SBI, Axis) with autonomous Circuit Breakers, and live Invariant Auditor verifying Δ = ₹0.00.</dd></div>
+    <div data-placeholder="case-02-results"><dt>Results</dt><dd><span class="r"><b>&lt; 45ms</b> Target P99 transaction latency across multi-bank clearing rails.</span><span class="r"><b>Zero double-charges</b> guaranteed by Redis CAS locks and database unique constraints.</span><span class="r"><b>Δ = ₹0.00</b> Mathematical zero-sum double-entry ledger invariant verified live across all captured transactions.</span></dd></div>
   </dl>
 </div></section>
+
+<!-- Primary System Exhibit: Hero Chassis & Invariant Telemetry -->
 <div class="w">
-  <!-- [MEDIA PLACEHOLDER: Primary Showcase Figure - Insurance ML Pipeline] -->
-  <figure data-note="Multi-factor feature ingestion, gradient boosting regression R² = 0.87, and sub-150ms FastAPI inference.">
-    <div class="shot" style="border:1.5px solid var(--line); border-radius:14px; overflow:hidden; background:#0B0F17; padding:16px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.08); font-family:var(--mono); font-size:11px; color:#6B7280;">
-        <span><b style="color:#10B981">● ML PIPELINE ARCHITECTURE</b> · Feature Crosses &amp; Async Inference</span>
-        <span style="border:1px dashed #10B981; color:#6EE7B7; padding:2px 8px; border-radius:4px; font-size:10px;">[MEDIA PLACEHOLDER: Future Streamlit Screenshots / Model Curves]</span>
-      </div>
-      <img src="../assets/placeholder-insurance.svg" alt="Insurance Premium Prediction Architecture: Multi-Factor Ingestion, Gradient Boosting ML Engine, and FastAPI + Streamlit Docker Deployment by Vaibhav Rastogi" width="1200" height="675" style="border-radius:8px; width:100%; height:auto;">
-    </div>
-    <figcaption style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-top:12px;">
-      <span><strong>Insurance Premium Prediction Ecosystem</strong>: End-to-end pipeline from multi-variable biometric ingestion (Age, BMI, Smoker, Dependents) to hyperparameter-tuned Gradient Boosting regression ($R^2 = 0.87$) and sub-150ms containerized Streamlit inference.</span>
-      <a href="https://github.com/vaibhav2616/Insurance-Premium-Prediction" target="_blank" rel="noopener" style="font-family:var(--mono); font-size:12px; color:var(--acc); text-decoration:none; white-space:nowrap;">View Repository ↗</a>
-    </figcaption>
-  </figure>
-  <div class="nums" aria-label="Insurance Premium Prediction in numbers">
-    <div><b>0.87</b><span>R² predictive accuracy score</span><small>22% accuracy boost over baseline multiple linear regression models.</small></div>
-    <div><b>&lt; 150ms</b><span>Real-time prediction latency</span><small>Asynchronous FastAPI inference pipeline with cached model weights.</small></div>
-    <div><b>1000+</b><span>Production requests handled</span><small>Containerized with Docker, serving 10+ test users with 30% lower latency.</small></div>
+  <figure data-note="Institutional-Grade Financial Transaction Chassis Overview."><div class="shot"><img src="payment-hero-banner.jpg" alt="PaymentEngine Institutional Chassis: Architecture banner, latency targets, ingress idempotency and master ledger invariants" width="1200" height="700"></div>
+  <figcaption>PaymentEngine Platform Core: Engineered for high-concurrency payment orchestration with dual-tier ingress idempotency and mathematical zero-sum ledger audit.</figcaption></figure>
+  
+  <div class="nums" aria-label="PaymentEngine in numbers">
+    <div><b>&lt; 45ms</b><span>Target P99 transaction latency</span><small>Sub-50ms round-trip ingress across major Indian clearing rails.</small></div>
+    <div><b>Δ = ₹0.00</b><span>Zero-sum double-entry invariant</span><small>Strict Kirchhoff double-entry balance verified continuously with zero drift.</small></div>
+    <div><b>0 Pending</b><span>Outbox relay event buffer</span><small>Transactional outbox drained via FOR UPDATE SKIP LOCKED to Kafka.</small></div>
   </div>
 </div>
+
+<!-- Exhibit 2: 6-Stage Transaction Lifecycle Pipeline -->
 <section class="sec"><div class="w two">
-  <div><p class="eb">Machine Learning</p><h2>Feature Crosses &amp; Gradient Boosting Regressor</h2></div>
-  <div data-note="Accurate premium prediction demands capturing the non-linear compound risk between lifestyle habits and biometrics."><p class="quote">"Standard linear regressions fail to model compound risk factors like BMI and smoking habits."</p>
-  <p>In insurance pricing, simple linear assumptions break down because lifestyle factors like smoking drastically amplify the impact of high BMI. By engineering non-linear interaction terms (<code>BMI x Smoker</code>) and leveraging <strong>Gradient Boosting Regression</strong> with 5-fold cross-validation, the model reached an impressive <strong>$R^2 = 0.87$</strong>, preventing premium under-pricing while keeping variance minimal.</p>
-  <p>Continuous features are preprocessed with robust scaling, while categorical geographical tiers and binary lifestyle flags are handled through scikit-learn <code>ColumnTransformer</code> pipelines.</p></div>
+  <div><p class="eb">Stage 1 to 6</p><h2>End-to-end journey of an institutional payment request.</h2></div>
+  <div data-note="Transaction Processing Lifecycle & Architecture Pipeline"><p class="quote">From client ingress to ledger reconciliation: dual-tier idempotency, ACID unit-of-work, transactional outbox, Kafka event streaming, cascading acquirer routing, and double-entry ledger.</p>
+  <p>Every transaction passes through atomic state boundaries (PENDING → AUTHORIZED → CAPTURED). If an acquirer times out, the smart cascade router automatically reroutes through secondary rails (HDFC, ICICI, SBI, Axis) with autonomous circuit breakers.</p></div>
+</div>
+<div class="w" style="margin-top:28px">
+  <figure><div class="shot"><img src="payment-architecture-lifecycle.jpg" alt="Transaction Processing Lifecycle: 6 stages from Ingress to Double-Entry Ledger" width="1200" height="700" loading="lazy"></div>
+  <figcaption>The 6-stage transaction lifecycle pipeline: Ingress idempotency, ACID state machine, transactional outbox buffer, Kafka event stream, multi-acquirer cascade, and double-entry ledger.</figcaption></figure>
 </div></section>
+
+<!-- Exhibit 3: Invariant Auditor & Gateway Telemetry -->
 <section class="sec"><div class="w two">
-  <div><p class="eb">Deployment</p><h2>FastAPI Async Engine &amp; Streamlit Dashboard</h2></div>
-  <div class="side" data-note="Sub-150ms response times delivered via asynchronous I/O and interactive UI."><p>To deliver an instant consumer experience, inference is decoupled into an asynchronous <strong>FastAPI</strong> microservice. An interactive <strong>Streamlit</strong> frontend enables immediate slider adjustments and instant re-computation in under <strong>150ms</strong>. The entire ecosystem is packaged into reproducible multi-stage <strong>Docker</strong> containers for zero-configuration spin-up.</p></div>
+  <div><p class="eb">Mathematical Rigor</p><h2>Zero-sum invariant auditor &amp; autonomous circuit breakers.</h2></div>
+  <div><p class="quote">Balance check (Δ = Debits - Credits) = ₹0.00. 100% balanced audit status verified.</p>
+  <p>Bank gateway health is tracked with live latency and success rate telemetry. Circuit breakers trip automatically upon repeated timeouts, routing traffic to operational fallback rails without customer impact.</p></div>
+</div>
+<div class="w" style="margin-top:28px">
+  <figure><div class="shot"><img src="payment-invariant-auditor.jpg" alt="Invariant Auditor and Gateway Telemetry: 100% Balanced, Outbox Depth 0 Pending" width="1200" height="700" loading="lazy"></div>
+  <figcaption>Live telemetry matrix: Invariant Auditor confirming zero-sum balance, and gateway latency telemetry across HDFC, ICICI, SBI, and Axis Bank.</figcaption></figure>
+</div></section>
+
+<!-- Exhibit 4: Consumer Terminals, Disputes & Global Activity Firehose -->
+<section class="sec"><div class="w">
+  <p class="eb" style="margin-bottom:18px">Merchant Operations &amp; Consumer Terminals</p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
+    <figure><div class="shot"><img src="payment-consumer-disputes.jpg" alt="Consumer Payment Terminal: RuPay Platinum, UPI VPAs, and Dispute Lifecycle" width="600" height="400" loading="lazy"></div>
+    <figcaption>Consumer Terminal &amp; Disputes: Tokenized card vault, virtual UPI VPAs, and automated NPCI T+1 dispute arbitration.</figcaption></figure>
+
+    <figure><div class="shot"><img src="payment-activity-firehose.jpg" alt="Real-Time Global Activity Firehose: Live event stream across NPCI and Kafka relays" width="600" height="400" loading="lazy"></div>
+    <figcaption>Real-Time Global Activity Firehose: Low-latency event streaming across NPCI switch, acquirers, 3DS2 challenge gates, and Kafka relays.</figcaption></figure>
+  </div>
+</div></section>
+
+<!-- Exhibit 5: Mobile Command Center -->
+<section class="sec"><div class="w">
+  <p class="eb" style="margin-bottom:18px">Mobile Command Center</p>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px;">
+    <figure><div class="shot"><img src="payment-mobile-hero.jpg" alt="PaymentEngine Mobile Architecture View" width="360" height="640" loading="lazy"></div>
+    <figcaption>Mobile Architecture Home: High-concurrency chassis on mobile.</figcaption></figure>
+
+    <figure><div class="shot"><img src="payment-mobile-transactions.png" alt="PaymentEngine Mobile Transactions & Refund Management" width="360" height="640" loading="lazy"></div>
+    <figcaption>Mobile Transactions &amp; Refund Management: Filter by channel, status, and inspect settlement metadata.</figcaption></figure>
+
+    <figure><div class="shot"><img src="payment-mobile-circuit-breaker.png" alt="PaymentEngine Mobile Circuit Breaker Command Center" width="360" height="640" loading="lazy"></div>
+    <figcaption>Mobile Circuit Breaker Command Center: Manual trip and auto-failover controls.</figcaption></figure>
+  </div>
 </div></section>
 </main>
-<div class="w"><nav class="next" aria-label="More case studies"><a href="../cowork/"><span class="k">Next case study</span><span class="t">AI SRE Pipeline →</span></a><a href="../#work"><span class="k">All work</span><span class="t">Back to the box</span></a></nav></div>
+<div class="w"><nav class="next" aria-label="More case studies"><a href="../pizza-api/"><span class="k">Next case study</span><span class="t">Pizza Delivery API →</span></a><a href="../#work"><span class="k">All work</span><span class="t">Back to the box</span></a></nav></div>
 <script>
 (() => {
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -386,11 +414,11 @@ function step(i){
   if (i >= stops.length){
     stopTour();
     if (sessionStorage.getItem('emo_grand_tour')) {
-      say('All case files explored! Returning to Headquarters in 3... 2... 1... 🏠✨', null, 3400);
+      say('Case 02 tour complete! Traveling to Case 03: Pizza Delivery REST API in 3... 2... 1... 🍕🚀', null, 3400);
       setTimeout(() => {
         if (!touring && sessionStorage.getItem('emo_grand_tour')) {
-          sessionStorage.setItem('emo_grand_tour', 'complete');
-          window.location.href = '../';
+          sessionStorage.setItem('emo_grand_tour', 'pizza-api');
+          window.location.href = '../pizza-api/';
         }
       }, 3000);
       return;
@@ -414,7 +442,7 @@ document.addEventListener('click', e => { if (e.target.closest('[data-semi-tour]
 if (sessionStorage.getItem('emo_grand_tour')) {
   setTimeout(() => {
     if (!touring) {
-      say("Arrived at Case 04: Insurance Premium Prediction! 📊 R² = 0.87 ML Model!", null, 3200);
+      say("Arrived at Case 02: High-Throughput Payment Engine! 💳 Showing you the architecture!", null, 3200);
       startTour();
     }
   }, 1200);
@@ -560,7 +588,7 @@ html.gx-open #semi, html.gx-open #semi-say{z-index:210!important}
     </div>
     <nav class="sf-col" aria-label="Work">
       <span class="sf-k">Work</span>
-      <a href="../cowork/">AI SRE Pipeline</a><a href="../salt/">Payment Engine <small>summary</small></a><a href="../toddle/">Pizza Delivery API</a><a href="../atlassian/">Insurance Prediction <small>summary</small></a>
+      <a href="../ai-sre/">AI SRE Pipeline</a><a href="../payment-engine/">Payment Engine <small>current</small></a><a href="../pizza-api/">Pizza Delivery API</a><a href="../insurance-prediction/">Insurance Prediction <small>summary</small></a>
     </nav>
     <nav class="sf-col" aria-label="Elsewhere">
       <span class="sf-k">Elsewhere</span>

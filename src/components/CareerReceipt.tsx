@@ -30,42 +30,42 @@ export const CareerReceipt: React.FC<CareerReceiptProps> = ({ entries }) => {
           <div className="space-y-4 pt-2">
             <div className="p-4 bg-kraft-50 border border-kraft-300 rounded-xl flex items-start gap-4">
               <div className="font-mono text-2xl font-bold text-amber-900 bg-amber-100 px-3 py-1 rounded-lg border border-amber-300">
-                200+
+                0 Neg
               </div>
               <div>
                 <p className="font-bold text-kraft-900 text-sm font-sans">
-                  paying users on CoWork
+                  Stock inconsistencies resolved
                 </p>
                 <p className="text-xs text-kraft-600 font-sans mt-0.5">
-                  Converted from a rapid 24-hour interactive broker demo.
+                  Eliminated negative stock and unit mismatches at Organic Sabziwala.
                 </p>
               </div>
             </div>
 
             <div className="p-4 bg-kraft-50 border border-kraft-300 rounded-xl flex items-start gap-4">
               <div className="font-mono text-2xl font-bold text-amber-900 bg-amber-100 px-3 py-1 rounded-lg border border-amber-300">
-                85%
+                Δ = ₹0
               </div>
               <div>
                 <p className="font-bold text-kraft-900 text-sm font-sans">
-                  adoption of Toddle Insights
+                  Double-entry zero-sum invariant
                 </p>
                 <p className="text-xs text-kraft-600 font-sans mt-0.5">
-                  Reached school-wide daily adoption in under three months.
+                  Verified Kirchhoff balance check across all captured payment transactions.
                 </p>
               </div>
             </div>
 
             <div className="p-4 bg-kraft-50 border border-kraft-300 rounded-xl flex items-start gap-4">
               <div className="font-mono text-2xl font-bold text-amber-900 bg-amber-100 px-3 py-1 rounded-lg border border-amber-300">
-                ₹12L
+                0.87
               </div>
               <div>
                 <p className="font-bold text-kraft-900 text-sm font-sans">
-                  a day in payments
+                  R² predictive accuracy
                 </p>
                 <p className="text-xs text-kraft-600 font-sans mt-0.5">
-                  Processed reliably through SALT's transactional flows.
+                  22% accuracy boost over baseline on Insurance Premium ML pipeline.
                 </p>
               </div>
             </div>
