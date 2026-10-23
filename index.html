@@ -682,13 +682,42 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
   transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.4, 1);
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.18));
 }
-#semi.cradle-mode {
-  animation: emoCradleRock 2.4s ease-in-out infinite !important;
-  transform-origin: 50% 100% !important;
+/* Baby sleeping animation: gentle floating & breathing */
+#semi.baby-sleep {
+  animation: babySleepBreathe 2.8s ease-in-out infinite !important;
+  transform-origin: 50% 50% !important;
 }
-@keyframes emoCradleRock {
-  0%, 100% { transform: rotate(-7deg) translateY(0); }
-  50% { transform: rotate(7deg) translateY(3px); }
+@keyframes babySleepBreathe {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-5px) rotate(3deg); }
+}
+
+/* Floating baby snores directly above Emo */
+.emo-snores {
+  position: fixed;
+  pointer-events: none;
+  z-index: 10020;
+  width: 60px;
+  height: 40px;
+  transition: opacity 0.3s ease;
+}
+.snore-z {
+  position: absolute;
+  font-family: var(--display, "Bricolage Grotesque", system-ui);
+  font-weight: 800;
+  color: #5C5446;
+  opacity: 0;
+  line-height: 1;
+  animation: snoreFloatUp 2.4s infinite ease-out;
+}
+.snore-z:nth-child(1) { font-size: 13px; right: 28px; animation-delay: 0s; }
+.snore-z:nth-child(2) { font-size: 17px; right: 14px; animation-delay: 0.8s; color: #2D5BE3; }
+.snore-z:nth-child(3) { font-size: 22px; right: 0px; animation-delay: 1.6s; color: #E52424; }
+@keyframes snoreFloatUp {
+  0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+  25% { opacity: 0.95; }
+  80% { opacity: 0.7; }
+  100% { transform: translate(18px, -36px) scale(1.3); opacity: 0; }
 }
 
 /* Angry baby stomping & pouting */
@@ -701,46 +730,244 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
   100% { transform: translateY(-4px) rotate(4deg); }
 }
 
-/* Cursor Cradle: cozy hammock hanging directly from cursor pointer */
-.cursor-cradle {
-  position: fixed;
-  left: 0;
-  top: 0;
-  pointer-events: none;
-  z-index: 10008;
-  width: 100px;
-  height: 68px;
-  transform-origin: 50px 4px;
-  animation: cradleGentleRock 2.4s ease-in-out infinite;
-  transition: opacity 0.3s ease;
+/* Emo's Secret Workshop & WALL-E */
+.emo-workshop-card {
+  margin: 36px auto 0;
+  max-width: 760px;
+  background: #FFFDF8;
+  border: 2px solid var(--ink, #16130F);
+  border-radius: 18px;
+  box-shadow: 6px 6px 0 var(--ink, #16130F);
+  overflow: hidden;
+  font-family: var(--body, system-ui);
+  transition: transform 0.25s cubic-bezier(0.3, 1.4, 0.5, 1);
 }
-@keyframes cradleGentleRock {
-  0%, 100% { transform: rotate(-7deg) translateY(0); }
-  50% { transform: rotate(7deg) translateY(3px); }
+.emo-workshop-card:hover {
+  transform: translateY(-3px);
 }
-.cradle-snores {
-  position: absolute;
-  right: -4px;
-  top: -10px;
-  pointer-events: none;
+.ew-header {
+  background: #F3ECDD;
+  border-bottom: 2px solid var(--ink, #16130F);
+  padding: 10px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
-.snore-z {
-  position: absolute;
-  font-family: var(--display, "Bricolage Grotesque", system-ui);
+.ew-badge {
+  font-family: var(--display, system-ui);
   font-weight: 800;
-  color: #5C5446;
-  opacity: 0;
-  line-height: 1;
-  animation: snoreFloatUp 2.4s infinite ease-out;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--ink, #16130F);
 }
-.snore-z:nth-child(1) { font-size: 13px; right: 10px; animation-delay: 0s; }
-.snore-z:nth-child(2) { font-size: 17px; right: 0px; animation-delay: 0.8s; color: #2D5BE3; }
-.snore-z:nth-child(3) { font-size: 22px; right: -10px; animation-delay: 1.6s; color: #E52424; }
-@keyframes snoreFloatUp {
-  0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
-  25% { opacity: 0.9; }
-  80% { opacity: 0.7; }
-  100% { transform: translate(22px, -36px) scale(1.3); opacity: 0; }
+.ew-status {
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--yellow, #FFD23F);
+  border: 1.5px solid var(--ink, #16130F);
+  border-radius: 999px;
+  padding: 3px 10px;
+}
+.ew-stage {
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 24px;
+}
+.ew-bench {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.ew-tools {
+  display: flex;
+  gap: 12px;
+  font-size: 20px;
+  margin-bottom: 8px;
+  animation: toolsJiggle 3s ease-in-out infinite;
+}
+@keyframes toolsJiggle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.walle-bot {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.3, 1.5, 0.5, 1);
+  outline: none;
+}
+.walle-bot:hover, .walle-bot:focus-visible {
+  transform: scale(1.08) translateY(-4px);
+}
+.walle-bot:hover .walle-eyes {
+  animation: walleBlink 0.6s ease-in-out;
+}
+@keyframes walleBlink {
+  0%, 100% { transform: none; }
+  50% { transform: rotate(-5deg) translateY(-2px); }
+}
+.walle-speech {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #16130F;
+  color: #FFFDF8;
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 3px 9px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.walle-bot:hover .walle-speech, .walle-bot.speaking .walle-speech {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-6px);
+}
+.ew-diary {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ew-note {
+  background: #FFF8E7;
+  border: 1.5px dashed #D2BD96;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #3D3528;
+}
+.ew-note b {
+  display: block;
+  font-family: var(--display, system-ui);
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--ink, #16130F);
+  margin-bottom: 4px;
+}
+.ew-btn {
+  align-self: flex-start;
+  border: 1.5px solid var(--ink, #16130F);
+  background: var(--card, #FFF);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-family: var(--display, system-ui);
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--ink, #16130F);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.ew-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--ink, #16130F);
+}
+.ew-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--ink, #16130F);
+}
+
+/* Phase 1: Micro tremors during 50s-65s buildup */
+.emo-tantrum body {
+  animation: screenTremor 0.15s infinite alternate ease-in-out;
+}
+@keyframes screenTremor {
+  0% { transform: translate(-1px, 0.5px); }
+  100% { transform: translate(1px, -0.5px); }
+}
+
+/* Phase 2: Damaged elements during weapon attacks */
+.h1-damaged {
+  transform: rotate(-2.5deg) skewX(-1.5deg) scale(0.98) !important;
+  transition: transform 0.4s ease-out !important;
+  color: #E5483C !important;
+}
+.slip-damaged {
+  transform: rotate(2deg) translateY(12px) !important;
+  transition: transform 0.4s ease-out !important;
+  box-shadow: 6px 12px 0 rgba(229, 36, 36, 0.4) !important;
+}
+.files-damaged .case:nth-child(1) { transform: rotate(-8deg) translateY(14px) !important; }
+.files-damaged .case:nth-child(2) { transform: rotate(7deg) translateY(18px) !important; }
+.files-damaged .case:nth-child(3) { transform: rotate(-5deg) translateY(8px) !important; }
+.files-damaged .case:nth-child(4) { transform: rotate(9deg) translateY(22px) !important; }
+.workshop-damaged { transform: rotate(-3deg) translateY(10px) !important; }
+.till-damaged { transform: rotate(2deg) translateY(8px) !important; }
+.box-damaged { transform: rotate(-1.5deg) translateY(6px) !important; }
+
+/* Phase 3: Structural Collapse & Gravity Failure */
+.emo-structural-collapse {
+  animation: intenseEarthquake 0.12s infinite linear alternate !important;
+}
+@keyframes intenseEarthquake {
+  0% { transform: translate(-3px, 2px) rotate(-0.3deg); filter: contrast(1.1); }
+  50% { transform: translate(2px, -3px) rotate(0.4deg); }
+  100% { transform: translate(-2px, -2px) rotate(-0.2deg); }
+}
+.emo-structural-collapse .hn {
+  transform: translateY(-16px) rotate(-1.5deg) !important;
+  opacity: 0.85 !important;
+}
+.emo-structural-collapse .s {
+  filter: drop-shadow(0 15px 25px rgba(229, 36, 36, 0.35)) !important;
+}
+
+/* Falling debris particle */
+.emo-debris {
+  position: fixed;
+  z-index: 10002;
+  pointer-events: none;
+  font-size: 22px;
+  animation: debrisFall 1.8s cubic-bezier(0.4, 0, 0.8, 1) forwards;
+}
+@keyframes debrisFall {
+  0% { transform: translateY(-40px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(540deg); opacity: 0; }
+}
+
+/* Phase 4: Digital Virus Wipe & Shockwave */
+.virus-shockwave {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 4px solid #FF3B30;
+  box-shadow: 0 0 50px #FF3B30, inset 0 0 50px #FF3B30;
+  z-index: 10004;
+  pointer-events: none;
+  animation: shockwaveExpand 1.6s ease-out forwards;
+}
+@keyframes shockwaveExpand {
+  0% { width: 20px; height: 20px; opacity: 1; border-width: 12px; }
+  100% { width: 240vmax; height: 240vmax; opacity: 0; border-width: 1px; }
+}
+
+/* Glitch scanlines */
+.glitch-scanlines {
+  position: fixed;
+  inset: 0;
+  z-index: 10003;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(255, 30, 30, 0.12) 0px, transparent 2px, rgba(0, 0, 0, 0.3) 4px);
+  animation: scanlinesFlicker 0.1s steps(2) infinite;
+}
+@keyframes scanlinesFlicker {
+  0% { opacity: 0.8; }
+  100% { opacity: 0.4; }
 }
 
 /* Small weapons fit for Emo's 64px body */
@@ -995,8 +1222,8 @@ html.emo-blankout .band {
 /* Calm Shield Floating Timer HUD */
 .emo-calm-shield-hud {
   position: fixed;
-  top: 14px;
-  right: 18px;
+  top: 76px;
+  right: 24px;
   z-index: 9990;
   background: #DDF3E6;
   border: 2px solid #16130F;
@@ -1353,6 +1580,72 @@ html.emo-blankout .band {
       <p class="ab2-big">Most backend software is fragile and glued together with duct tape. I build resilient distributed systems that don't fall over under pressure.</p>
       <span class="ab2-pm" aria-hidden="true">GHAZIABAD / NCR<br>★<br>2026</span>
     </div>
+
+    <!-- EMO'S SECRET WORKSHOP: WALL-E FRIEND -->
+    <div class="emo-workshop-card" id="emoWorkshop">
+      <div class="ew-header">
+        <span class="ew-badge">🛠️ EMO'S SECRET WORKSHOP &amp; INVENTORY</span>
+        <span class="ew-status">STATUS: BUILDING A BEST FRIEND</span>
+      </div>
+      <div class="ew-stage">
+        <div class="ew-bench">
+          <div class="ew-tools">
+            <span class="ew-tool" title="Mini screwdriver">🪛</span>
+            <span class="ew-tool" title="Spare cogs">⚙️</span>
+            <span class="ew-tool" title="Cardboard scraps">📦</span>
+            <span class="ew-tool" title="Spare bolts">🔩</span>
+          </div>
+          <div class="walle-bot" id="walleBot" tabindex="0" role="button" aria-label="WALL-E: Emo's handmade robot friend">
+            <svg class="walle-svg" viewBox="0 0 120 120" width="110" height="110" aria-hidden="true">
+              <defs>
+                <linearGradient id="walleRust" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#F2B533"/>
+                  <stop offset="50%" stop-color="#D9822B"/>
+                  <stop offset="100%" stop-color="#8C4A15"/>
+                </linearGradient>
+                <linearGradient id="walleLens" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#4CA1F5"/>
+                  <stop offset="100%" stop-color="#143A66"/>
+                </linearGradient>
+              </defs>
+              <polygon points="12,106 32,106 28,78 16,78" fill="#2E2820" stroke="#16130F" stroke-width="2.5"/>
+              <circle cx="17" cy="98" r="4" fill="#665A4B"/>
+              <circle cx="27" cy="98" r="4" fill="#665A4B"/>
+              <polygon points="88,106 108,106 104,78 92,78" fill="#2E2820" stroke="#16130F" stroke-width="2.5"/>
+              <circle cx="93" cy="98" r="4" fill="#665A4B"/>
+              <circle cx="103" cy="98" r="4" fill="#665A4B"/>
+              <rect x="26" y="60" width="68" height="42" rx="5" fill="url(#walleRust)" stroke="#16130F" stroke-width="3"/>
+              <rect x="36" y="70" width="48" height="18" rx="3" fill="#E6DAC8" stroke="#16130F" stroke-width="1.5"/>
+              <text x="60" y="83" text-anchor="middle" font-family="'DM Mono', monospace" font-size="7.5" font-weight="900" fill="#E5483C">WALL·E</text>
+              <rect x="38" y="93" width="22" height="4" rx="1" fill="#16130F"/>
+              <rect x="39" y="94" width="16" height="2" rx="1" fill="#2FA866"/>
+              <rect x="56" y="44" width="8" height="18" rx="2" fill="#7A7062" stroke="#16130F" stroke-width="2"/>
+              <circle cx="60" cy="46" r="3.5" fill="#16130F"/>
+              <g class="walle-eyes">
+                <path d="M38 24 L56 28 L54 44 L34 40 Z" fill="#D9822B" stroke="#16130F" stroke-width="2.5"/>
+                <circle cx="44" cy="33" r="8.5" fill="url(#walleLens)" stroke="#16130F" stroke-width="2"/>
+                <circle cx="42" cy="31" r="3" fill="#FFFFFF"/>
+                <path d="M82 24 L64 28 L66 44 L86 40 Z" fill="#D9822B" stroke="#16130F" stroke-width="2.5"/>
+                <circle cx="76" cy="33" r="8.5" fill="url(#walleLens)" stroke="#16130F" stroke-width="2"/>
+                <circle cx="74" cy="31" r="3" fill="#FFFFFF"/>
+              </g>
+              <path d="M26 72 L14 74 L10 82" stroke="#665A4B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <path d="M94 72 L106 74 L104 86" stroke="#665A4B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <path d="M100 84 L108 84 L114 88 L114 94 L102 94 Z" fill="#593E2B" stroke="#16130F" stroke-width="1.5"/>
+              <path d="M108 82 Q112 74 116 78 Q118 72 110 74" fill="#2FA866" stroke="#16130F" stroke-width="1.2"/>
+            </svg>
+            <div class="walle-speech" id="walleSpeech">♪ Waaall-e! 🌱</div>
+          </div>
+        </div>
+        <div class="ew-diary">
+          <div class="ew-note">
+            <b>Emo's Secret Inventory Log:</b>
+            <p>"If the cursor refuses to click me or play with me... I will build my own best friend out of cardboard and spare microservice components. Meet <strong>WALL·E</strong>! He has binoculars, holds a tiny green sprout 🌱 in an old boot, and promised he will never leave Emo alone."</p>
+          </div>
+          <button class="ew-btn" type="button" id="pokeWalleBtn">Say hi to WALL·E 🤖</button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 <div class="wrap"></div>
@@ -1377,30 +1670,10 @@ html.emo-blankout .band {
 </aside>
 <canvas id="semi" width="128" height="128" aria-hidden="true"></canvas>
 <div id="semi-say" role="status" aria-live="polite"></div>
-<div id="cursorCradle" class="cursor-cradle" hidden>
-  <svg class="cradle-svg" viewBox="0 0 110 75" width="100" height="68">
-    <defs>
-      <linearGradient id="cradleGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#FFE885"/>
-        <stop offset="100%" stop-color="#FFD23F"/>
-      </linearGradient>
-      <filter id="cradleShadow" x="-10%" y="-10%" width="120%" height="130%">
-        <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>
-      </filter>
-    </defs>
-    <line x1="50" y1="2" x2="20" y2="38" stroke="#16130F" stroke-width="2.5" stroke-linecap="round"/>
-    <line x1="50" y1="2" x2="90" y2="38" stroke="#16130F" stroke-width="2.5" stroke-linecap="round"/>
-    <circle cx="50" cy="3" r="3.5" fill="#16130F"/>
-    <path d="M15 36 Q55 72 95 36 C85 64 25 64 15 36 Z" fill="url(#cradleGrad)" stroke="#16130F" stroke-width="3" filter="url(#cradleShadow)"/>
-    <path d="M22 40 Q55 64 88 40 Q55 52 22 40 Z" fill="#FFFDF8" stroke="#E3DACA" stroke-width="1.5"/>
-    <ellipse cx="32" cy="42" rx="9" ry="5.5" fill="#FFFFFF" stroke="#16130F" stroke-width="1.8" transform="rotate(-15 32 42)"/>
-    <path d="M42 45 Q65 60 86 42 Q65 52 42 45 Z" fill="#88D1F1" stroke="#16130F" stroke-width="1.5"/>
-  </svg>
-  <div class="cradle-snores">
-    <span class="snore-z">z</span>
-    <span class="snore-z">z</span>
-    <span class="snore-z">Z</span>
-  </div>
+<div id="emoSnores" class="emo-snores" hidden>
+  <span class="snore-z">z</span>
+  <span class="snore-z">z</span>
+  <span class="snore-z">Z</span>
 </div>
 <div id="emoWeaponHolder" class="emo-weapon-holder" hidden></div>
 
@@ -1686,7 +1959,8 @@ const wake = () => {
     }
     if (comp && comp.state === 'sleeping' && cfg.state !== 'sleeping') {
       comp.state = cfg.state;
-      companion.classList.remove('cradle-mode');
+      companion.classList.remove('baby-sleep');
+      const snores = $('#emoSnores'); if (snores) snores.hidden = true;
     }
   }
 };
@@ -1703,7 +1977,7 @@ addEventListener('pointermove', e => {
   if (comp && comp.state === 'sleeping' && mouseSpeed > 2200 && now - lastNaughtySay > 4000) {
     lastNaughtySay = now;
     comp.doHop();
-    say(pick(["Whoa! Cradle turbulence! Careful!", "Hey! Rock the cradle gently!", "Turbulence! I was having a nice nap."]), null, 2500);
+    say(pick(["Whoa! Easy there! You woke the baby!", "Hey! Don't shake so fast!", "Yawwwn... I was having a lovely nap."]), null, 2500);
   }
 
   mx = e.clientX;
@@ -2452,37 +2726,58 @@ function fireMiniLaser(fromX, fromY, toX, toY) {
 const TOUR_STOPS = [
   { sel: '#heroH1', say: "Tour Stop 1: Welcome to Vaibhav's portfolio box! Let's explore!", type: 'greet' },
   { sel: '#openBtn', say: "Here's the box trigger! Let's water some flowers here! 🌸", type: 'flower' },
-  { sel: '.cd:nth-of-type(1)', say: "Case 01: AI SRE Pipeline! Dropping a secret Easter egg! 🗝️", type: 'secret' },
-  { sel: '.cd:nth-of-type(2)', say: "Case 02: High-Volume Payment Engine! Candy break time! 🍬", type: 'candy' },
-  { sel: '.cd:nth-of-type(3)', say: "Case 03: Pizza Delivery API! More flower power! 🌼", type: 'flower' },
-  { sel: '.cd:nth-of-type(4)', say: "Case 04: Organic Sabziwala! High-throughput architecture! ✨", type: 'secret' },
-  { sel: '#till', say: "Career Receipt! 4+ years of distributed systems engineering! 📜", type: 'peekaboo' },
-  { sel: '#inside', say: "About Vaibhav: reads RFCs cover to cover! Snack break! 🍭", type: 'candy' },
+  { sel: '#slip', say: "Packing Slip: Four backend systems itemized! 📜", type: 'secret' },
+  { sel: '#files', say: "Case Files: Four production microservices! 🍬", type: 'candy' },
+  { sel: '#emoWorkshop', say: "Psst... look what I built in my inventory! It's WALL-E! 🤖", type: 'walle' },
+  { sel: '#till', say: "Career Receipt! 4+ years of distributed systems engineering! ✨", type: 'peekaboo' },
+  { sel: '#inside', say: "About Vaibhav: reads RFCs cover to cover! Flower power! 🌼", type: 'flower' },
   { sel: '.gacha', say: "The Parting Gift Gacha! Free unlimited fortune cookies for Emo! 🥠", type: 'gacha' }
 ];
 
+// WALL-E Interactive Chime & Interaction
+const walleBtn = $('#pokeWalleBtn');
+const walleBot = $('#walleBot');
+const onPokeWalle = () => {
+  if (SFX.walleChirp) SFX.walleChirp();
+  if (walleBot) {
+    walleBot.classList.add('speaking');
+    setTimeout(() => walleBot.classList.remove('speaking'), 2400);
+  }
+  say(pick([
+    "WALL-E says: '♪ Waaall-e!' 🌱 He likes you! ...Even if you ignore me.",
+    "Hey! Don't distract my best friend! He's helping me monitor Kafka logs!",
+    "WALL-E tilted his binocular eyes at you! Isn't he the cutest robot in the world?",
+    "*sniff* You poke WALL-E but you don't play with Emo? ...Fine, he can be your friend too."
+  ]), null, 3600);
+  comp.doHop();
+};
+if (walleBtn) walleBtn.addEventListener('click', onPokeWalle);
+if (walleBot) walleBot.addEventListener('click', onPokeWalle);
+
 // Rampage Attack Targets: Emo physically dashes from element to element with small weapons!
+let rampageTarget = null;
 const ATTACK_STEPS = [
-  { sel: '.cd:nth-of-type(1)', weapon: '🚀', wClass: 'active', say: "Mini Rocket Launcher equipped! 🚀 Take that, Case Study 01!" },
-  { sel: '#openBtn', weapon: '🔫', wClass: 'active', say: "Mini Dual Blasters! 🔫 Pew pew pew at the box button!" },
-  { sel: '#heroH1', weapon: '🪚', wClass: 'buzzing', say: "Mini Buzzing Chainsaw! 🪚 Slicing the headline!" },
-  { sel: '.cd:nth-of-type(2)', weapon: '🔥', wClass: 'active', say: "Mini Flamethrower! 🔥 Toasting the payment engine!" },
-  { sel: '#till', weapon: '⚡', wClass: 'active', say: "Laser Eyes of Fury! ⚡👀 Taste my toddler rage!" },
-  { sel: '.bx-front', weapon: '💣', wClass: '', say: "Mini Virus Bomb planted! 💣 3... 2... 1... BOOM!" }
+  { sel: '#heroH1', weapon: '🪚', wClass: 'buzzing', damageClass: 'h1-damaged', say: "Mini Buzzing Chainsaw! 🪚 Slicing the headline!" },
+  { sel: '#slip', weapon: '🔫', wClass: 'active', damageClass: 'slip-damaged', say: "Mini Dual Blasters! 🔫 Pew pew pew at the packing slip!" },
+  { sel: '#files', weapon: '🚀', wClass: 'active', damageClass: 'files-damaged', say: "Mini Rocket Launcher! 🚀 Launching homing missiles at Case Studies!" },
+  { sel: '#emoWorkshop', weapon: '🔥', wClass: 'active', damageClass: 'workshop-damaged', say: "Mini Flamethrower! 🔥 Even WALL-E knows you don't love me!" },
+  { sel: '#till', weapon: '⚡', wClass: 'active', damageClass: 'till-damaged', say: "Laser Eyes of Fury! ⚡👀 Melting the career receipt!" },
+  { sel: '.bx-front', weapon: '💣', wClass: '', damageClass: 'box-damaged', say: "Mini Virus Bomb planted! 💣 3... 2... 1... ACTIVATING DIGITAL COLLAPSE!" }
 ];
 
-// Full Rampage & Attack Sequence
+// Phase 2: Full Rampage & Targeted Vandalism
 function triggerFullRampage() {
   if (rampageActive || blankoutActive) return;
   rampageActive = true;
   wandering = false;
   attackStep = 0;
   comp.state = 'angry';
-  companion.classList.remove('cradle-mode');
+  companion.classList.remove('baby-sleep');
+  const snores = $('#emoSnores'); if (snores) snores.hidden = true;
   bubble.classList.add('angry-bubble');
   document.documentElement.classList.add('emo-tantrum');
 
-  say("THAT'S IT! 60 SECONDS OF NEGLECT! EMO IS UNLEASHING HIS MINI ARSENAL!", null, 3500);
+  say("THAT'S IT! 60 SECONDS OF NEGLECT! EMO IS UNLEASHING HIS MINI ARSENAL!", null, 3200);
 
   const wHolder = $('#emoWeaponHolder');
 
@@ -2496,7 +2791,7 @@ function triggerFullRampage() {
     if (attackStep >= ATTACK_STEPS.length) {
       clearInterval(attackInterval);
       if (wHolder) wHolder.hidden = true;
-      detonateVirusBomb();
+      triggerStructuralCollapse();
       return;
     }
 
@@ -2505,30 +2800,28 @@ function triggerFullRampage() {
 
     const targetEl = $(step.sel);
     if (targetEl) {
-      // Smoothly scroll to keep Emo and target in center view!
       const rect = targetEl.getBoundingClientRect();
       const targetDocY = window.scrollY + rect.top - (innerHeight * 0.35);
       window.scrollTo({ top: Math.max(0, targetDocY), behavior: 'smooth' });
 
-      // Move Emo to target element
-      sx = Math.max(30, Math.min(innerWidth - 90, rect.left + rect.width / 2 - 32));
-      sy = Math.max(70, Math.min(innerHeight - 90, rect.top - 40));
+      // Set target for smooth frame-by-frame flight!
+      rampageTarget = {
+        x: Math.max(40, Math.min(innerWidth - 100, rect.left + rect.width / 2 - 32)),
+        y: Math.max(80, Math.min(innerHeight - 100, rect.top - 40))
+      };
 
-      // Equip small weapon
       if (wHolder) {
         wHolder.hidden = false;
         wHolder.textContent = step.weapon;
         wHolder.className = 'emo-weapon-holder ' + step.wClass;
       }
 
-      // Execute attack effects on target
       setTimeout(() => {
-        let shakeTarget = targetEl;
-        if (targetEl.classList.contains('cd')) shakeTarget = targetEl.querySelector('.cd-in') || targetEl;
-        if (shakeTarget) {
-          shakeTarget.classList.add('fluffy-bounce');
-          setTimeout(() => shakeTarget.classList.remove('fluffy-bounce'), 700);
+        if (step.damageClass) {
+          targetEl.classList.add(step.damageClass);
         }
+        targetEl.classList.add('fluffy-bounce');
+        setTimeout(() => targetEl.classList.remove('fluffy-bounce'), 700);
 
         const cx = sx + 32, cy = sy + 32;
         const tx = rect.left + rect.width / 2, ty = rect.top + rect.height / 2;
@@ -2536,38 +2829,91 @@ function triggerFullRampage() {
         if (step.weapon === '🚀') {
           fireMiniRocket(cx, cy, tx, ty);
         } else if (step.weapon === '🔫') {
-          fireMiniLaser(cx, cy, tx - 20, ty);
-          fireMiniLaser(cx, cy, tx + 20, ty);
+          fireMiniLaser(cx, cy, tx - 25, ty);
+          fireMiniLaser(cx, cy, tx + 25, ty);
         } else if (step.weapon === '🪚') {
-          for (let i = 0; i < 5; i++) setTimeout(() => spawnEmoTrail(tx + (Math.random()-0.5)*80, ty + (Math.random()-0.5)*50, '⚡'), i * 70);
+          for (let i = 0; i < 6; i++) setTimeout(() => spawnEmoTrail(tx + (Math.random()-0.5)*80, ty + (Math.random()-0.5)*50, '⚡'), i * 60);
         } else if (step.weapon === '🔥') {
-          for (let i = 0; i < 6; i++) setTimeout(() => spawnExplosion(tx + (Math.random()-0.5)*100, ty + (Math.random()-0.5)*60), i * 80);
+          for (let i = 0; i < 7; i++) setTimeout(() => spawnExplosion(tx + (Math.random()-0.5)*110, ty + (Math.random()-0.5)*70), i * 70);
         } else if (step.weapon === '⚡') {
           comp.laserEyeBeam = true;
           setTimeout(() => { comp.laserEyeBeam = false; }, 1800);
           spawnExplosion(tx, ty);
         }
-      }, 350);
+      }, 500);
 
-      say(step.say, null, 2400);
+      say(step.say, null, 2500);
     }
-  }, 2200);
+  }, 2400);
 }
 
-// Detonate virus bomb and transition to the blankout void
+// Phase 3: Structural Collapse & Gravity Distortion
+function triggerStructuralCollapse() {
+  say("PHASE 2: STRUCTURAL COLLAPSE! Gravity is failing across the page!", null, 3000);
+  document.documentElement.classList.add('emo-structural-collapse');
+
+  // Spawn falling debris particles
+  for (let i = 0; i < 18; i++) {
+    setTimeout(spawnFallingDebris, i * 220);
+  }
+
+  // Ticking countdown to virus bomb detonation
+  let countdown = 3;
+  const tickInterval = setInterval(() => {
+    if (countdown > 0) {
+      say(`VIRUS BOMB DETONATION IN ${countdown}... 💣`, null, 900);
+      countdown--;
+    } else {
+      clearInterval(tickInterval);
+      detonateVirusBomb();
+    }
+  }, 1000);
+}
+
+function spawnFallingDebris() {
+  const d = document.createElement('div');
+  d.className = 'emo-debris';
+  d.textContent = pick(['🧱', '⚙️', '🔩', '📦', '💥', '⚡']);
+  d.style.left = (Math.random() * innerWidth) + 'px';
+  document.body.appendChild(d);
+  setTimeout(() => d.remove(), 1800);
+}
+
+// Phase 4: Digital Virus Wipe & Shockwave
 function detonateVirusBomb() {
   const wHolder = $('#emoWeaponHolder');
   if (wHolder) wHolder.hidden = true;
 
-  for (let i = 0; i < 16; i++) {
-    setTimeout(() => spawnExplosion(innerWidth / 2 + (Math.random() - 0.5) * 400, innerHeight / 2 + (Math.random() - 0.5) * 300), i * 35);
+  // Expanding shockwave ring
+  const sw = document.createElement('div');
+  sw.className = 'virus-shockwave';
+  document.body.appendChild(sw);
+  setTimeout(() => sw.remove(), 1600);
+
+  // Glitch scanlines
+  const gl = document.createElement('div');
+  gl.className = 'glitch-scanlines';
+  document.body.appendChild(gl);
+  setTimeout(() => gl.remove(), 2500);
+
+  // Explosions
+  for (let i = 0; i < 20; i++) {
+    setTimeout(() => spawnExplosion(innerWidth / 2 + (Math.random() - 0.5) * 500, innerHeight / 2 + (Math.random() - 0.5) * 400), i * 35);
   }
 
+  setTimeout(() => {
+    document.documentElement.classList.remove('emo-structural-collapse');
+    enterBlankoutVoid();
+  }, 1200);
+}
+
+// Phase 5: Transition into Cyber Void & Cranky Baby Tantrum
+function enterBlankoutVoid() {
   blankoutActive = true;
   document.documentElement.classList.add('emo-blankout');
   companion.classList.add('angry-baby');
 
-  // Void overlay with floating items from the unboxed box
+  // Void overlay with floating items plus WALL-E floating peacefully with sprout
   const voidOverlay = document.createElement('div');
   voidOverlay.className = 'emo-void-overlay';
   voidOverlay.id = 'emoVoidOverlay';
@@ -2577,13 +2923,14 @@ function detonateVirusBomb() {
     <div class="void-floating-item" style="left:82%; top:30%">🕶️</div>
     <div class="void-floating-item" style="left:28%; top:75%">🗝️</div>
     <div class="void-floating-item" style="left:74%; top:70%">🪿</div>
-    <div class="void-floating-item" style="left:50%; top:80%">🍕</div>
+    <div class="void-floating-item" style="left:50%; top:82%">🍕</div>
     <div class="void-floating-item" style="left:10%; top:60%">📄</div>
     <div class="void-floating-item" style="left:88%; top:15%">💻</div>
+    <div class="void-floating-item" style="left:70%; top:20%" title="WALL-E holding his plant sprout 🌱">🤖🌱</div>
   `;
   document.body.appendChild(voidOverlay);
 
-  // Mount Emergency Care Defense HUD
+  // Mount Emergency Care Defense HUD cleanly below navbar
   const hud = document.createElement('div');
   hud.className = 'care-defense-hud';
   hud.id = 'careDefenseHud';
@@ -2611,7 +2958,7 @@ function detonateVirusBomb() {
   curBalloon.textContent = '🎈';
   document.body.appendChild(curBalloon);
 
-  say("HMPH! 😤 The website is gone! Go away cursor, I HATE YOU!", null, 4000);
+  say("HMPH! 😤 The website is gone! I have WALL-E now! Go away cursor, I HATE YOU!", null, 4000);
 }
 
 // Deliver balloon from pocket to Emo
@@ -2702,7 +3049,10 @@ function rebuildWebsiteBrickByBrick() {
     if (progress >= 100) {
       clearInterval(pInterval);
       setTimeout(() => {
-        document.documentElement.classList.remove('emo-blankout', 'emo-tantrum');
+        document.documentElement.classList.remove('emo-blankout', 'emo-tantrum', 'emo-structural-collapse');
+        $$('.h1-damaged, .slip-damaged, .files-damaged, .workshop-damaged, .till-damaged, .box-damaged').forEach(el => {
+          el.classList.remove('h1-damaged', 'slip-damaged', 'files-damaged', 'workshop-damaged', 'till-damaged', 'box-damaged');
+        });
         $$('.s').forEach(sec => sec.style.removeProperty('--tear-rot'));
         comp.state = cfg.state === 'angry' ? 'idle' : cfg.state;
         comp.squash = 0.45;
@@ -2788,8 +3138,8 @@ function loop(t){
 
     // --- TIMELINE STATE MACHINE ---
 
-    // 1. Rampage & Website Blankout Mode (idle >= 60s and not shielded)
-    if (idle >= 60 && !isShielded && !rampageActive && !blankoutActive && !docked) {
+    // 1. Rampage & Website Blankout Mode (idle >= 65s and not shielded)
+    if (idle >= 65 && !isShielded && !rampageActive && !blankoutActive && !docked) {
       triggerFullRampage();
     }
 
@@ -2840,27 +3190,42 @@ function loop(t){
       }
 
     } else if (rampageActive) {
-      // Small weapons are equipped in ATTACK_STEPS, Emo runs from element to element
-      companion.style.transform = `translate(${sx}px, ${sy}px)`;
-      comp.lookAt(Math.sin(t * 0.008) * 40, Math.cos(t * 0.009) * 20);
+      // Small weapons are equipped in ATTACK_STEPS: Emo smoothly flies from element to element!
+      if (rampageTarget) {
+        const dx = rampageTarget.x - sx;
+        const dy = rampageTarget.y - sy;
+        const dist = Math.hypot(dx, dy);
+        const speed = Math.min(8.0, 3.2 + dist * 0.012);
+        sx += dx * Math.min(1, dt * speed);
+        sy += dy * Math.min(1, dt * speed);
+        comp.lookAt(dx, dy);
+
+        // Flame / thruster trail while swooping
+        if (t - lastTrail > 90) {
+          lastTrail = t;
+          spawnEmoTrail(sx + 32, sy + 32, pick(['🔥', '⚡', '💨', '💥']));
+        }
+      }
+
+      companion.style.transform = `translate(${sx}px, ${sy}px) rotate(${Math.sin(t * 0.012) * 6}deg)`;
 
       const wHolder = $('#emoWeaponHolder');
       if (wHolder && !wHolder.hidden) {
-        wHolder.style.left = (sx + 40) + 'px';
-        wHolder.style.top = (sy + 18) + 'px';
+        wHolder.style.left = (sx + 42) + 'px';
+        wHolder.style.top = (sy + 16) + 'px';
       }
 
-    } else if (idle >= 50 && idle < 60 && !isShielded && !docked) {
-      // 2. Impatience & Gradual Color Transition (50s to 60s)
-      const cradle = $('#cursorCradle'); if (cradle) cradle.hidden = true;
-      companion.classList.remove('cradle-mode');
+    } else if (idle >= 50 && idle < 65 && !isShielded && !docked) {
+      // 2. Impatience & Gradual Color Transition (50s to 65s)
+      const snores = $('#emoSnores'); if (snores) snores.hidden = true;
+      companion.classList.remove('baby-sleep');
       wandering = false;
       comp.state = 'angry';
 
-      const k = (idle - 50) / 10;
+      const k = (idle - 50) / 15;
       comp.colorTint = getRampageColor(k);
 
-      if (t - lastTrail > 400) {
+      if (t - lastTrail > 350) {
         lastTrail = t;
         spawnEmoTrail(sx + 32, sy + 12, '💨');
       }
@@ -2868,9 +3233,12 @@ function loop(t){
       if (idle >= 50 && idle < 51 && t - lastNaughtySay > 4000) {
         lastNaughtySay = t;
         say("Wait... are you STILL not paying attention to me?! 50 seconds?!", null, 3000);
-      } else if (idle >= 55 && idle < 56 && t - lastNaughtySay > 4000) {
+      } else if (idle >= 56 && idle < 57 && t - lastNaughtySay > 4000) {
         lastNaughtySay = t;
-        say("Puff! Steam is shooting out of my ears! 5... 4... 3...", null, 3000);
+        say("I built WALL-E and you STILL didn't look at me?! Fine. FINE.", null, 3000);
+      } else if (idle >= 61 && idle < 62 && t - lastNaughtySay > 4000) {
+        lastNaughtySay = t;
+        say("Puff! Steam is shooting out of my ears! 3... 2... 1...", null, 2500);
       }
 
       const tx = docked ? innerWidth - 80 : mx + 20;
@@ -2882,8 +3250,8 @@ function loop(t){
 
     } else if (idle >= 20 && !docked) {
       // 3. Guided Tour Across Website: Emo travels to each stop, camera follows him, Emo ALWAYS on screen!
-      const cradle = $('#cursorCradle'); if (cradle) cradle.hidden = true;
-      companion.classList.remove('cradle-mode');
+      const snores = $('#emoSnores'); if (snores) snores.hidden = true;
+      companion.classList.remove('baby-sleep');
       wandering = true;
       comp.colorTint = null;
       if (comp.state === 'sleeping') comp.state = 'idle';
@@ -2913,6 +3281,18 @@ function loop(t){
             spawnSecretKey(rect.left + rect.width / 2, rect.top + 20);
           } else if (currentStop.type === 'candy') {
             spawnCandyNom(rect.left + rect.width / 2, rect.top + 20);
+          } else if (currentStop.type === 'walle') {
+            if (SFX.walleChirp) SFX.walleChirp();
+            say(pick([
+              "*sniff* You never click me... so I built my own best friend! Meet WALL-E! 🤖",
+              "Look at WALL-E's binocular eyes! He won't ignore me when I talk about Kafka topics...",
+              "WALL-E has a little plant in a boot 🌱. He promised he will never leave me alone!"
+            ]), null, 4200);
+            const wBot = $('#walleBot');
+            if (wBot) {
+              wBot.classList.add('speaking');
+              setTimeout(() => wBot.classList.remove('speaking'), 3000);
+            }
           } else if (currentStop.type === 'gacha' && $('.gacha')) {
             const g = $('.gacha');
             g.classList.add('turn');
@@ -2936,7 +3316,7 @@ function loop(t){
 
           comp.doHop();
           comp.squash = 0.35;
-          if (currentStop.type !== 'gacha') {
+          if (currentStop.type !== 'gacha' && currentStop.type !== 'walle') {
             say(currentStop.say, null, 2800);
           }
         }
@@ -2955,32 +3335,32 @@ function loop(t){
       }
 
     } else if (idle >= 5 && idle < 20 && !docked) {
-      // 4. Cursor Cradle Mode (5s to 20s): Cozy hammock hanging directly from cursor!
+      // 4. Baby Sleeping Mode (5s to 20s): Emo sleeps peacefully like a baby curled up beside cursor
       wandering = false;
       comp.state = 'sleeping';
-      companion.classList.add('cradle-mode');
+      companion.classList.add('baby-sleep');
       comp.colorTint = null;
 
-      // Position visual hanging cradle attached to cursor
-      const cradle = $('#cursorCradle');
-      if (cradle) {
-        cradle.hidden = false;
-        cradle.style.left = (mx - 50) + 'px';
-        cradle.style.top = (my + 4) + 'px';
-      }
-
-      // Emo sits nestled inside the cradle
-      const tx = mx - 28;
-      const ty = my + 14;
-      sx += (tx - sx) * Math.min(1, dt * 6.5);
-      sy += (ty - sy) * Math.min(1, dt * 6.5);
+      // Position Emo nestled right next to cursor
+      const tx = mx + 14;
+      const ty = my + 10;
+      sx += (tx - sx) * Math.min(1, dt * 5.0);
+      sy += (ty - sy) * Math.min(1, dt * 5.0);
       companion.style.transform = `translate(${sx}px, ${sy}px)`;
-      comp.lookAt(0, 4);
+      comp.lookAt(0, 2);
+
+      // Sweet baby snores directly above Emo
+      const snores = $('#emoSnores');
+      if (snores) {
+        snores.hidden = false;
+        snores.style.left = (sx + 36) + 'px';
+        snores.style.top = (sy - 16) + 'px';
+      }
 
     } else {
       // 5. Normal cursor following mode (idle < 5s)
-      const cradle = $('#cursorCradle'); if (cradle) cradle.hidden = true;
-      companion.classList.remove('cradle-mode');
+      const snores = $('#emoSnores'); if (snores) snores.hidden = true;
+      companion.classList.remove('baby-sleep');
       wandering = false;
       comp.colorTint = null;
       if (comp.state === 'sleeping') comp.state = cfg.state;
@@ -2997,7 +3377,7 @@ function loop(t){
         if (t - lastNudge > 1200) {
           lastNudge = t;
           const cx = sx + 32, cy = sy + 32;
-          const candidates = $$('button:not(#semi):not(#semiBtn), a, .case, .cd, .itm, .pst, .ab2-bk, .fold, .lbl, mark, .gacha, .tape-v, .print-fragile, .print-up, .photo, .clip, .spark');
+          const candidates = $$('button:not(#semi):not(#semiBtn), a, .case, .cd, .itm, .pst, .ab2-bk, .fold, .lbl, mark, .gacha, .tape-v, .print-fragile, .print-up, .photo, .clip, .spark, #pokeWalleBtn, #walleBot');
           let closest = null, closestDist = 95;
           for (const el of candidates) {
             if (!el || el.offsetParent === null) continue;
@@ -3249,7 +3629,8 @@ const SFX = {
   pop(){ const a = ctx(); if (!a) return; const t = a.currentTime; tone(a, 720, 180, .12, .3, t); noise(a, .06, 3000, 2000, 1, .2, t); },
   paper(){ const a = ctx(); if (!a) return; const t = a.currentTime; for (let i = 0; i < 8; i++) noise(a, .07, 5000, 3000, 3, .05, t + i*.05 + Math.random()*.02); },
   ding(){ const a = ctx(); if (!a) return; const t = a.currentTime; tone(a, 880, 870, .5, .18, t, 'triangle'); tone(a, 1320, 1310, .6, .12, t + .12, 'triangle'); },
-  nope(){ const a = ctx(); if (!a) return; const t = a.currentTime; tone(a, 220, 180, .14, .2, t, 'square'); tone(a, 180, 150, .18, .2, t + .16, 'square'); }
+  nope(){ const a = ctx(); if (!a) return; const t = a.currentTime; tone(a, 220, 180, .14, .2, t, 'square'); tone(a, 180, 150, .18, .2, t + .16, 'square'); },
+  walleChirp(){ const a = ctx(); if (!a) return; const t = a.currentTime; tone(a, 620, 920, .14, .18, t, 'sine'); tone(a, 920, 1380, .18, .22, t + .12, 'triangle'); noise(a, .07, 1400, 2600, 2, .06, t + .14); }
 };
 function setMute(v){ muted = v; muteB.setAttribute('aria-pressed', String(v)); $('.l', muteB).textContent = v ? 'Sound off' : 'Sound on'; muteB.setAttribute('aria-label', v ? 'Sound is off. Turn sound on' : 'Sound is on. Turn sound off'); try { localStorage.setItem('gacha:mute', v ? '1' : '0'); } catch(e){} }
 setMute(muted); muteB.addEventListener('click', () => setMute(!muted));
