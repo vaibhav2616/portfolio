@@ -1546,7 +1546,6 @@ class Buddy {
       ctx.beginPath(); ctx.moveTo(x1-r, y1-r*.1); ctx.lineTo(x1-r*1.9, y1-r*.4); ctx.moveTo(x2+r, y2-r*.1); ctx.lineTo(x2+r*1.9, y2-r*.4); ctx.stroke();
     }
     ctx.restore();
-    if (asleep && !RM){ ctx.fillStyle = '#6F6A62'; ctx.font = `600 ${W*.11}px sans-serif`; const z = (this.t*.6)%1; ctx.globalAlpha = 1-z; ctx.fillText('z', W*.7+z*W*.08, W*.3-z*W*.15); ctx.globalAlpha=1; }
   }
 }
 /* ================= Emo settings (same as the homepage) ================= */
@@ -1620,7 +1619,21 @@ function goTo(el){ const r = el.getBoundingClientRect(), H = SEMI.hooks, top = H
 function stopTour(){ if (!touring && bar.hidden) return; touring = false; forced = null; clearTimeout(tTimer); bar.hidden = true; }
 function step(i){
   if (!touring) return;
-  if (i >= stops.length){ stopTour(); say(pick(['That\'s the tour. Sixty seconds, give or take my opinions.', 'Done. You may now scroll like a normal person.'])); return; }
+  if (i >= stops.length){
+    stopTour();
+    if (sessionStorage.getItem('emo_grand_tour')) {
+      say('Case 01 tour complete! Traveling to Case 02: High-Throughput Payment Engine in 3... 2... 1... 💳🚀', null, 3400);
+      setTimeout(() => {
+        if (!touring && sessionStorage.getItem('emo_grand_tour')) {
+          sessionStorage.setItem('emo_grand_tour', 'salt');
+          window.location.href = '../salt/';
+        }
+      }, 3000);
+      return;
+    }
+    say(pick(['That\'s the tour. Sixty seconds, give or take my opinions.', 'Done. You may now scroll like a normal person.']));
+    return;
+  }
   const el = stops[i]; $('.n', bar).textContent = (i+1) + ' / ' + stops.length;
   forced = el; goTo(el);
   tTimer = setTimeout(() => { forced = el; const extra = (SEMI.hooks.onStep && SEMI.hooks.onStep(el)) || 0; tTimer = setTimeout(() => step(i+1), 3400 + extra); }, RM ? 100 : 900);
@@ -1634,9 +1647,23 @@ $('button', bar).addEventListener('click', stopTour);
 document.addEventListener('click', e => { if (e.target.closest('[data-semi-tour]')) startTour(); });
 ['wheel','touchstart','keydown'].forEach(t => addEventListener(t, e => { if (touring && !(e.target.closest && e.target.closest('.sm-tourbar,[data-semi-tour]'))) stopTour(); }, {passive:true}));
 
+if (sessionStorage.getItem('emo_grand_tour')) {
+  setTimeout(() => {
+    if (!touring) {
+      say("Arrived at Case 01: AI SRE Pipeline! 🚀 Let's explore the blueprints!", null, 3200);
+      startTour();
+    }
+  }, 1200);
+}
+
 /* ================= movement ================= */
 let mx = innerWidth*.8, my = innerHeight*.7, sx = innerWidth - 90, sy = innerHeight - 120, lastMove = performance.now(), idleFired = false;
-const wake = () => { lastMove = performance.now(); idleFired = false; if (comp.state==='sleeping' && cfg.state !== 'sleeping') comp.state = cfg.state; };
+const wake = () => {
+  sessionStorage.removeItem('emo_grand_tour');
+  lastMove = performance.now();
+  idleFired = false;
+  if (comp.state==='sleeping' && cfg.state !== 'sleeping') comp.state = cfg.state;
+};
 addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; mx = e.clientX; my = e.clientY; wake(); }, {passive:true});
 addEventListener('pointerdown', wake, {passive:true});
 addEventListener('scroll', wake, {passive:true});

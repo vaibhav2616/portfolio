@@ -640,14 +640,9 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
   cursor: grabbing;
 }
 
-/* Baby sleeping animation: gentle floating & breathing */
+/* Baby sleeping animation: gentle resting shadow */
 #semi.baby-sleep {
-  animation: babySleepBreathe 2.8s ease-in-out infinite !important;
-  transform-origin: 50% 50% !important;
-}
-@keyframes babySleepBreathe {
-  0%, 100% { transform: translateY(0) rotate(-3deg); }
-  50% { transform: translateY(-5px) rotate(3deg); }
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.12));
 }
 
 /* Floating baby snores directly above Emo */
@@ -678,16 +673,9 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
   100% { transform: translate(18px, -36px) scale(1.3); opacity: 0; }
 }
 
-/* Delightful squishy purr bounce when petted */
+/* Delightful squishy purr glow when petted */
 #semi.emo-petted {
-  animation: emoPurrSquash 0.65s cubic-bezier(0.25, 1.4, 0.45, 1) !important;
-}
-@keyframes emoPurrSquash {
-  0% { transform: scale(1, 1) rotate(0deg); }
-  25% { transform: scale(1.26, 0.8) rotate(-4deg); }
-  50% { transform: scale(0.86, 1.2) rotate(4deg); }
-  75% { transform: scale(1.1, 0.94) rotate(-2deg); }
-  100% { transform: scale(1, 1) rotate(0deg); }
+  filter: drop-shadow(0 6px 18px rgba(255, 100, 150, 0.45));
 }
 
 /* Floating heart & sparkle particles when petted */
@@ -1185,7 +1173,6 @@ class Buddy {
       ctx.beginPath(); ctx.moveTo(x1-r, y1-r*.1); ctx.lineTo(x1-r*1.9, y1-r*.4); ctx.moveTo(x2+r, y2-r*.1); ctx.lineTo(x2+r*1.9, y2-r*.4); ctx.stroke();
     }
     ctx.restore();
-    if (asleep && !RM){ ctx.fillStyle = '#6F6A62'; ctx.font = `600 ${W*.11}px sans-serif`; const z = (this.t*.6)%1; ctx.globalAlpha = 1-z; ctx.fillText('z', W*.7+z*W*.08, W*.3-z*W*.15); ctx.globalAlpha=1; }
   }
 }
 
@@ -2097,6 +2084,9 @@ function petEmo(source = 'proximity') {
   const wasWandering = wandering;
   wandering = false;
   wanderTarget = null;
+  currentTourEl = null;
+  clearTimeout(tourHopTimer);
+  tourHopPending = false;
   lastMove = now;
   idleFired = false;
 
@@ -2147,6 +2137,141 @@ companion.addEventListener('pointerenter', () => {
 companion.addEventListener('pointerdown', () => petEmo('click'));
 companion.addEventListener('click', () => petEmo('click'));
 
+let tourStepIndex = 0;
+let lastTourStepTime = 0;
+let tourStepInterval = 4600;
+let currentTourEl = null;
+let tourHopTimer = null;
+let tourHopPending = false;
+
+const PAGE_TOUR_LANDMARKS = [
+  {
+    id: 'hero',
+    sel: '#heroH1',
+    say: "Grand tour begins! Starting at the unboxed command center! 📦✨",
+    act: () => spawnEmoTrail(sx + 32, sy + 32, '✨')
+  },
+  {
+    id: 'box',
+    sel: '.box-wrap',
+    say: "The unboxed shipping parcel! Let's check what's packed inside! 📦",
+    act: () => {
+      const b = $('.box-wrap') || $('.btn');
+      if (b) { b.classList.add('fluffy-bounce'); setTimeout(() => b.classList.remove('fluffy-bounce'), 800); }
+    }
+  },
+  {
+    id: 'slip',
+    sel: '#slip',
+    say: "Packing Slip: Distributed Systems, Kafka streaming & high-throughput pipelines! 📋",
+    act: () => spawnBloomingFlower(sx + 32, sy + 32)
+  },
+  {
+    id: 'files-header',
+    sel: '#files .sh',
+    fallbackSel: '#files',
+    say: "Case Files Cabinet! Four production blueprints on file... 🗄️",
+    act: () => { if (typeof openCase === 'function') openCase('sre', true); }
+  },
+  {
+    id: 'case-sre',
+    sel: '.case[data-case="sre"]',
+    fallbackSel: '#files',
+    say: "Case 01: Autonomous SRE & Auto-Triage! Multi-agent log diagnosis! 🤖🚨",
+    act: () => {
+      if (typeof openCase === 'function') openCase('sre', true);
+      spawnBloomingFlower(sx + 32, sy + 32);
+    }
+  },
+  {
+    id: 'case-payment',
+    sel: '.case[data-case="payment"]',
+    fallbackSel: '#files',
+    say: "Case 02: High-throughput ACID payment engine! Zero double-spending! 💳⚡",
+    act: () => {
+      if (typeof openCase === 'function') openCase('payment', true);
+      spawnCandyNom(sx + 32, sy + 32);
+    }
+  },
+  {
+    id: 'case-chassis',
+    sel: '.case[data-case="chassis"]',
+    fallbackSel: '#files',
+    say: "Case 03: Vesuvio Hearth Pizza Delivery REST API! <100ms P99 queries! 🍕",
+    act: () => {
+      if (typeof openCase === 'function') openCase('chassis', true);
+      spawnBloomingFlower(sx + 32, sy + 32);
+    }
+  },
+  {
+    id: 'case-sabziwala',
+    sel: '.case[data-case="sabziwala"]',
+    fallbackSel: '#files',
+    say: "Case 04: Organic Sabziwala real-time inventory engine! 100% order sync! 🥦",
+    act: () => {
+      if (typeof openCase === 'function') openCase('sabziwala', true);
+      spawnSecretKey(sx + 32, sy + 32);
+    }
+  },
+  {
+    id: 'till',
+    sel: '#till',
+    say: "The Career Receipt! Itemised till date — 200+ users, 98% Pytest coverage! 🧾✨",
+    act: () => spawnSecretKey(sx + 32, sy + 32)
+  },
+  {
+    id: 'inside',
+    sel: '#inside',
+    say: "Inside the Box: Reading desk, Kobo e-reader and engineering toolkit! 📚",
+    act: () => spawnCandyNom(sx + 32, sy + 32)
+  },
+  {
+    id: 'reactions',
+    sel: '#reactions',
+    say: "Interactive Reactions workbench! Stamp your thoughts here! 🎨",
+    act: () => {
+      const stamp = pick($$('.stamp-btn') || []);
+      if (stamp) { stamp.classList.add('fluffy-bounce'); setTimeout(() => stamp.classList.remove('fluffy-bounce'), 800); }
+    }
+  },
+  {
+    id: 'gacha',
+    sel: '.gacha',
+    say: "Parting Gift Vending Machine! Turning the crank for a fresh fortune! 🥠✨",
+    act: () => {
+      const g = $('.gacha');
+      if (g) {
+        g.classList.add('turn');
+        setTimeout(() => g.classList.remove('turn'), 900);
+      }
+      say(pick([
+        "🥠 Fortune for Emo: 'A wise cursor will soon return with unlimited headpats.'",
+        "🥠 Fortune for Emo: 'Your chaos index will reach peak cuteness today!'",
+        "🥠 Fortune for Emo: 'Beware of idle mice; where there are no clicks, candy flourishes.'",
+        "🥠 Fortune for Emo: 'The best backend engineers always keep their companion happy.'"
+      ]), null, 4200);
+    }
+  },
+  {
+    id: 'cross-page-hop',
+    sel: '#cabinet',
+    fallbackSel: '#files',
+    say: "Grand tour traveling to Case 01: AI SRE Pipeline in 3... 2... 1... 🚀",
+    isHop: true,
+    url: 'cowork/',
+    nextChain: 'salt/'
+  }
+];
+
+// Check if returning to headquarters from grand tour
+if (sessionStorage.getItem('emo_grand_tour') === 'complete') {
+  sessionStorage.removeItem('emo_grand_tour');
+  setTimeout(() => {
+    if (comp) { comp.doHop(); comp.squash = 0.4; }
+    say("We're back at Headquarters! What an amazing tour! 🥰 Come pet me to play!", null, 4000);
+  }, 1200);
+}
+
 function loop(t){
   const dt = Math.min(.05, (t-last)/1000); last = t;
   if (cfg.on){
@@ -2159,119 +2284,100 @@ function loop(t){
     }
 
     if (idle >= 20 && !docked) {
-      // 1. RANDOM WANDERING MODE (idle >= 20s): Emo roams randomly across the page
+      // 1. GRAND AUTONOMOUS TOUR MODE (idle >= 20s):
+      // Emo traverses the whole webpage (and other pages too).
+      // The screen smoothly follows Emo so Emo is always centered and never vanishes.
       const snores = $('#emoSnores'); if (snores) snores.hidden = true;
       companion.classList.remove('baby-sleep');
 
       if (!wandering) {
         wandering = true;
-        wanderTarget = null;
-        lastWanderHop = 0;
-        wanderInterval = 0;
+        currentTourEl = null;
+        lastTourStepTime = 0;
+        tourStepIndex = 0;
+        tourHopPending = false;
         if (comp.state === 'sleeping') comp.state = 'idle';
         say(pick([
-          "Time for an adventure! 🌸 Strolling around the website!",
-          "I'm off to explore! Come pet me to bring me along! 💕",
-          "Wheee! Exploring on my own! 🐾"
-        ]), null, 3000);
+          "Time for the grand tour! 🐾 Follow me through the website!",
+          "I'm off to explore all the rooms! Come pet me to join in! 💕",
+          "Wheee! Taking a stroll across the entire blueprints! ✨"
+        ]), null, 3200);
       }
 
-      // Pick next random target coordinate or element
-      if (!wanderTarget || t - lastWanderHop > wanderInterval) {
-        lastWanderHop = t;
-        wanderInterval = 3200 + Math.random() * 2600; // 3.2s to 5.8s
+      // Check if it's time to advance to the next landmark across the whole webpage
+      if (!currentTourEl || t - lastTourStepTime > tourStepInterval) {
+        lastTourStepTime = t;
+        tourStepInterval = 4400 + Math.random() * 1200; // 4.4s to 5.6s at each stop
 
-        // 50% chance: Random element on page, 50% chance: Random coordinate
-        if (Math.random() < 0.5) {
-          const candidates = $$('button:not(#semi):not(#semiBtn), a, .case, .cd, .srow, .gacha, .ab2-card, .photo, mark');
-          const visible = candidates.filter(el => {
-            if (!el || el.offsetParent === null) return false;
-            const r = el.getBoundingClientRect();
-            return r.width > 0 && r.height > 0 && r.top >= 40 && r.bottom <= innerHeight && r.left >= 0 && r.right <= innerWidth;
-          });
-          if (visible.length) {
-            const targetEl = pick(visible);
-            const r = targetEl.getBoundingClientRect();
-            wanderTarget = {
-              x: Math.max(50, Math.min(innerWidth - 90, r.left + r.width / 2)),
-              y: Math.max(80, Math.min(innerHeight - 90, r.top + r.height / 2)),
-              el: targetEl,
-              type: targetEl.classList.contains('gacha') ? 'gacha' : 'element'
-            };
-          } else {
-            wanderTarget = {
-              x: 50 + Math.random() * (innerWidth - 130),
-              y: 80 + Math.random() * (innerHeight - 150),
-              type: 'random'
-            };
-          }
+        const lm = PAGE_TOUR_LANDMARKS[tourStepIndex % PAGE_TOUR_LANDMARKS.length];
+        tourStepIndex++;
+
+        if (lm.isHop) {
+          // Cross-page jump to another page
+          say(lm.say, null, 3600);
+          comp.doHop();
+          tourHopPending = true;
+          clearTimeout(tourHopTimer);
+          tourHopTimer = setTimeout(() => {
+            if (wandering && (performance.now() - lastMove) / 1000 >= 20) {
+              sessionStorage.setItem('emo_grand_tour', lm.nextChain || 'salt/');
+              window.location.href = lm.url;
+            }
+          }, 3200);
         } else {
-          wanderTarget = {
-            x: 50 + Math.random() * (innerWidth - 130),
-            y: 80 + Math.random() * (innerHeight - 150),
-            type: 'random'
-          };
-        }
+          tourHopPending = false;
+          currentTourEl = $(lm.sel) || (lm.fallbackSel && $(lm.fallbackSel)) || $('#heroH1');
+          
+          if (lm.say) say(lm.say, null, 3400);
+          if (lm.act) lm.act();
+          comp.doHop();
+          comp.squash = 0.38;
 
-        // Random playful companion event
-        const roll = Math.random();
-        if (roll < 0.25) {
-          spawnBloomingFlower(sx + 32, sy + 32);
-        } else if (roll < 0.45) {
-          spawnCandyNom(sx + 32, sy + 32);
-        } else if (roll < 0.60) {
-          spawnSecretKey(sx + 32, sy + 32);
-        }
-
-        if (wanderTarget.type === 'gacha' && $('.gacha')) {
-          const g = $('.gacha');
-          g.classList.add('turn');
-          setTimeout(() => g.classList.remove('turn'), 800);
-          say(pick([
-            "🥠 Fortune for Emo: 'A wise cursor will soon return with unlimited headpats.'",
-            "🥠 Fortune for Emo: 'Your chaos index will reach peak cuteness today!'",
-            "🥠 Fortune for Emo: 'Beware of idle mice; where there are no clicks, candy flourishes.'",
-            "🥠 Fortune for Emo: 'Today is a glorious day to water flowers and do parkour!'",
-            "🥠 Fortune for Emo: 'The best backend engineers always keep their companion happy.'"
-          ]), null, 4200);
-        } else if (wanderTarget.el) {
-          let bounceEl = wanderTarget.el;
-          if (bounceEl.classList.contains('cd')) bounceEl = bounceEl.querySelector('.cd-in') || bounceEl;
-          if (bounceEl && !bounceEl.classList.contains('fluffy-bounce')) {
-            bounceEl.style.setProperty('--emo-tilt', Math.random() > 0.5 ? '1' : '-1');
-            bounceEl.classList.add('fluffy-bounce');
-            setTimeout(() => bounceEl.classList.remove('fluffy-bounce'), 700);
+          // Smoothly scroll the screen to follow Emo!
+          if (currentTourEl) {
+            const r = currentTourEl.getBoundingClientRect();
+            const docY = window.scrollY + r.top;
+            const targetScrollY = Math.max(0, docY - (innerHeight * 0.38));
+            window.scrollTo({
+              top: targetScrollY,
+              behavior: RM ? 'auto' : 'smooth'
+            });
           }
-        } else if (t - lastNaughtySay > 5500 && Math.random() > 0.4) {
-          lastNaughtySay = t;
-          say(pick([
-            "La la la~ Exploring the DOM tree! 🌸",
-            "Doing parkour on the CSS grid! ✨",
-            "Move your cursor over me to pet me! 💕",
-            "Watering the backend microservices... 🌼",
-            "Snacking on cache cookies! 🍬",
-            "Looking for secrets behind the cards! 🗝️"
-          ]), null, 2600);
         }
-
-        comp.doHop();
-        comp.squash = 0.35;
       }
 
-      // Smooth random wandering movement
-      const wx = wanderTarget ? wanderTarget.x - 32 : innerWidth / 2 - 32;
-      const wy = wanderTarget ? wanderTarget.y - 32 : innerHeight / 2 - 32;
-      sx += (wx - sx) * Math.min(1, dt * 3.4);
-      sy += (wy - sy) * Math.min(1, dt * 3.4);
-      companion.style.transform = `translate(${sx}px, ${sy}px)`;
-      comp.lookAt(wx - sx, wy - sy);
+      // Compute Emo's destination in current viewport coordinates
+      let targetX = innerWidth / 2 - 32;
+      let targetY = innerHeight * 0.38 - 32;
 
-      if (t - lastTrail > 180) {
+      if (currentTourEl && currentTourEl.offsetParent !== null) {
+        const r = currentTourEl.getBoundingClientRect();
+        targetX = r.left + Math.min(r.width, 240) * 0.5 - 32;
+        targetY = r.top + Math.min(r.height, 140) * 0.5 - 32;
+      }
+
+      // Strictly clamp target position within visible viewport so Emo stays visible
+      targetX = Math.max(50, Math.min(innerWidth - 90, targetX));
+      targetY = Math.max(80, Math.min(innerHeight - 110, targetY));
+
+      // Smooth lerp movement towards landmark
+      sx += (targetX - sx) * Math.min(1, dt * 3.6);
+      sy += (targetY - sy) * Math.min(1, dt * 3.6);
+
+      // STRICT CLAMP to prevent Emo from ever leaving the screen or vanishing
+      sx = Math.max(40, Math.min(innerWidth - 88, sx));
+      sy = Math.max(68, Math.min(innerHeight - 100, sy));
+
+      companion.style.transform = `translate(${sx}px, ${sy}px)`;
+      comp.lookAt(targetX - sx, targetY - sy);
+
+      // Cute trail particles
+      if (t - lastTrail > 190) {
         lastTrail = t;
         spawnEmoTrail(sx + 32, sy + 32, pick(['✨', '🐾', '⭐', '🌸', '💫']));
       }
 
-      // Proximity check: petting triggers when cursor moves close to Emo!
+      // Petting proximity check: when user moves cursor close to Emo, pet him!
       const dist = Math.hypot((sx + 32) - mx, (sy + 32) - my);
       if (dist < 55) {
         petEmo('proximity');
@@ -2280,7 +2386,9 @@ function loop(t){
     } else if (idle >= 5 && idle < 20 && !docked) {
       // 2. BABY SLEEPING MODE (5s to 20s): Emo sleeps peacefully like a baby curled up beside cursor
       wandering = false;
-      wanderTarget = null;
+      currentTourEl = null;
+      clearTimeout(tourHopTimer);
+      tourHopPending = false;
       comp.state = 'sleeping';
       companion.classList.add('baby-sleep');
 
@@ -2289,15 +2397,20 @@ function loop(t){
       const ty = my + 10;
       sx += (tx - sx) * Math.min(1, dt * 5.0);
       sy += (ty - sy) * Math.min(1, dt * 5.0);
+      
+      // Strict safety clamp
+      sx = Math.max(40, Math.min(innerWidth - 88, sx));
+      sy = Math.max(68, Math.min(innerHeight - 100, sy));
+
       companion.style.transform = `translate(${sx}px, ${sy}px)`;
       comp.lookAt(0, 2);
 
-      // Floating baby snores directly above Emo
+      // Floating baby snores directly above Emo (ONLY ONE source of snores!)
       const snores = $('#emoSnores');
       if (snores) {
         snores.hidden = false;
         snores.style.left = (sx + 36) + 'px';
-        snores.style.top = (sy - 16) + 'px';
+        snores.style.top = (sy - 24) + 'px';
       }
 
     } else {
@@ -2305,13 +2418,20 @@ function loop(t){
       const snores = $('#emoSnores'); if (snores) snores.hidden = true;
       companion.classList.remove('baby-sleep');
       wandering = false;
-      wanderTarget = null;
+      currentTourEl = null;
+      clearTimeout(tourHopTimer);
+      tourHopPending = false;
       if (comp.state === 'sleeping') comp.state = cfg.state;
 
       const tx = docked ? innerWidth - 80 : mx + 18;
       const ty = docked ? innerHeight - 140 : my + 14;
       sx += (tx - sx) * Math.min(1, dt * 6.5);
       sy += (ty - sy) * Math.min(1, dt * 6.5);
+      
+      // Strict safety clamp
+      sx = Math.max(40, Math.min(innerWidth - 88, sx));
+      sy = Math.max(68, Math.min(innerHeight - 100, sy));
+
       companion.style.transform = `translate(${sx}px, ${sy}px)`;
       comp.lookAt(mx - sx - 32, my - sy - 32);
 
