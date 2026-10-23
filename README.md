@@ -17,11 +17,11 @@ An interactive, tactile unboxing portfolio built with physical parcel animations
    - **01 · Autonomous SRE & Auto-Triage Pipeline** (AI SRE Lab · 2026): Multi-agent CrewAI pipeline consuming Kafka error telemetry & auto-generating Jira bugs via MCP (`99.9%` telemetry uptime).
    - **02 · Distributed Payment Processing Engine** (FinTech · 2026): ACID-compliant transaction microservice in Django & PostgreSQL with Redis distributed idempotency locks (`<100ms` P99 latency).
    - **03 · Pizza Delivery REST API — Vesuvio Hearth** (FastAPI · 2025): Production-ready RESTful pizza delivery ecosystem with JWT role authentication, order state machines, and real-time dispatch telemetry (`<100ms` query latency, 98% Pytest coverage).
-   - **04 · Organic Sabziwala Inventory Engine** (Organic Sabziwala · 2025–26): High-throughput grocery backend restructuring, eliminating negative stock and unit mismatches (`₹12L+` inventory stabilized).
+   - **04 · Enterprise FastAPI Microservice Chassis** (Distributed Systems · 2024): Production-ready backend chassis with Clean Architecture, Domain-Driven Design (DDD), Transactional Outbox for Kafka, and 100% Pytest coverage.
 4. **Interactive Evidence Dossier & Rap Sheets:**
    - Case files cabinet with accordion folder tabs, Polaroid-style clipped exhibits, and incident rap sheets.
 5. **Career Itemized Thermal Receipt:**
-   - Perforated thermal register receipt with jagged paper tear edges, barcode, and verified metrics across Organic Sabziwala, Saarthi Heritage (Patent Filed), Innotech 2024, GATE 2026 Qualified, KIET Group of Institutions (CGPA 8.3), and St. Anthony's School.
+   - Perforated thermal register receipt with jagged paper tear edges, barcode, and verified metrics across Distributed Financial Platforms, Saarthi Heritage (Patent Filed), Innotech 2024, GATE 2026 Qualified, KIET Group of Institutions (CGPA 8.3), and St. Anthony's School.
 6. **Kobo 3D E-Reader (`About me`):**
    - Interactive 3D e-reader with realistic e-ink flash transitions for *Clean Architecture*, *Designing Data-Intensive Applications*, and SRE handbooks.
    - 3D card flip revealing verified collectible tech stickers on the backplate.

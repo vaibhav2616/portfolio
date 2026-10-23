@@ -133,14 +133,14 @@ export const AboutReader: React.FC<AboutReaderProps> = ({ books }) => {
               <div className="pt-6 border-t border-kraft-300/60 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
                 {currentBook.starLink ? (
                   <a
-                    href="https://www.harpreetjaggi.in/star/"
+                    href={currentBook.starLink}
                     target="_blank"
                     rel="noreferrer"
                     onClick={() => sound.playSuccess()}
                     className="inline-flex items-center gap-1.5 text-amber-900 font-bold hover:underline bg-amber-100/70 px-3 py-1.5 rounded-lg border border-amber-300/80 transition"
                   >
                     <Sparkles size={13} className="text-amber-600" />
-                    <span>DO THE SLOW MATHS: FIND MY STAR →</span>
+                    <span>EXPLORE GITHUB PROJECTS →</span>
                     <ExternalLink size={12} />
                   </a>
                 ) : (

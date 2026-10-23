@@ -36,15 +36,15 @@ export const BoxHero: React.FC<BoxHeroProps> = ({
         {/* Left Column: Heading and Intro */}
         <div className="lg:col-span-7 space-y-5">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-kraft-950 tracking-tight leading-[1.1]">
-            Harpreet Jaggi, <span className="italic font-normal text-amber-800">unboxed.</span>
+            Vaibhav Rastogi, <span className="italic font-normal text-amber-800">unboxed.</span>
           </h1>
 
           <p className="text-base sm:text-lg text-kraft-800 leading-relaxed font-sans max-w-xl">
-            I design it, build it and ship it. Senior product designer at{' '}
+            I architect it, build it and scale it. Backend Systems Engineer specializing in{' '}
             <strong className="text-kraft-950 underline decoration-amber-500 underline-offset-4 font-semibold">
-              Kendal
+              high-throughput distributed architectures
             </strong>
-            . Before that: Parallel, SALT, Toddle and Atlassian.
+            , Kafka event streaming, financial transaction engines, and autonomous AI-driven SRE pipelines.
           </p>
 
           {/* Action CTAs */}

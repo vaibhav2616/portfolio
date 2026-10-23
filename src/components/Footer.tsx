@@ -70,46 +70,38 @@ export const Footer: React.FC<FooterProps> = ({
           <ul className="space-y-2 text-xs font-sans text-kraft-700">
             <li>
               <a
-                href="https://www.harpreetjaggi.in/cowork/"
-                target="_blank"
-                rel="noreferrer"
+                href="cowork/"
                 onClick={() => sound.playClick()}
                 className="hover:text-kraft-950 hover:underline"
               >
-                CoWork (Kendal)
+                AI SRE Pipeline (Jira Triage)
               </a>
             </li>
             <li>
               <a
-                href="https://www.harpreetjaggi.in/salt/"
-                target="_blank"
-                rel="noreferrer"
+                href="salt/"
                 onClick={() => sound.playClick()}
                 className="hover:text-kraft-950 hover:underline"
               >
-                SALT SUMMARY
+                Payment Engine (Distributed Chassis)
               </a>
             </li>
             <li>
               <a
-                href="https://www.harpreetjaggi.in/toddle/"
-                target="_blank"
-                rel="noreferrer"
+                href="toddle/"
                 onClick={() => sound.playClick()}
                 className="hover:text-kraft-950 hover:underline"
               >
-                Toddle Insights
+                Pizza Delivery REST API
               </a>
             </li>
             <li>
               <a
-                href="https://www.harpreetjaggi.in/atlassian/"
-                target="_blank"
-                rel="noreferrer"
+                href="atlassian/"
                 onClick={() => sound.playClick()}
                 className="hover:text-kraft-950 hover:underline"
               >
-                Atlassian SUMMARY
+                Enterprise FastAPI Chassis
               </a>
             </li>
           </ul>
