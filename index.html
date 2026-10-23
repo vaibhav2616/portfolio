@@ -678,7 +678,6 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
   pointer-events: auto !important; /* Allow direct cursor petting & pats */
   cursor: grab;
   will-change: transform;
-  transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.4, 1);
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.18));
 }
 #semi:active {
@@ -1538,10 +1537,12 @@ document.addEventListener('click', e => { const t = e.target.closest('button,a')
   clicks = clicks.filter(c => now - c.t < 1200 && c.el === t); clicks.push({t:now, el:t}); if (clicks.length >= 4){ clicks = []; react('rage', true); } });
 
 let mx = Math.max(160, innerWidth * 0.22), my = Math.max(220, innerHeight * 0.28), sx = mx, sy = my;
+if (companion) companion.style.transform = `translate(${sx}px, ${sy}px)`;
 let lastMove = performance.now(), idleFired = false;
 let wandering = false, wanderTarget = null, lastWanderHop = 0, lastTrail = 0, wanderInterval = 0;
 let lastMouseX = mx, lastMouseY = my, mouseSpeed = 0, lastSpeedCheck = performance.now();
 let lastNaughtySay = 0;
+let sleepCursorX = mx, sleepCursorY = my, wanderStartTime = 0;
 
 const wake = () => {
   lastMove = performance.now();
@@ -1568,10 +1569,13 @@ addEventListener('pointermove', e => {
   my = e.clientY;
 
   if (wandering) {
-    // When wandering: move cursor to Emo to pet and pat him!
-    const emoDist = Math.hypot((sx + 32) - mx, (sy + 32) - my);
-    if (emoDist < 55) {
-      if (typeof petEmo === 'function') petEmo('proximity');
+    // When wandering: user moves cursor to catch Emo!
+    const movedFromRest = Math.hypot(e.clientX - sleepCursorX, e.clientY - sleepCursorY);
+    if (movedFromRest > 20) {
+      const emoDist = Math.hypot((sx + 32) - mx, (sy + 32) - my);
+      if (emoDist < 52) {
+        if (typeof petEmo === 'function') petEmo('catch');
+      }
     }
   } else {
     if (comp && comp.state === 'sleeping' && mouseSpeed > 2200 && now - lastNaughtySay > 4000) {
@@ -2396,10 +2400,10 @@ function petEmo(source = 'proximity') {
   // Affectionate dialogue
   if (wasWandering) {
     say(pick([
-      "Purrrrrr~ 🥰 Headpats are the best! I'm coming along with you!",
-      "Awww, pats! ❤️ You found me! Lead the way, cursor friend!",
-      "*happy wiggles* 🥰 I'm following you again! Let's explore!",
-      "Purrr~ 🥰 My favorite cursor is back! I'm right behind you!",
+      "Purrrrrr~ 🥰 You caught me! I'm coming along with you!",
+      "Awww, pats! ❤️ You caught me! Lead the way, cursor friend!",
+      "*happy wiggles* 🥰 I'm following you again! Let's explore together!",
+      "Purrr~ 🥰 My favorite cursor caught me! I'm right behind you!",
       "Hehe that tickles! 💕 I'll come along everywhere you go!"
     ]), null, 3400);
   } else {
@@ -2413,7 +2417,12 @@ function petEmo(source = 'proximity') {
 }
 
 companion.addEventListener('pointerenter', () => {
-  if (wandering) petEmo('hover');
+  if (wandering) {
+    const movedFromRest = Math.hypot(mx - sleepCursorX, my - sleepCursorY);
+    if (movedFromRest > 20 && performance.now() - wanderStartTime > 800) {
+      petEmo('catch');
+    }
+  }
 });
 companion.addEventListener('pointerdown', () => petEmo('click'));
 companion.addEventListener('click', () => petEmo('click'));
@@ -2573,6 +2582,9 @@ function loop(t){
 
       if (!wandering) {
         wandering = true;
+        sleepCursorX = mx;
+        sleepCursorY = my;
+        wanderStartTime = performance.now();
         currentTourEl = null;
         lastTourStepTime = 0;
         tourStepIndex = 0;
@@ -2580,7 +2592,7 @@ function loop(t){
         if (comp.state === 'sleeping') comp.state = 'idle';
         say(pick([
           "Time for the grand tour! 🐾 Follow me through the website!",
-          "I'm off to explore all the rooms! Come pet me to join in! 💕",
+          "I'm off to explore all the rooms! Catch me to bring me back! 💕",
           "Wheee! Taking a stroll across the entire blueprints! ✨"
         ]), null, 3200);
       }
@@ -2656,12 +2668,6 @@ function loop(t){
       if (t - lastTrail > 190) {
         lastTrail = t;
         spawnEmoTrail(sx + 32, sy + 32, pick(['✨', '🐾', '⭐', '🌸', '💫']));
-      }
-
-      // Petting proximity check: when user moves cursor close to Emo, pet him!
-      const dist = Math.hypot((sx + 32) - mx, (sy + 32) - my);
-      if (dist < 55) {
-        petEmo('proximity');
       }
 
     } else if (idle >= 5 && idle < 20 && !docked) {
