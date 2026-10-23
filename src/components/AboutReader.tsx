@@ -166,7 +166,7 @@ export const AboutReader: React.FC<AboutReaderProps> = ({ books }) => {
                     FRAGILE: HANDLE WITH CARE
                   </div>
                   <div className="bg-blue-500 text-white p-3 rounded-lg font-mono text-xs font-bold transform -rotate-6 shadow-md">
-                    BENGALURU TECH CLUB
+                    GATE 2026 CS QUALIFIED
                   </div>
                   <div className="bg-emerald-500 text-emerald-950 p-3 rounded-lg font-mono text-xs font-bold transform rotate-3 shadow-md">
                     CHAI FUELLED
@@ -175,7 +175,7 @@ export const AboutReader: React.FC<AboutReaderProps> = ({ books }) => {
                     NO REFUNDS
                   </div>
                   <div className="bg-kraft-200 text-kraft-900 p-3 rounded-lg font-mono text-xs font-bold transform rotate-4 shadow-md">
-                    KHUSHI ★ 8.81 MAG
+                    DSA · VAIBHAV123I
                   </div>
                 </div>
               </div>

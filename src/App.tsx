@@ -73,15 +73,15 @@ const PROJECTS: ProjectItem[] = [
   },
   {
     num: '04',
-    title: 'FastAPI Chassis',
-    org: 'MICROSERVICES',
-    period: '2024–25',
-    tagline: 'Production-grade Clean Architecture & DDD chassis.',
-    description: 'Production microservice foundation implementing Domain-Driven Design (DDD), Transactional Outbox pattern, RFC 7807 problem details, structured logging, and distributed idempotency.',
-    metric: '100%',
-    metricLabel: 'Pytest Domain Coverage',
+    title: 'Insurance Prediction',
+    org: 'MACHINE LEARNING',
+    period: '2025',
+    tagline: 'End-to-end ML pipeline with R² = 0.87 accuracy & sub-150ms predictions.',
+    description: 'Predictive insurance pricing pipeline trained with Gradient Boosting and feature crosses (BMI x Smoker), served via async FastAPI endpoints and interactive Streamlit UI in Docker.',
+    metric: 'R² = 0.87',
+    metricLabel: 'Model Predictive Accuracy',
     link: 'atlassian/',
-    highlights: ['Clean Architecture', 'Domain-Driven Design', 'RFC 7807 Specs'],
+    highlights: ['Gradient Boosting ML', 'FastAPI Async Engine', 'Streamlit UI + Docker'],
   },
 ];
 
@@ -113,20 +113,23 @@ const PACKING_SLIP_ITEMS: PackingItem[] = [
   },
   {
     qty: '1 ×',
-    item: 'Architecture',
-    description: 'Clean Architecture, DDD & Transactional Outbox.',
-    proof: 'SEE FASTAPI CHASSIS →',
+    item: 'Machine Learning',
+    description: 'Predictive ML pipelines & sub-150ms Streamlit UI.',
+    proof: 'SEE INSURANCE PREDICTION →',
     proofLink: 'atlassian/',
-    expandedDetails: 'Modular decoupled domain entities with RFC 7807 problem details, distributed idempotency keys, and comprehensive Pytest test suites.',
+    expandedDetails: 'Multi-factor feature scaling, interaction cross engineering, and hyperparameter-tuned gradient boosting reaching R² = 0.87 with containerized async FastAPI serving.',
   },
 ];
 
 // Career Receipt Records
 const CAREER_ENTRIES: ReceiptEntry[] = [
-  { company: 'DISTRIBUTED FINANCIAL CHASSIS', role: 'Backend Systems Engineer · High-Throughput Engines', period: '2024–26' },
+  { company: 'ORGANIC SABZIWALA', role: 'Backend Systems Intern · B2B + B2C Grocery Platform', period: 'DEC 2025 – MAY 2026' },
+  { company: 'DISTRIBUTED FINANCIAL CHASSIS', role: 'Backend Systems & ACID Transaction Architecture', period: '2026' },
   { company: 'SAARTHI (PATENT FILED)', role: 'Lead Architect · AR/VR Cultural Heritage Platform', period: 'DEC 2024' },
   { company: 'INNOTECH 2024', role: 'Platform Lead & Project Finalist', period: '2024' },
-  { company: 'COMPUTER SCIENCE & ENGINEERING', role: 'B.Tech Computer Science & Engineering · Core Systems', period: 'EDU', type: 'edu' },
+  { company: 'QUALIFIED GATE 2026', role: 'Computer Science & IT · National Examination', period: '2026' },
+  { company: 'KIET GROUP OF INSTITUTIONS', role: 'B.Tech Information Technology · CGPA 8.3', period: '2023–2027', type: 'edu' },
+  { company: "ST. ANTHONY'S SCHOOL", role: 'Senior Secondary CBSE · 85%', period: '2021–2022', type: 'edu' },
 ];
 
 // Kobo Bookshelf

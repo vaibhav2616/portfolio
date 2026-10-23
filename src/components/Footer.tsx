@@ -101,7 +101,7 @@ export const Footer: React.FC<FooterProps> = ({
                 onClick={() => sound.playClick()}
                 className="hover:text-kraft-950 hover:underline"
               >
-                Enterprise FastAPI Chassis
+                Insurance Premium Prediction (ML)
               </a>
             </li>
           </ul>
@@ -145,6 +145,18 @@ export const Footer: React.FC<FooterProps> = ({
               >
                 <BookOpen size={13} />
                 <span>GitHub ↗</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://leetcode.com/u/vaibhav123i/"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => sound.playClick()}
+                className="inline-flex items-center gap-1.5 hover:text-amber-800 hover:underline"
+              >
+                <BookOpen size={13} />
+                <span>LeetCode (DSA · vaibhav123i) ↗</span>
               </a>
             </li>
           </ul>

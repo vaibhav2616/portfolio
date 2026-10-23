@@ -22,7 +22,7 @@ export const BoxHero: React.FC<BoxHeroProps> = ({
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-amber-600 animate-ping inline-block" />
           <span className="uppercase tracking-widest font-bold">
-            BACKEND SYSTEMS & DISTRIBUTED PLATFORMS ENGINEER · GHAZIABAD / NCR
+            IT STUDENT &amp; BACKEND SYSTEMS INTERN · GHAZIABAD / NCR
           </span>
         </div>
         <div className="flex items-center gap-3 text-kraft-500">
@@ -40,11 +40,11 @@ export const BoxHero: React.FC<BoxHeroProps> = ({
           </h1>
 
           <p className="text-base sm:text-lg text-kraft-800 leading-relaxed font-sans max-w-xl">
-            I architect it, build it and scale it. Backend Systems Engineer specializing in{' '}
+            I architect it, build it and scale it. IT Student at KIET Group of Institutions &amp; Backend Systems Intern at{' '}
             <strong className="text-kraft-950 underline decoration-amber-500 underline-offset-4 font-semibold">
-              high-throughput distributed architectures
+              Organic Sabziwala
             </strong>
-            , Kafka event streaming, financial transaction engines, and autonomous AI-driven SRE pipelines.
+            . Specializing in high-throughput distributed systems, Kafka event streaming, predictive ML pipelines, and strong Data Structures &amp; Algorithms (GATE 2026 CS Qualified · LeetCode: vaibhav123i).
           </p>
 
           {/* Action CTAs */}

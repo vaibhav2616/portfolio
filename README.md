@@ -1,6 +1,6 @@
-# Vaibhav Rastogi — Backend Systems & Distributed Platforms Engineer
+# Vaibhav Rastogi — IT Student & Backend Systems Engineer
 
-> High-throughput distributed backends, ACID event streaming, and resilient cloud architectures.
+> High-throughput distributed backends, ACID event streaming, predictive ML pipelines, and Data Structures & Algorithms (DSA).
 
 An interactive, tactile unboxing portfolio built with physical parcel animations, 3D CSS projective transforms, HTML5 Canvas interactive companion (**Emo**), zero-dependency procedural Web Audio API, and engineering case files.
 
@@ -15,21 +15,30 @@ An interactive, tactile unboxing portfolio built with physical parcel animations
    - 10 collectible engineering artifacts flying out on scroll: *Designing Data-Intensive Applications*, load-bearing Redis cache pot, kadak chai, embedded IoT board, mechanical keyboard switch, RFC 7807 problem error log, origami crane, AWS/Cisco certification stamps, bubble wrap, and packing paper.
 3. **Core Engineering Case Files:**
    - **01 · Autonomous SRE & Auto-Triage Pipeline** (AI SRE Lab · 2026): Multi-agent CrewAI pipeline consuming Kafka error telemetry & auto-generating Jira bugs via MCP (`99.9%` telemetry uptime).
-   - **02 · Distributed Payment Processing Engine** (FinTech · 2026): ACID-compliant transaction microservice in Django & PostgreSQL with Redis distributed idempotency locks (`<100ms` P99 latency).
+   - **02 · Distributed Payment Processing Engine** (FinTech · 2026): ACID-compliant transaction microservice in Django & PostgreSQL with Redis distributed idempotency locks (`<100ms` P99 latency, Δ = ₹0.00 zero-sum ledger).
    - **03 · Pizza Delivery REST API — Vesuvio Hearth** (FastAPI · 2025): Production-ready RESTful pizza delivery ecosystem with JWT role authentication, order state machines, and real-time dispatch telemetry (`<100ms` query latency, 98% Pytest coverage).
-   - **04 · Enterprise FastAPI Microservice Chassis** (Distributed Systems · 2024): Production-ready backend chassis with Clean Architecture, Domain-Driven Design (DDD), Transactional Outbox for Kafka, and 100% Pytest coverage.
+   - **04 · Insurance Premium Prediction** (Machine Learning · 2025): End-to-end ML regression pipeline predicting insurance premiums with R² = 0.87 (+22% accuracy boost over baseline), sub-150ms predictions, and containerized Streamlit + FastAPI UI in Docker.
 4. **Interactive Evidence Dossier & Rap Sheets:**
    - Case files cabinet with accordion folder tabs, Polaroid-style clipped exhibits, and incident rap sheets.
-5. **Career Itemized Thermal Receipt:**
-   - Perforated thermal register receipt with jagged paper tear edges, barcode, and verified metrics across Distributed Financial Platforms, Saarthi Heritage (Patent Filed), Innotech 2024, GATE 2026 Qualified, KIET Group of Institutions (CGPA 8.3), and St. Anthony's School.
-6. **Kobo 3D E-Reader (`About me`):**
+5. **Career Itemized Thermal Receipt & Internship:**
+   - Perforated thermal register receipt with jagged paper tear edges, barcode, and verified milestones across:
+     - **Backend Systems Intern at Organic Sabziwala** (B2B + B2C Grocery Platform · Dec 2025 – May 2026): Diagnosed and resolved inventory inconsistencies (negative stock, unit mismatch) and optimized backend request/response handling.
+     - **Distributed Financial Chassis** (Backend Systems Engineer · 2026)
+     - **Saarthi (Patent Filed)** (Lead Architect · AR/VR Cultural Heritage Platform · Dec 2024 · Innotech 2024 Finalist)
+     - **Qualified GATE 2026 (Computer Science & IT)**
+     - **KIET Group of Institutions, AKTU** (B.Tech in Information Technology · CGPA: 8.3 · 2023–2027)
+     - **St. Anthony's School, CBSE** (Senior Secondary Education · 85% · 2021–2022)
+6. **Data Structures & Algorithms (DSA):**
+   - Qualified GATE 2026 in Computer Science & Information Technology.
+   - Competitive programming and algorithm optimization on LeetCode ([vaibhav123i](https://leetcode.com/u/vaibhav123i/)) spanning graphs, dynamic programming, trees, and system design.
+7. **Kobo 3D E-Reader (`About me`):**
    - Interactive 3D e-reader with realistic e-ink flash transitions for *Clean Architecture*, *Designing Data-Intensive Applications*, and SRE handbooks.
    - 3D card flip revealing verified collectible tech stickers on the backplate.
-7. **Emo Companion:**
+8. **Emo Companion:**
    - Interactive HTML5 Canvas companion following cursor with gaze tracking, squashing physics, and custom speech bubbles.
    - Playful, childishly naughty resting behavior: whenever the cursor rests near interactive elements, Emo playfully taps and bounces them with bouncy elastic animations!
    - Customizer drawer with cultural color palettes (`Haldi`, `Kesar`, `Gulmohar`, `Mehendi`, `Jaipur blue`, `Jamun`, `Chai`), shapes, and materials.
-8. **Parting Gacha Machine:**
+9. **Parting Gacha Machine:**
    - Physical cardboard gacha dispenser with rotary crank physics, secret unlock passwords, and sound effects.
 
 ---
@@ -62,4 +71,6 @@ npm run build
 
 - **GitHub:** [@vaibhav2616](https://github.com/vaibhav2616)
 - **LinkedIn:** [vaibhav-rastogi-26asvr](https://www.linkedin.com/in/vaibhav-rastogi-26asvr/)
-- **Email:** vaibhav.2327it1108@kiet.edu
+- **LeetCode (DSA):** [vaibhav123i](https://leetcode.com/u/vaibhav123i/)
+- **Email:** vaibhav.2327it1108@kiet.edu · rastogiv215@gmail.com
+- **Phone:** +91-7275059297

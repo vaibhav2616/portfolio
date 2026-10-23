@@ -1,7 +1,7 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <style>.flag,#fbOpen,.hn-fb{display:none!important}</style>
 <meta charset="utf-8">
-<title>Enterprise FastAPI Microservice Chassis · Case Study by Vaibhav Rastogi</title>
+<title>Insurance Premium Prediction · Case Study by Vaibhav Rastogi</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&display=swap"><style>
 /* ================= global nav + Semi: identical on every page ================= */
 .hn{--hn-paper:#FBF7EE; --hn-card:#FFFFFF; --hn-ink:#16130F; --hn-ink2:#4F4A42; --hn-ink3:#6F6A62; --hn-line:#E3DACA; --hn-yellow:#FFD23F; --hn-kraft:#C8935A; --hn-hover:#F0E7D6;
@@ -152,58 +152,58 @@ footer{padding:0 0 40px; font-size:13px; color:var(--ink3)}
     <a class="sm" href="../cowork/">AI SRE Pipeline <span>CASE 01</span></a>
     <a class="sm" href="../salt/">Payment Engine <span>CASE 02</span></a>
     <a class="sm" href="../toddle/">Pizza Delivery API <span>CASE 03</span></a>
-    <a class="sm" href="./" aria-current="page">FastAPI Chassis <span>CASE 04 · SUMMARY</span></a>
+    <a class="sm" href="./" aria-current="page">Insurance Prediction <span>CASE 04 · SUMMARY</span></a>
   </nav>
 </header>
 <main id="top">
 <!-- ==========================================================================
-     [CASE STUDY SUMMARY - PROJECT 04: ENTERPRISE FASTAPI MICROSERVICE CHASSIS]
-     GitHub: https://github.com/vaibhav2616/enterprise-fastapi-chassis
+     [CASE STUDY SUMMARY - PROJECT 04: INSURANCE PREMIUM PREDICTION]
+     GitHub: https://github.com/vaibhav2616/Insurance-Premium-Prediction
      - Hero Head & Metadata: .eb, h1
      - Problem / Role / What I made / Results: dl.tldr
      - Figures & Metric Callouts: .w figure, .nums
      ========================================================================== -->
 <section class="top" data-placeholder="case-04-hero"><div class="w">
-  <p class="eb" data-placeholder="case-04-meta"><b>Case 04</b> · Enterprise FastAPI Chassis · Systems Architecture</p>
-  <h1 data-placeholder="case-04-title">Enterprise FastAPI Chassis: Clean Architecture, DDD & Transactional Outbox.</h1>
-  <p class="soon"><i>Production Spec</i><span><b>Production-ready microservice foundation</b> built with Python 3.12, async SQLAlchemy 2.0, PostgreSQL, Redis, and Kafka event outbox. Source code on <a href="https://github.com/vaibhav2616/enterprise-fastapi-chassis" target="_blank" rel="noopener">GitHub ↗</a>.</span></p>
-  <dl class="tldr" data-note="Clean Architecture, DDD, and Transactional Outbox. Production-grade backend engineering." data-placeholder="case-04-tldr">
-    <div data-placeholder="case-04-problem"><dt>Problem</dt><dd>Typical Python backends tightly couple HTTP endpoints directly to ORM models, causing dual-write hazards across databases and message brokers, untestable business logic, and severe latency spikes under concurrent loads.</dd></div>
-    <div data-placeholder="case-04-role"><dt>Role</dt><dd>Systems Architect & Core Engineer · Designed and built the complete repository architecture, asynchronous persistence layer, domain modeling, and automated CI test pipeline.</dd></div>
-    <div data-placeholder="case-04-shipped"><dt>What I made</dt><dd>A production-ready enterprise chassis implementing Onion Architecture / DDD, AsyncIO connection pooling, Pydantic v2 validation, Redis caching, structured Prometheus telemetry, and a PostgreSQL Transactional Outbox relay for Apache Kafka.</dd></div>
-    <div data-placeholder="case-04-results"><dt>Results</dt><dd><span class="r"><b>100% Pytest test coverage</b> across all domain aggregates, value objects, and application use-case boundaries.</span><span class="r"><b>&lt; 12ms P99 latency</b> under sustained concurrent query loads via asyncpg connection multiplexing.</span><span class="r"><b>Zero dual-write hazards</b> with transactional consistency guaranteed by the PostgreSQL Outbox pattern.</span><span class="src">Source: <a href="https://github.com/vaibhav2616/enterprise-fastapi-chassis" target="_blank" rel="noopener" style="color:var(--acc);font-weight:600">vaibhav2616/enterprise-fastapi-chassis</a></span></dd></div>
+  <p class="eb" data-placeholder="case-04-meta"><b>Case 04</b> · Insurance Premium Prediction · Machine Learning &amp; Deployment</p>
+  <h1 data-placeholder="case-04-title">Predicting Insurance Premiums with ML, FastAPI &amp; Streamlit.</h1>
+  <p class="soon"><i>Production Spec</i><span><b>End-to-end Machine Learning Pipeline &amp; Deployment</b> achieving R² = 0.87, sub-150ms prediction latency, and interactive Streamlit UI. View repository on <a href="https://github.com/vaibhav2616/Insurance-Premium-Prediction" target="_blank" rel="noopener">GitHub ↗</a>.</span></p>
+  <dl class="tldr" data-note="Machine Learning regression pipeline, sub-150ms inference, and Streamlit user interface." data-placeholder="case-04-tldr">
+    <div data-placeholder="case-04-problem"><dt>Problem</dt><dd>Traditional actuarial pricing tables rely on static heuristics and coarse categorization, leading to inaccurate quotes, lack of transparent risk factor attribution, and high calculation latency for client quotes.</dd></div>
+    <div data-placeholder="case-04-role"><dt>Role</dt><dd>Machine Learning &amp; Backend Engineer · Engineered multi-factor feature preprocessing, trained and tuned gradient boosted regression models, developed async FastAPI prediction endpoints, and containerized the Streamlit UI with Docker.</dd></div>
+    <div data-placeholder="case-04-shipped"><dt>What I made</dt><dd>An end-to-end ML pipeline predicting insurance premiums based on multi-variable biometrics and lifestyle indicators, deployed via asynchronous FastAPI REST endpoints and tested by 10+ users on a real-time Streamlit dashboard.</dd></div>
+    <div data-placeholder="case-04-results"><dt>Results</dt><dd><span class="r"><b>R² = 0.87 accuracy score</b>, improving prediction accuracy by 22% over baseline multiple regression.</span><span class="r"><b>Sub-150ms prediction latency</b> tested across 10+ users with real-time parameter visualization.</span><span class="r"><b>1000+ requests handled</b> with 30% lower latency through async FastAPI optimizations.</span><span class="src">Source: <a href="https://github.com/vaibhav2616/Insurance-Premium-Prediction" target="_blank" rel="noopener" style="color:var(--acc);font-weight:600">vaibhav2616/Insurance-Premium-Prediction</a></span></dd></div>
   </dl>
 </div></section>
 <div class="w">
-  <!-- [MEDIA PLACEHOLDER: Primary Showcase Figure - Enterprise Architecture Blueprint] -->
-  <figure data-note="Decoupled Domain Core with zero framework bleed, backed by Transactional Outbox.">
+  <!-- [MEDIA PLACEHOLDER: Primary Showcase Figure - Insurance ML Pipeline] -->
+  <figure data-note="Multi-factor feature ingestion, gradient boosting regression R² = 0.87, and sub-150ms FastAPI inference.">
     <div class="shot" style="border:1.5px solid var(--line); border-radius:14px; overflow:hidden; background:#0B0F17; padding:16px;">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.08); font-family:var(--mono); font-size:11px; color:#6B7280;">
-        <span><b style="color:#0C66E4">● CHASSIS ARCHITECTURE SPEC</b> · Clean Architecture &amp; Event Outbox</span>
-        <span style="border:1px dashed #0C66E4; color:#93C5FD; padding:2px 8px; border-radius:4px; font-size:10px;">[MEDIA PLACEHOLDER: Future Benchmark / Grafana Export]</span>
+        <span><b style="color:#10B981">● ML PIPELINE ARCHITECTURE</b> · Feature Crosses &amp; Async Inference</span>
+        <span style="border:1px dashed #10B981; color:#6EE7B7; padding:2px 8px; border-radius:4px; font-size:10px;">[MEDIA PLACEHOLDER: Future Streamlit Screenshots / Model Curves]</span>
       </div>
-      <img src="../assets/placeholder-fastapi.svg" alt="Enterprise FastAPI Microservice Chassis Architecture Blueprint by Vaibhav Rastogi" width="1200" height="675" style="border-radius:8px; width:100%; height:auto;">
+      <img src="../assets/placeholder-insurance.svg" alt="Insurance Premium Prediction Architecture: Multi-Factor Ingestion, Gradient Boosting ML Engine, and FastAPI + Streamlit Docker Deployment by Vaibhav Rastogi" width="1200" height="675" style="border-radius:8px; width:100%; height:auto;">
     </div>
     <figcaption style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-top:12px;">
-      <span><strong>Enterprise FastAPI Chassis Architecture</strong>: Strict separation of concerns — Domain Core (Entities &amp; Value Objects) is completely isolated from Infrastructure (FastAPI routers, SQLAlchemy 2.0 ORM, and Kafka relays).</span>
-      <a href="https://github.com/vaibhav2616/enterprise-fastapi-chassis" target="_blank" rel="noopener" style="font-family:var(--mono); font-size:12px; color:var(--acc); text-decoration:none; white-space:nowrap;">View Repository ↗</a>
+      <span><strong>Insurance Premium Prediction Ecosystem</strong>: End-to-end pipeline from multi-variable biometric ingestion (Age, BMI, Smoker, Dependents) to hyperparameter-tuned Gradient Boosting regression ($R^2 = 0.87$) and sub-150ms containerized Streamlit inference.</span>
+      <a href="https://github.com/vaibhav2616/Insurance-Premium-Prediction" target="_blank" rel="noopener" style="font-family:var(--mono); font-size:12px; color:var(--acc); text-decoration:none; white-space:nowrap;">View Repository ↗</a>
     </figcaption>
   </figure>
-  <div class="nums" aria-label="FastAPI Chassis in numbers">
-    <div><b>100%</b><span>Pytest test suite coverage</span><small>Full branch and unit coverage across Domain, Application, and Use Case layers.</small></div>
-    <div><b>&lt; 12ms</b><span>P99 query response latency</span><small>Benchmarked with asyncpg connection multiplexing and Redis cache hit ratio &gt; 94%.</small></div>
-    <div><b>0 Loss</b><span>Dual-write hazard elimination</span><small>Transactional Outbox guarantees at-least-once Kafka publishing with atomic DB commits.</small></div>
+  <div class="nums" aria-label="Insurance Premium Prediction in numbers">
+    <div><b>0.87</b><span>R² predictive accuracy score</span><small>22% accuracy boost over baseline multiple linear regression models.</small></div>
+    <div><b>&lt; 150ms</b><span>Real-time prediction latency</span><small>Asynchronous FastAPI inference pipeline with cached model weights.</small></div>
+    <div><b>1000+</b><span>Production requests handled</span><small>Containerized with Docker, serving 10+ test users with 30% lower latency.</small></div>
   </div>
 </div>
 <section class="sec"><div class="w two">
-  <div><p class="eb">Design Philosophy</p><h2>Decoupled Domain Core, <em>zero</em> framework bleed.</h2></div>
-  <div data-note="Domain logic should never know whether it is invoked by an HTTP route, a CLI command, or a message consumer."><p class="quote">"Business logic should never know whether it is invoked by an HTTP route, a CLI script, or a Kafka event consumer."</p>
-  <p>In standard FastAPI projects, database models and HTTP request bodies pollute core business rules. This chassis enforces strict Onion Architecture: the <strong>Domain Core</strong> contains purely isolated Python dataclasses and invariants with zero external library dependencies.</p>
-  <p>The <strong>Application Layer</strong> handles orchestration and command handling via the Unit of Work (UoW) pattern, allowing swap-in of in-memory repository mocks for sub-millisecond unit test execution.</p></div>
+  <div><p class="eb">Machine Learning</p><h2>Feature Crosses &amp; Gradient Boosting Regressor</h2></div>
+  <div data-note="Accurate premium prediction demands capturing the non-linear compound risk between lifestyle habits and biometrics."><p class="quote">"Standard linear regressions fail to model compound risk factors like BMI and smoking habits."</p>
+  <p>In insurance pricing, simple linear assumptions break down because lifestyle factors like smoking drastically amplify the impact of high BMI. By engineering non-linear interaction terms (<code>BMI x Smoker</code>) and leveraging <strong>Gradient Boosting Regression</strong> with 5-fold cross-validation, the model reached an impressive <strong>$R^2 = 0.87$</strong>, preventing premium under-pricing while keeping variance minimal.</p>
+  <p>Continuous features are preprocessed with robust scaling, while categorical geographical tiers and binary lifestyle flags are handled through scikit-learn <code>ColumnTransformer</code> pipelines.</p></div>
 </div></section>
 <section class="sec"><div class="w two">
-  <div><p class="eb">Distributed Resilience</p><h2>PostgreSQL Transactional Outbox for Kafka.</h2></div>
-  <div class="side" data-note="Eliminates the classic dual-write distributed transaction failure mode."><p>Publishing directly to Kafka after saving to the database risks split-brain failures if the broker times out. This chassis implements the <strong>Transactional Outbox Pattern</strong>: domain events are atomically written to an <code>outbox_events</code> table within the identical database transaction, and a dedicated background polling worker drains events via <code>SELECT ... FOR UPDATE SKIP LOCKED</code>.</p></div>
+  <div><p class="eb">Deployment</p><h2>FastAPI Async Engine &amp; Streamlit Dashboard</h2></div>
+  <div class="side" data-note="Sub-150ms response times delivered via asynchronous I/O and interactive UI."><p>To deliver an instant consumer experience, inference is decoupled into an asynchronous <strong>FastAPI</strong> microservice. An interactive <strong>Streamlit</strong> frontend enables immediate slider adjustments and instant re-computation in under <strong>150ms</strong>. The entire ecosystem is packaged into reproducible multi-stage <strong>Docker</strong> containers for zero-configuration spin-up.</p></div>
 </div></section>
 </main>
 <div class="w"><nav class="next" aria-label="More case studies"><a href="../cowork/"><span class="k">Next case study</span><span class="t">AI SRE Pipeline →</span></a><a href="../#work"><span class="k">All work</span><span class="t">Back to the box</span></a></nav></div>
@@ -414,7 +414,7 @@ document.addEventListener('click', e => { if (e.target.closest('[data-semi-tour]
 if (sessionStorage.getItem('emo_grand_tour')) {
   setTimeout(() => {
     if (!touring) {
-      say("Arrived at Case 04: Enterprise FastAPI Chassis! ⚡ Clean Architecture & DDD!", null, 3200);
+      say("Arrived at Case 04: Insurance Premium Prediction! 📊 R² = 0.87 ML Model!", null, 3200);
       startTour();
     }
   }, 1200);
@@ -560,11 +560,11 @@ html.gx-open #semi, html.gx-open #semi-say{z-index:210!important}
     </div>
     <nav class="sf-col" aria-label="Work">
       <span class="sf-k">Work</span>
-      <a href="../cowork/">AI SRE Pipeline</a><a href="../salt/">Payment Engine <small>summary</small></a><a href="../toddle/">Pizza Delivery API</a><a href="../atlassian/">FastAPI Chassis <small>summary</small></a>
+      <a href="../cowork/">AI SRE Pipeline</a><a href="../salt/">Payment Engine <small>summary</small></a><a href="../toddle/">Pizza Delivery API</a><a href="../atlassian/">Insurance Prediction <small>summary</small></a>
     </nav>
     <nav class="sf-col" aria-label="Elsewhere">
       <span class="sf-k">Elsewhere</span>
-      <a href="mailto:vaibhav.2327it1108@kiet.edu">Email</a><a href="https://www.linkedin.com/in/vaibhav-rastogi-26asvr/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/vaibhav2616" target="_blank" rel="noopener">Substack ↗</a>
+      <a href="mailto:vaibhav.2327it1108@kiet.edu">Email</a><a href="https://www.linkedin.com/in/vaibhav-rastogi-26asvr/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/vaibhav2616" target="_blank" rel="noopener">GitHub ↗</a><a href="https://leetcode.com/u/vaibhav123i/" target="_blank" rel="noopener">LeetCode (DSA) ↗</a>
     </nav>
     <div class="sf-gift">
       <span class="sf-hint" aria-hidden="true">take a parting gift <svg viewBox="0 0 40 30"><path d="M2 5 C16 2 28 8 33 22 M27 19 l6 4 2-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
