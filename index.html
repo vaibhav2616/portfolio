@@ -622,25 +622,234 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
 .dz footer .pri{background:var(--ink); color:var(--paper)}
 .fix{display:inline-block; font:500 10px/1.2 var(--mono); letter-spacing:.06em; text-transform:uppercase; padding:3px 6px; border-radius:5px; background:#DDF3E6; color:#1d6b41; vertical-align:middle}
 
+/* ---------- Top Protocol Disclaimer Banner ---------- */
+.emo-disclaimer {
+  background: #FFD23F;
+  border-bottom: 2px solid #16130F;
+  color: #16130F;
+  font-family: var(--display, "Bricolage Grotesque", system-ui, sans-serif);
+  font-size: 13px;
+  position: relative;
+  z-index: 92;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
+}
+.ed-in {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px clamp(16px, 3vw, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.ed-text {
+  flex: 1;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.ed-text b {
+  font-family: var(--mono, monospace);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-right: 4px;
+}
+.ed-badge {
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: #16130F;
+  color: #FFE885;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .ed-badge { display: none; }
+  .ed-text { font-size: 11.5px; }
+}
+
 /* ---------- Emo & Fluffy Interactions ---------- */
-#semi{position:fixed; left:0; top:0; width:64px; height:64px; z-index:80; pointer-events:none; will-change:transform}
-#semi-say{position:fixed; left:0; top:0; z-index:81; pointer-events:none; background:var(--ink); color:var(--paper); border-radius:14px 14px 14px 4px; padding:9px 12px; font:500 14px/1.35 var(--body); max-width:260px; opacity:0; transform:translateY(4px); transition:opacity .2s, transform .2s}
-#semi-say.on{opacity:1; transform:none}
+#semi {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 64px;
+  height: 64px;
+  z-index: 80;
+  pointer-events: none;
+  will-change: transform;
+  transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.4, 1);
+}
+#semi.cradle-mode {
+  animation: emoCradleRock 2.2s ease-in-out infinite !important;
+  transform-origin: 50% 100% !important;
+}
+@keyframes emoCradleRock {
+  0%, 100% { transform: rotate(-7deg) translateY(0); }
+  50% { transform: rotate(7deg) translateY(4px); }
+}
+#semi.emo-giant {
+  z-index: 10001 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  transform: translate(calc(50vw - 64px), calc(50vh - 120px)) scale(4.2) !important;
+  transition: transform 0.45s cubic-bezier(0.18, 1.25, 0.35, 1) !important;
+}
+
+#semi-say {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 81;
+  pointer-events: none;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 14px 14px 14px 4px;
+  padding: 9px 12px;
+  font: 500 14px/1.35 var(--body);
+  max-width: 260px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .2s, transform .2s;
+}
+#semi-say.on { opacity: 1; transform: none; }
+#semi-say.angry-bubble {
+  background: #C41C1C !important;
+  color: #fff !important;
+  box-shadow: 0 4px 18px rgba(196, 28, 28, 0.65) !important;
+  font-weight: 700 !important;
+  animation: angryBubbleShake 0.25s infinite ease-in-out;
+}
+@keyframes angryBubbleShake {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-2px) rotate(-1.5deg); }
+  75% { transform: translateY(2px) rotate(1.5deg); }
+}
 @media (max-width:600px){ #semi-say img{width:110px!important; max-height:120px!important} }
 #semi-say img{width:180px; max-height:200px; object-fit:contain; border-radius:10px; margin-bottom:7px; background:#fff}
 
+/* Fluffy squash & bounce */
 @keyframes emoFluffyBounce {
   0% { transform: scale(1, 1); }
-  22% { transform: scale(1.18, 0.82) translateY(-7px) rotate(calc(var(--emo-tilt, 1) * -4deg)); }
-  42% { transform: scale(0.85, 1.15) translateY(-14px) rotate(calc(var(--emo-tilt, 1) * 3deg)); }
-  62% { transform: scale(1.1, 0.92) translateY(-4px) rotate(calc(var(--emo-tilt, 1) * -1.5deg)); }
-  80% { transform: scale(0.96, 1.04) translateY(-1px); }
+  22% { transform: scale(1.15, 0.85) translateY(-8px) rotate(calc(var(--emo-tilt, 1) * -4deg)); }
+  42% { transform: scale(0.88, 1.12) translateY(-14px) rotate(calc(var(--emo-tilt, 1) * 3deg)); }
+  62% { transform: scale(1.08, 0.94) translateY(-4px) rotate(calc(var(--emo-tilt, 1) * -1.5deg)); }
+  80% { transform: scale(0.97, 1.03) translateY(-1px); }
   100% { transform: scale(1, 1); }
 }
 .fluffy-bounce {
   animation: emoFluffyBounce 0.68s cubic-bezier(0.34, 1.56, 0.64, 1) both !important;
   transform-origin: center bottom !important;
   will-change: transform;
+}
+
+/* Playful dust & sparkle trail */
+.emo-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 79;
+  font-size: 20px;
+  line-height: 1;
+  animation: emoTrailAnim 0.75s ease-out forwards;
+}
+@keyframes emoTrailAnim {
+  0% { opacity: 1; transform: translate(0, 0) scale(1.2); }
+  100% { opacity: 0; transform: translate(var(--tx, 0), var(--ty, -28px)) scale(0.4); }
+}
+
+/* Earth rumble & website tearing during tantrum */
+@keyframes emoEarthquake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-4px, 3px) rotate(-0.6deg); }
+  40% { transform: translate(4px, -3px) rotate(0.6deg); }
+  60% { transform: translate(-3px, -2px) rotate(-0.4deg); }
+  80% { transform: translate(3px, 2px) rotate(0.5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+html.emo-tantrum main, html.emo-tantrum .hn {
+  animation: emoEarthquake 0.2s infinite ease-in-out;
+  filter: contrast(1.15) saturate(1.4) hue-rotate(-12deg);
+}
+html.emo-tantrum .s {
+  transform: rotate(var(--tear-rot, 2deg)) scale(0.985);
+  transition: transform 0.35s ease;
+}
+
+/* Fourth wall breach overlay */
+.fourth-wall-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(180, 25, 25, 0.5) 0%, rgba(18, 12, 10, 0.9) 100%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  animation: fourthWallFadeIn 0.4s ease-out forwards;
+  pointer-events: auto;
+}
+@keyframes fourthWallFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fourth-wall-cracks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.fourth-wall-box {
+  background: #FFFDF8;
+  border: 3px solid #16130F;
+  border-radius: 20px;
+  padding: 24px 32px;
+  max-width: 540px;
+  text-align: center;
+  box-shadow: 12px 12px 0 #16130F;
+  position: relative;
+  z-index: 10;
+  transform: translateY(150px);
+}
+.fourth-wall-box h2 {
+  font: 800 26px/1.1 var(--display, system-ui);
+  margin: 0 0 10px;
+  color: #C41C1C;
+  letter-spacing: -0.02em;
+}
+.fourth-wall-box p {
+  font: 500 15px/1.4 var(--body, system-ui);
+  color: #222;
+  margin: 0 0 16px;
+}
+.fourth-wall-hearts {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+.fourth-wall-btn {
+  background: #FFD23F;
+  border: 2.5px solid #16130F;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font: 800 16px var(--display, system-ui);
+  color: #16130F;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 #16130F;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.fourth-wall-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #16130F;
+}
+.fourth-wall-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #16130F;
 }
 
 /* ---------- drawer ---------- */
@@ -663,6 +872,13 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
 </style>
 <link rel="stylesheet" href="about/about.css">
 
+<div class="emo-disclaimer" id="emoDisclaimer" role="alert">
+  <div class="ed-in">
+    <span class="ed-icon">⚠️</span>
+    <span class="ed-text"><b>PROTOCOL WARNING:</b> Emo is an emotionally attached companion. <u>Never leave Emo unattended for 30+ seconds</u>, or an existential fourth-wall rage tantrum will occur!</span>
+    <span class="ed-badge">LIVE SURVEILLANCE</span>
+  </div>
+</div>
 
 <header class="hn" id="hn">
   <div class="hn-in">
@@ -953,14 +1169,49 @@ class Buddy {
     ctx.fillStyle = `rgba(0,0,0,${.2/sh})`; ctx.beginPath(); ctx.ellipse(W/2, W*.86, W*.24*Math.max(.5,1/sh*1.1), W*.04, 0, 0, Math.PI*2); ctx.fill();
     ctx.save(); ctx.translate(W/2, W*.84 + lift); ctx.scale(sx, sy); ctx.translate(-W/2, -W*.84);
     ctx.drawImage(s.canvas, 0, 0, W, W);
-    const asleep = this.state==='sleeping', er = s.er;
+    const asleep = this.state==='sleeping', angry = this.state==='angry', er = s.er;
     for (const [ex,ey] of s.eyes){
       const x = ex + this.look[0]*er*1.6, y = ey + this.look[1]*er*1.3;
       ctx.fillStyle = '#17120C';
       if (asleep){ ctx.strokeStyle='#17120C'; ctx.lineWidth=Math.max(1.5,er*.45); ctx.lineCap='round'; ctx.beginPath(); ctx.arc(ex, ey-er*.3, er*.9, .2*Math.PI, .8*Math.PI); ctx.stroke(); continue; }
+      if (angry){
+        ctx.save();
+        ctx.fillStyle = '#E52424';
+        ctx.shadowColor = '#FF1A1A';
+        ctx.shadowBlur = er * 2.4;
+        ctx.beginPath(); ctx.ellipse(x, y, er * 1.15, er * 1.45, 0, 0, Math.PI*2); ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = '#FFFFFF';
+        ctx.beginPath(); ctx.arc(x, y, er * 0.35, 0, Math.PI*2); ctx.fill();
+        ctx.strokeStyle = '#4F0505';
+        ctx.lineWidth = Math.max(2, er * 0.75);
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        if (ex < W/2){ ctx.moveTo(x - er * 1.35, y - er * 1.15); ctx.lineTo(x + er * 1.25, y - er * 0.2); }
+        else { ctx.moveTo(x + er * 1.35, y - er * 1.15); ctx.lineTo(x - er * 1.25, y - er * 0.2); }
+        ctx.stroke();
+        ctx.restore();
+        continue;
+      }
       const h = this.blink>0 ? .12 : 1;
       ctx.beginPath(); ctx.ellipse(x, y, er, er*1.45*h, 0, 0, Math.PI*2); ctx.fill();
       if (h===1){ ctx.fillStyle='rgba(255,255,255,.9)'; ctx.beginPath(); ctx.arc(x-er*.35, y-er*.55, er*.32, 0, Math.PI*2); ctx.fill(); }
+    }
+    if (angry){
+      ctx.save();
+      ctx.strokeStyle = '#D61F1F';
+      ctx.lineWidth = Math.max(2, W * 0.024);
+      ctx.lineCap = 'round';
+      const vx = W * 0.22, vy = W * 0.24, vs = W * 0.065;
+      ctx.beginPath();
+      ctx.arc(vx - vs, vy, vs, -Math.PI*0.4, Math.PI*0.4);
+      ctx.arc(vx + vs, vy, vs, Math.PI*0.6, Math.PI*1.4);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(vx, vy - vs, vs, Math.PI*0.1, Math.PI*0.9);
+      ctx.arc(vx, vy + vs, vs, -Math.PI*0.9, -Math.PI*0.1);
+      ctx.stroke();
+      ctx.restore();
     }
     if (this.state==='working'){
       const [[x1,y1],[x2,y2]] = s.eyes, r = er*2.5;
@@ -1062,9 +1313,45 @@ let clicks = [];
 document.addEventListener('click', e => { const t = e.target.closest('button,a'); if (!t || t.closest('#dock,.screen,.grip,.ab2-screen,.ab2-grip,.ab2-pst,.srow,.sline,.seg,.wbv,.case,.obj,#openBtn')) return; const now = performance.now();
   clicks = clicks.filter(c => now - c.t < 1200 && c.el === t); clicks.push({t:now, el:t}); if (clicks.length >= 4){ clicks = []; react('rage', true); } });
 
-let mx = Math.max(160, innerWidth * 0.16), my = Math.max(240, innerHeight * 0.36), sx = mx, sy = my, lastMove = performance.now(), idleFired = false;
-const wake = () => { lastMove = performance.now(); idleFired = false; if (comp.state==='sleeping' && cfg.state !== 'sleeping') comp.state = cfg.state; };
-addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; mx = e.clientX; my = e.clientY; wake(); }, {passive:true});
+let mx = Math.max(160, innerWidth * 0.22), my = Math.max(220, innerHeight * 0.28), sx = mx, sy = my;
+let lastMove = performance.now(), idleFired = false;
+let wandering = false, wanderTarget = null, lastWanderHop = 0, lastTrail = 0;
+let rageActive = false, placatePets = 0;
+let lastMouseX = mx, lastMouseY = my, mouseSpeed = 0, lastSpeedCheck = performance.now();
+
+const wake = () => {
+  lastMove = performance.now();
+  idleFired = false;
+  if (!rageActive) {
+    if (wandering) {
+      wandering = false;
+      wanderTarget = null;
+      comp.doHop();
+      say(pick(["You're back! Did you see my tricks?", "Caught me! Okay, what are we clicking?", "Back with you!"]), null, 2400);
+    }
+    if (comp && comp.state === 'sleeping' && cfg.state !== 'sleeping') comp.state = cfg.state;
+  }
+};
+addEventListener('pointermove', e => {
+  if (e.pointerType === 'touch') return;
+  const now = performance.now();
+  const dt = Math.max(1, now - lastSpeedCheck);
+  const dist = Math.hypot(e.clientX - lastMouseX, e.clientY - lastMouseY);
+  mouseSpeed = (dist / dt) * 1000;
+  lastMouseX = e.clientX;
+  lastMouseY = e.clientY;
+  lastSpeedCheck = now;
+
+  if (comp && comp.state === 'sleeping' && mouseSpeed > 2200 && now - lastNaughtySay > 4000) {
+    lastNaughtySay = now;
+    comp.doHop();
+    say(pick(["Whoa! Cradle turbulence! Careful!", "Hey! Rock the cradle gently!", "Turbulence! I was having a nice nap."]), null, 2500);
+  }
+
+  mx = e.clientX;
+  my = e.clientY;
+  wake();
+}, {passive:true});
 addEventListener('pointerdown', wake, {passive:true});
 let lastY = scrollY, lastYT = performance.now();
 addEventListener('scroll', () => { const t = performance.now(), dy = scrollY - lastY;
@@ -1666,62 +1953,270 @@ $('#workBtn').addEventListener('click', e => { e.preventDefault(); goTo(AT_WORK)
 document.addEventListener('click', e => { const a = e.target.closest('a[href="#work"]'); if (!a) return; e.preventDefault(); goTo(AT_WORK); });
 if (location.hash === '#work') setTimeout(() => { const total = ub.offsetHeight - pin.clientHeight; scrollTo({top: ub.offsetTop + total * AT_WORK, behavior:'auto'}); }, 350);
 
-/* ================= main loop ================= */
+/* ================= Emo Interactive Emotional Engine ================= */
 let last = performance.now(), lastNudge = 0, lastNaughtySay = 0;
+
+function spawnEmoTrail(x, y, icon) {
+  const p = document.createElement('span');
+  p.className = 'emo-trail';
+  p.textContent = icon || pick(['✨', '💨', '⭐', '🎈', '⚡']);
+  p.style.left = (x - 10) + 'px';
+  p.style.top = (y - 10) + 'px';
+  p.style.setProperty('--tx', (Math.random() * 40 - 20) + 'px');
+  p.style.setProperty('--ty', (-20 - Math.random() * 25) + 'px');
+  document.body.appendChild(p);
+  setTimeout(() => p.remove(), 750);
+}
+
+function getWanderTarget() {
+  const points = [];
+  const add = el => {
+    if (!el || el.offsetParent === null) return;
+    const r = el.getBoundingClientRect();
+    if (r.width > 0 && r.height > 0) {
+      points.push({ el, x: r.left + r.width / 2, y: r.top + r.height / 2 });
+    }
+  };
+  add($('#heroH1'));
+  add($('#openBtn'));
+  add($('#workBtn'));
+  add($('.bx-front'));
+  add($('.hn-word'));
+  add($('#semiBtn'));
+  $$('.cd').forEach(c => add(c));
+  $$('.itm').forEach(i => add(i));
+  if (!points.length) {
+    return { el: null, x: innerWidth * (0.2 + 0.6 * Math.random()), y: innerHeight * (0.2 + 0.6 * Math.random()) };
+  }
+  return pick(points);
+}
+
+function handlePet() {
+  if (!rageActive) return;
+  placatePets++;
+  comp.doHop();
+  comp.squash = 0.45;
+  spawnEmoTrail(innerWidth / 2, innerHeight / 2 - 120, '❤️');
+  if (placatePets === 1) {
+    const h = $('#fourthWallHearts'); if (h) h.textContent = '❤️ 🤍 🤍';
+    const b = $('#placateBtn'); if (b) b.textContent = 'Pet Emo Gently (1 / 3)';
+    say("Hmph! One pet isn't enough to forgive 30 seconds of pure abandonment!", null, 3000);
+  } else if (placatePets === 2) {
+    const h = $('#fourthWallHearts'); if (h) h.textContent = '❤️ ❤️ 🤍';
+    const b = $('#placateBtn'); if (b) b.textContent = 'Pet Emo Gently (2 / 3)';
+    say("Well... that was kind of nice. But I'm still salty!", null, 3000);
+  } else if (placatePets >= 3) {
+    const h = $('#fourthWallHearts'); if (h) h.textContent = '❤️ ❤️ ❤️';
+    const b = $('#placateBtn'); if (b) b.textContent = 'Website Repaired! ✨';
+    placateEmo();
+  }
+}
+
+function triggerFourthWallBreach() {
+  if ($('#fourthWallOverlay')) return;
+  const ov = document.createElement('div');
+  ov.className = 'fourth-wall-overlay';
+  ov.id = 'fourthWallOverlay';
+  ov.innerHTML = `
+    <svg class="fourth-wall-cracks" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+      <defs>
+        <filter id="crackGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#ffffff" flood-opacity="0.9"/>
+        </filter>
+      </defs>
+      <circle cx="500" cy="380" r="16" fill="none" stroke="#fff" stroke-width="4.5" filter="url(#crackGlow)"/>
+      <circle cx="500" cy="380" r="50" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="2.5"/>
+      <circle cx="500" cy="380" r="120" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.8"/>
+      <path d="M500 380 L280 180 L140 80 M500 380 L720 160 L890 50 M500 380 L760 520 L960 680 M500 380 L440 640 L370 930 M500 380 L240 500 L40 600 M500 380 L560 220 L650 30 M500 380 L390 300 L180 270 M500 380 L610 420 L820 400 M500 380 L480 540 L520 860" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" fill="none" filter="url(#crackGlow)"/>
+      <path d="M280 180 L380 140 M720 160 L640 100 M760 520 L840 600 M440 640 L540 720 M240 500 L280 620 M390 300 L320 400" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none"/>
+    </svg>
+    <div class="fourth-wall-box">
+      <h2>⚠️ 4th WALL BREACHED: EMO IS ENRAGED!</h2>
+      <p>You left Emo completely unattended for 30 seconds! He broke through your monitor and is tearing up Vaibhav's backend architecture!</p>
+      <div class="fourth-wall-hearts" id="fourthWallHearts">🤍 🤍 🤍</div>
+      <button type="button" class="fourth-wall-btn" id="placateBtn">Pet Emo to Calm Him Down (0 / 3)</button>
+    </div>
+  `;
+  document.body.appendChild(ov);
+  $('#placateBtn').addEventListener('click', handlePet);
+}
+
+function placateEmo() {
+  for (let i = 0; i < 24; i++) {
+    setTimeout(() => spawnEmoTrail(innerWidth / 2 + (Math.random() - 0.5) * 320, innerHeight / 2 - 100 + (Math.random() - 0.5) * 220, pick(['💖','✨','🌟','🎉','⭐'])), i * 35);
+  }
+  setTimeout(() => {
+    const ov = $('#fourthWallOverlay');
+    if (ov) {
+      ov.style.transition = 'opacity 0.6s ease';
+      ov.style.opacity = '0';
+      setTimeout(() => ov.remove(), 600);
+    }
+    document.documentElement.classList.remove('emo-tantrum');
+    $$('.s').forEach(sec => sec.style.removeProperty('--tear-rot'));
+    companion.classList.remove('emo-giant');
+    bubble.classList.remove('angry-bubble');
+    comp.state = cfg.state === 'angry' ? 'idle' : cfg.state;
+    comp.squash = 0.4;
+    rageActive = false;
+    placatePets = 0;
+    lastMove = performance.now();
+    say("Okay, fine... I patched the servers back together. Don't leave me alone again!", null, 4000);
+  }, 750);
+}
+
+companion.addEventListener('click', () => {
+  if (rageActive) {
+    handlePet();
+  } else {
+    comp.doHop();
+    comp.squash = 0.4;
+    say(pick(['That tickles!', 'Boing! Hehe.', 'Need help exploring?', 'At your service!']), null, 2000);
+  }
+});
+
 function loop(t){
   const dt = Math.min(.05, (t-last)/1000); last = t;
   if (cfg.on){
     const docked = COARSE || RM;
-    const tx = docked ? innerWidth - 80 : mx + 18, ty = docked ? innerHeight - 140 : my + 14;
-    sx += (tx - sx) * Math.min(1, dt*6); sy += (ty - sy) * Math.min(1, dt*6);
-    companion.style.transform = `translate(${sx}px, ${sy}px)`;
-    comp.lookAt(mx - sx - 32, my - sy - 32);
     const idle = (t - lastMove)/1000;
-    /* --- Playful naughty Emo: touching nearby objects when cursor rests --- */
-    if (idle > 0.45 && !COARSE && !RM && comp.state !== 'sleeping'){
-      comp.squash = Math.sin(t * 0.006) * 0.1;
-      if (t - lastNudge > 1200){
-        lastNudge = t;
-        const cx = sx + 32, cy = sy + 32;
-        const candidates = $$('button:not(#semi):not(#semiBtn), a, .case, .cd, .itm, .pst, .ab2-bk, .fold, .lbl, mark, .gacha, .tape-v, .print-fragile, .print-up, .photo, .clip, .spark');
-        let closest = null, closestDist = 95;
-        for (const el of candidates){
-          if (!el || el.offsetParent === null) continue;
-          const r = el.getBoundingClientRect();
-          const dist = Math.hypot(cx - (r.left + r.width / 2), cy - (r.top + r.height / 2));
-          if (dist < closestDist){ closest = el; closestDist = dist; }
-        }
-        if (closest && !closest.classList.contains('fluffy-bounce')){
-          closest.style.setProperty('--emo-tilt', Math.random() > 0.5 ? '1' : '-1');
-          closest.classList.add('fluffy-bounce');
-          setTimeout(() => closest.classList.remove('fluffy-bounce'), 700);
+
+    // --- State 3: Tantrum & 4th-Wall Breach (idle >= 30s) ---
+    if (idle >= 30 && !rageActive && !docked){
+      rageActive = true;
+      wandering = false;
+      comp.state = 'angry';
+      document.documentElement.classList.add('emo-tantrum');
+      $$('.s').forEach(sec => sec.style.setProperty('--tear-rot', ((Math.random() > 0.5 ? 1 : -1) * (1.2 + Math.random() * 2)).toFixed(1) + 'deg'));
+      companion.classList.add('emo-giant');
+      companion.classList.remove('cradle-mode');
+      bubble.classList.add('angry-bubble');
+      say("THAT'S IT! YOU LEFT ME UNATTENDED FOR 30 SECONDS! I'M TEARING THIS ENTIRE PORTFOLIO DOWN!", null, 999999);
+      triggerFourthWallBreach();
+    }
+
+    if (rageActive){
+      sx = innerWidth / 2 - 32 + (Math.random() - 0.5) * 6;
+      sy = innerHeight / 2 - 120 + (Math.random() - 0.5) * 6;
+      companion.style.transform = `translate(${sx}px, ${sy}px) scale(4.2)`;
+      comp.lookAt(Math.sin(t * 0.008) * 50, Math.cos(t * 0.009) * 25);
+      comp.squash = Math.sin(t * 0.015) * 0.15;
+    } else if (comp.state === 'sleeping'){
+      companion.classList.add('cradle-mode');
+      const tx = docked ? innerWidth - 80 : mx - 20;
+      const ty = docked ? innerHeight - 140 : my + 26;
+      sx += (tx - sx) * Math.min(1, dt * 5);
+      sy += (ty - sy) * Math.min(1, dt * 5);
+      companion.style.transform = `translate(${sx}px, ${sy}px)`;
+      comp.lookAt(0, 4);
+    } else if (idle >= 5 && idle < 30 && !docked){
+      companion.classList.remove('cradle-mode');
+      wandering = true;
+      if (!wanderTarget || t - lastWanderHop > 2800){
+        wanderTarget = getWanderTarget();
+        lastWanderHop = t;
+        if (wanderTarget && wanderTarget.el){
+          let targetEl = wanderTarget.el;
+          if (targetEl.classList.contains('cd')) targetEl = targetEl.querySelector('.cd-in') || targetEl;
+          else if (targetEl.classList.contains('case')) targetEl = targetEl.querySelector('.fold') || targetEl;
+          else if (targetEl.firstElementChild && !targetEl.classList.contains('btn') && !targetEl.classList.contains('hn-btn') && !targetEl.id?.startsWith('semi')) targetEl = targetEl.firstElementChild;
+
+          if (targetEl && !targetEl.classList.contains('fluffy-bounce')){
+            targetEl.style.setProperty('--emo-tilt', Math.random() > 0.5 ? '1' : '-1');
+            targetEl.classList.add('fluffy-bounce');
+            setTimeout(() => targetEl.classList.remove('fluffy-bounce'), 700);
+          }
           comp.doHop();
           comp.squash = 0.35;
-          const r = closest.getBoundingClientRect();
-          comp.lookAt(r.left + r.width/2 - cx, r.top + r.height/2 - cy);
-          if (t - lastNaughtySay > 6000 && Math.random() > 0.35){
+          if (t - lastNaughtySay > 4800){
             lastNaughtySay = t;
-            const remarks = [
-              'Boop! It\'s squishy.',
-              'Did I bump that? Totally accidental.',
-              '*tap tap* Soft like marshmallow.',
-              'Boing! He said look, don\'t touch. Oops.',
-              'Look at it wiggle! Do it again.',
-              'Jelly mode activated.',
-              '*poke* Still works!',
-              'Just testing the physics engine.'
-            ];
-            say(pick(remarks), null, 2400);
+            say(pick([
+              'Wheee! Parkour!',
+              'Look at me go! Bet you can\'t catch me.',
+              'Bounce bounce bounce!',
+              'Look at me vibe! Why aren\'t you clicking anything?',
+              'Nobody is moving the mouse... time to touch everything!',
+              'Hey cursor! Over here! Come play with me!',
+              'I\'m the king of this box!',
+              'La la la~ vibing on my own!'
+            ]), null, 2400);
+          }
+        }
+      }
+      const wx = wanderTarget ? wanderTarget.x - 32 : innerWidth / 2 - 32;
+      const wy = wanderTarget ? wanderTarget.y - 32 : innerHeight / 2 - 32;
+      sx += (wx - sx) * Math.min(1, dt * 4.5);
+      sy += (wy - sy) * Math.min(1, dt * 4.5);
+      companion.style.transform = `translate(${sx}px, ${sy}px)`;
+      comp.lookAt(wx - sx, wy - sy);
+      if (t - lastTrail > 140){
+        lastTrail = t;
+        spawnEmoTrail(sx + 32, sy + 32);
+      }
+    } else {
+      companion.classList.remove('cradle-mode');
+      const tx = docked ? innerWidth - 80 : mx + 18;
+      const ty = docked ? innerHeight - 140 : my + 14;
+      sx += (tx - sx) * Math.min(1, dt * 6.5);
+      sy += (ty - sy) * Math.min(1, dt * 6.5);
+      companion.style.transform = `translate(${sx}px, ${sy}px)`;
+      comp.lookAt(mx - sx - 32, my - sy - 32);
+
+      if (idle > 0.45 && !docked){
+        comp.squash = Math.sin(t * 0.006) * 0.1;
+        if (t - lastNudge > 1200){
+          lastNudge = t;
+          const cx = sx + 32, cy = sy + 32;
+          const candidates = $$('button:not(#semi):not(#semiBtn), a, .case, .cd, .itm, .pst, .ab2-bk, .fold, .lbl, mark, .gacha, .tape-v, .print-fragile, .print-up, .photo, .clip, .spark');
+          let closest = null, closestDist = 95;
+          for (const el of candidates){
+            if (!el || el.offsetParent === null) continue;
+            const r = el.getBoundingClientRect();
+            const dist = Math.hypot(cx - (r.left + r.width / 2), cy - (r.top + r.height / 2));
+            if (dist < closestDist){ closest = el; closestDist = dist; }
+          }
+          if (closest){
+            let targetEl = closest;
+            if (closest.classList.contains('cd')) targetEl = closest.querySelector('.cd-in') || closest;
+            else if (closest.classList.contains('case')) targetEl = closest.querySelector('.fold') || closest;
+            else if (closest.firstElementChild && !closest.classList.contains('btn') && !closest.classList.contains('hn-btn') && !closest.id?.startsWith('semi')) targetEl = closest.firstElementChild;
+
+            if (targetEl && !targetEl.classList.contains('fluffy-bounce')){
+              targetEl.style.setProperty('--emo-tilt', Math.random() > 0.5 ? '1' : '-1');
+              targetEl.classList.add('fluffy-bounce');
+              setTimeout(() => targetEl.classList.remove('fluffy-bounce'), 700);
+              comp.doHop();
+              comp.squash = 0.35;
+              const r = closest.getBoundingClientRect();
+              comp.lookAt(r.left + r.width/2 - cx, r.top + r.height/2 - cy);
+              if (t - lastNaughtySay > 6000 && Math.random() > 0.35){
+                lastNaughtySay = t;
+                const remarks = [
+                  'Boop! It\'s squishy.',
+                  'Did I bump that? Totally accidental.',
+                  '*tap tap* Soft like marshmallow.',
+                  'Boing! He said look, don\'t touch. Oops.',
+                  'Look at it wiggle! Do it again.',
+                  'Jelly mode activated.',
+                  '*poke* Still works!',
+                  'Just testing the physics engine.'
+                ];
+                say(pick(remarks), null, 2400);
+              }
+            }
           }
         }
       }
     }
-    if (idle > 9 && comp.state !== 'sleeping') comp.state = 'sleeping';
-    if (idle > 20 && !idleFired){ idleFired = true; say(pick(IDLE)); }
+
     comp.draw(dt);
     const bw = bubble.offsetWidth || 200, bh = bubble.offsetHeight || 40;
-    let bxp = sx + 60, byp = sy - bh + 8; if (bxp + bw > innerWidth - 10) bxp = sx - bw - 4; if (byp < 70) byp = sy + 64; byp = Math.min(byp, innerHeight - bh - 70);
-    bubble.style.left = Math.max(10,bxp)+'px'; bubble.style.top = byp+'px';
+    let bxp = sx + 60, byp = sy - bh + 8;
+    if (bxp + bw > innerWidth - 10) bxp = sx - bw - 4;
+    if (byp < 70) byp = sy + 64;
+    byp = Math.min(byp, innerHeight - bh - 70);
+    bubble.style.left = Math.max(10, bxp) + 'px';
+    bubble.style.top = byp + 'px';
   }
   icon.draw(dt);
   if (!$('#semiPop').hidden){ if (!RM) prev.lookAt(Math.sin(t/700)*80, Math.cos(t/900)*40); prev.draw(dt); }
