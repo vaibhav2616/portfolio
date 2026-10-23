@@ -622,54 +622,7 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
 .dz footer .pri{background:var(--ink); color:var(--paper)}
 .fix{display:inline-block; font:500 10px/1.2 var(--mono); letter-spacing:.06em; text-transform:uppercase; padding:3px 6px; border-radius:5px; background:#DDF3E6; color:#1d6b41; vertical-align:middle}
 
-/* ---------- Top Protocol Disclaimer Banner ---------- */
-.emo-disclaimer {
-  background: #FFD23F;
-  border-bottom: 2px solid #16130F;
-  color: #16130F;
-  font-family: var(--display, "Bricolage Grotesque", system-ui, sans-serif);
-  font-size: 13px;
-  position: relative;
-  z-index: 92;
-  box-shadow: 0 2px 0 rgba(0,0,0,0.06);
-}
-.ed-in {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 8px clamp(16px, 3vw, 32px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.ed-text {
-  flex: 1;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-.ed-text b {
-  font-family: var(--mono, monospace);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  margin-right: 4px;
-}
-.ed-badge {
-  font-family: var(--mono, monospace);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  background: #16130F;
-  color: #FFE885;
-  padding: 3px 8px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-@media (max-width: 600px) {
-  .ed-badge { display: none; }
-  .ed-text { font-size: 11.5px; }
-}
-
-/* ---------- Emo & Fluffy Interactions ---------- */
+/* ---------- Emo Companion & Petting Interactions ---------- */
 #semi {
   position: fixed;
   left: 0;
@@ -677,11 +630,16 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
   width: 64px;
   height: 64px;
   z-index: 10010 !important;
-  pointer-events: none;
+  pointer-events: auto !important; /* Allow direct cursor petting & pats */
+  cursor: grab;
   will-change: transform;
   transition: transform 0.12s cubic-bezier(0.2, 0.8, 0.4, 1);
   filter: drop-shadow(0 4px 10px rgba(0,0,0,0.18));
 }
+#semi:active {
+  cursor: grabbing;
+}
+
 /* Baby sleeping animation: gentle floating & breathing */
 #semi.baby-sleep {
   animation: babySleepBreathe 2.8s ease-in-out infinite !important;
@@ -720,287 +678,48 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
   100% { transform: translate(18px, -36px) scale(1.3); opacity: 0; }
 }
 
-/* Angry baby stomping & pouting */
-#semi.angry-baby {
-  animation: babyStomp 0.28s ease-in-out infinite alternate !important;
-  filter: drop-shadow(0 4px 12px rgba(229, 36, 36, 0.55)) !important;
+/* Delightful squishy purr bounce when petted */
+#semi.emo-petted {
+  animation: emoPurrSquash 0.65s cubic-bezier(0.25, 1.4, 0.45, 1) !important;
 }
-@keyframes babyStomp {
-  0% { transform: translateY(0) rotate(-4deg); }
-  100% { transform: translateY(-4px) rotate(4deg); }
-}
-
-/* Emo's Secret Workshop & WALL-E */
-.emo-workshop-card {
-  margin: 36px auto 0;
-  max-width: 760px;
-  background: #FFFDF8;
-  border: 2px solid var(--ink, #16130F);
-  border-radius: 18px;
-  box-shadow: 6px 6px 0 var(--ink, #16130F);
-  overflow: hidden;
-  font-family: var(--body, system-ui);
-  transition: transform 0.25s cubic-bezier(0.3, 1.4, 0.5, 1);
-}
-.emo-workshop-card:hover {
-  transform: translateY(-3px);
-}
-.ew-header {
-  background: #F3ECDD;
-  border-bottom: 2px solid var(--ink, #16130F);
-  padding: 10px 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.ew-badge {
-  font-family: var(--display, system-ui);
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  color: var(--ink, #16130F);
-}
-.ew-status {
-  font-family: var(--mono, monospace);
-  font-size: 11px;
-  font-weight: 600;
-  background: var(--yellow, #FFD23F);
-  border: 1.5px solid var(--ink, #16130F);
-  border-radius: 999px;
-  padding: 3px 10px;
-}
-.ew-stage {
-  padding: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  gap: 24px;
-}
-.ew-bench {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-}
-.ew-tools {
-  display: flex;
-  gap: 12px;
-  font-size: 20px;
-  margin-bottom: 8px;
-  animation: toolsJiggle 3s ease-in-out infinite;
-}
-@keyframes toolsJiggle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-.walle-bot {
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.2s cubic-bezier(0.3, 1.5, 0.5, 1);
-  outline: none;
-}
-.walle-bot:hover, .walle-bot:focus-visible {
-  transform: scale(1.08) translateY(-4px);
-}
-.walle-bot:hover .walle-eyes {
-  animation: walleBlink 0.6s ease-in-out;
-}
-@keyframes walleBlink {
-  0%, 100% { transform: none; }
-  50% { transform: rotate(-5deg) translateY(-2px); }
-}
-.walle-speech {
-  position: absolute;
-  top: -24px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #16130F;
-  color: #FFFDF8;
-  font-family: var(--mono, monospace);
-  font-size: 11px;
-  font-weight: 700;
-  border-radius: 999px;
-  padding: 3px 9px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s, transform 0.2s;
-}
-.walle-bot:hover .walle-speech, .walle-bot.speaking .walle-speech {
-  opacity: 1;
-  transform: translateX(-50%) translateY(-6px);
-}
-.ew-diary {
-  flex: 1 1 300px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.ew-note {
-  background: #FFF8E7;
-  border: 1.5px dashed #D2BD96;
-  border-radius: 12px;
-  padding: 14px 16px;
-  font-size: 13.5px;
-  line-height: 1.5;
-  color: #3D3528;
-}
-.ew-note b {
-  display: block;
-  font-family: var(--display, system-ui);
-  font-weight: 800;
-  font-size: 13px;
-  color: var(--ink, #16130F);
-  margin-bottom: 4px;
-}
-.ew-btn {
-  align-self: flex-start;
-  border: 1.5px solid var(--ink, #16130F);
-  background: var(--card, #FFF);
-  border-radius: 999px;
-  padding: 8px 16px;
-  font-family: var(--display, system-ui);
-  font-weight: 800;
-  font-size: 13px;
-  cursor: pointer;
-  box-shadow: 2px 2px 0 var(--ink, #16130F);
-  transition: transform 0.1s, box-shadow 0.1s;
-}
-.ew-btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 3px 3px 0 var(--ink, #16130F);
-}
-.ew-btn:active {
-  transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0 var(--ink, #16130F);
+@keyframes emoPurrSquash {
+  0% { transform: scale(1, 1) rotate(0deg); }
+  25% { transform: scale(1.26, 0.8) rotate(-4deg); }
+  50% { transform: scale(0.86, 1.2) rotate(4deg); }
+  75% { transform: scale(1.1, 0.94) rotate(-2deg); }
+  100% { transform: scale(1, 1) rotate(0deg); }
 }
 
-/* Phase 1: Micro tremors during 50s-65s buildup */
-.emo-tantrum body {
-  animation: screenTremor 0.15s infinite alternate ease-in-out;
-}
-@keyframes screenTremor {
-  0% { transform: translate(-1px, 0.5px); }
-  100% { transform: translate(1px, -0.5px); }
-}
-
-/* Phase 2: Damaged elements during weapon attacks */
-.h1-damaged {
-  transform: rotate(-2.5deg) skewX(-1.5deg) scale(0.98) !important;
-  transition: transform 0.4s ease-out !important;
-  color: #E5483C !important;
-}
-.slip-damaged {
-  transform: rotate(2deg) translateY(12px) !important;
-  transition: transform 0.4s ease-out !important;
-  box-shadow: 6px 12px 0 rgba(229, 36, 36, 0.4) !important;
-}
-.files-damaged .case:nth-child(1) { transform: rotate(-8deg) translateY(14px) !important; }
-.files-damaged .case:nth-child(2) { transform: rotate(7deg) translateY(18px) !important; }
-.files-damaged .case:nth-child(3) { transform: rotate(-5deg) translateY(8px) !important; }
-.files-damaged .case:nth-child(4) { transform: rotate(9deg) translateY(22px) !important; }
-.workshop-damaged { transform: rotate(-3deg) translateY(10px) !important; }
-.till-damaged { transform: rotate(2deg) translateY(8px) !important; }
-.box-damaged { transform: rotate(-1.5deg) translateY(6px) !important; }
-
-/* Phase 3: Structural Collapse & Gravity Failure */
-.emo-structural-collapse {
-  animation: intenseEarthquake 0.12s infinite linear alternate !important;
-}
-@keyframes intenseEarthquake {
-  0% { transform: translate(-3px, 2px) rotate(-0.3deg); filter: contrast(1.1); }
-  50% { transform: translate(2px, -3px) rotate(0.4deg); }
-  100% { transform: translate(-2px, -2px) rotate(-0.2deg); }
-}
-.emo-structural-collapse .hn {
-  transform: translateY(-16px) rotate(-1.5deg) !important;
-  opacity: 0.85 !important;
-}
-.emo-structural-collapse .s {
-  filter: drop-shadow(0 15px 25px rgba(229, 36, 36, 0.35)) !important;
-}
-
-/* Falling debris particle */
-.emo-debris {
+/* Floating heart & sparkle particles when petted */
+.pet-heart {
   position: fixed;
-  z-index: 10002;
   pointer-events: none;
-  font-size: 22px;
-  animation: debrisFall 1.8s cubic-bezier(0.4, 0, 0.8, 1) forwards;
-}
-@keyframes debrisFall {
-  0% { transform: translateY(-40px) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(105vh) rotate(540deg); opacity: 0; }
-}
-
-/* Phase 4: Digital Virus Wipe & Shockwave */
-.virus-shockwave {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 4px solid #FF3B30;
-  box-shadow: 0 0 50px #FF3B30, inset 0 0 50px #FF3B30;
-  z-index: 10004;
-  pointer-events: none;
-  animation: shockwaveExpand 1.6s ease-out forwards;
-}
-@keyframes shockwaveExpand {
-  0% { width: 20px; height: 20px; opacity: 1; border-width: 12px; }
-  100% { width: 240vmax; height: 240vmax; opacity: 0; border-width: 1px; }
-}
-
-/* Glitch scanlines */
-.glitch-scanlines {
-  position: fixed;
-  inset: 0;
-  z-index: 10003;
-  pointer-events: none;
-  background: repeating-linear-gradient(0deg, rgba(255, 30, 30, 0.12) 0px, transparent 2px, rgba(0, 0, 0, 0.3) 4px);
-  animation: scanlinesFlicker 0.1s steps(2) infinite;
-}
-@keyframes scanlinesFlicker {
-  0% { opacity: 0.8; }
-  100% { opacity: 0.4; }
-}
-
-/* Small weapons fit for Emo's 64px body */
-.emo-weapon-holder {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 32px;
-  height: 32px;
+  z-index: 10025;
   font-size: 24px;
   line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  user-select: none;
+  animation: petHeartFloat 1.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  filter: drop-shadow(0 2px 8px rgba(255, 75, 120, 0.45));
+}
+@keyframes petHeartFloat {
+  0% { transform: translate(0, 0) scale(0.35) rotate(0deg); opacity: 0; }
+  18% { transform: translate(var(--tx, 0), -16px) scale(1.25) rotate(var(--rot, 0deg)); opacity: 1; }
+  70% { opacity: 0.95; }
+  100% { transform: translate(var(--tx, 0), var(--ty, -64px)) scale(0.85) rotate(calc(var(--rot, 0deg) * 1.8)); opacity: 0; }
+}
+
+.pet-sparkle {
+  position: fixed;
   pointer-events: none;
-  z-index: 10012;
-  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.4));
-  transition: opacity 0.2s ease;
+  z-index: 10024;
+  font-size: 18px;
+  line-height: 1;
+  animation: petSparklePop 0.9s ease-out forwards;
 }
-.emo-weapon-holder.active {
-  animation: weaponRecoil 0.35s ease-in-out infinite alternate;
-}
-@keyframes weaponRecoil {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(2px, -2px) rotate(-10deg); }
-}
-.emo-weapon-holder.buzzing {
-  animation: chainsawBuzz 0.1s linear infinite;
-}
-@keyframes chainsawBuzz {
-  0% { transform: translate(0, 0) rotate(6deg); }
-  50% { transform: translate(-2px, 2px) rotate(-6deg); }
-  100% { transform: translate(0, 0) rotate(6deg); }
+@keyframes petSparklePop {
+  0% { transform: translate(0, 0) scale(0.2); opacity: 0; }
+  35% { transform: translate(var(--tx, 0), var(--ty, -24px)) scale(1.2); opacity: 1; }
+  100% { transform: translate(var(--tx, 0), var(--ty, -48px)) scale(0.4); opacity: 0; }
 }
 
 #semi-say {
@@ -1020,18 +739,6 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
   transition: opacity .2s, transform .2s;
 }
 #semi-say.on { opacity: 1; transform: none; }
-#semi-say.angry-bubble {
-  background: #C41C1C !important;
-  color: #fff !important;
-  box-shadow: 0 4px 18px rgba(196, 28, 28, 0.65) !important;
-  font-weight: 700 !important;
-  animation: angryBubbleShake 0.25s infinite ease-in-out;
-}
-@keyframes angryBubbleShake {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-2px) rotate(-1.5deg); }
-  75% { transform: translateY(2px) rotate(1.5deg); }
-}
 @media (max-width:600px){ #semi-say img{width:110px!important; max-height:120px!important} }
 #semi-say img{width:180px; max-height:200px; object-fit:contain; border-radius:10px; margin-bottom:7px; background:#fff}
 
@@ -1064,193 +771,7 @@ html[data-cta="work"] #openBtn{order:2; background:var(--card)} html[data-cta="w
   100% { opacity: 0; transform: translate(var(--tx, 0), var(--ty, -28px)) scale(0.4); }
 }
 
-/* Earth rumble & website tearing during tantrum */
-@keyframes emoEarthquake {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  20% { transform: translate(-4px, 3px) rotate(-0.6deg); }
-  40% { transform: translate(4px, -3px) rotate(0.6deg); }
-  60% { transform: translate(-3px, -2px) rotate(-0.4deg); }
-  80% { transform: translate(3px, 2px) rotate(0.5deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
-}
-html.emo-tantrum main, html.emo-tantrum .hn {
-  animation: emoEarthquake 0.2s infinite ease-in-out;
-  filter: contrast(1.15) saturate(1.4) hue-rotate(-12deg);
-}
-html.emo-tantrum .s {
-  transform: rotate(var(--tear-rot, 2deg)) scale(0.985);
-  transition: transform 0.35s ease;
-}
 
-/* ---------- Emo Blankout & Cyber Void ---------- */
-html.emo-blankout body {
-  background: #080605 !important;
-  overflow: hidden !important;
-}
-html.emo-blankout #top,
-html.emo-blankout main,
-html.emo-blankout .hn,
-html.emo-blankout .dock,
-html.emo-blankout .emo-disclaimer,
-html.emo-blankout .sf,
-html.emo-blankout .band {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  filter: blur(12px) brightness(0.15) !important;
-  transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1), filter 0.85s ease !important;
-}
-
-/* Void floating space layer */
-.emo-void-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-  background: radial-gradient(circle at center, rgba(38, 22, 18, 0.94) 0%, #080605 100%);
-  overflow: hidden;
-  animation: voidFadeIn 0.5s ease-out forwards;
-}
-@keyframes voidFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.void-grid {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255, 60, 60, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 60, 60, 0.08) 1px, transparent 1px);
-  background-size: 44px 44px;
-  opacity: 0.65;
-}
-.void-floating-item {
-  position: absolute;
-  font-size: 34px;
-  opacity: 0.85;
-  filter: drop-shadow(0 0 12px rgba(255, 120, 120, 0.4));
-  animation: voidFloat 5s ease-in-out infinite alternate;
-}
-@keyframes voidFloat {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-32px) rotate(16deg); }
-}
-
-/* Emergency Emotional Care Defense HUD */
-.care-defense-hud {
-  position: fixed;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10005;
-  background: #FFFDF8;
-  border: 3px solid #16130F;
-  border-radius: 18px;
-  box-shadow: 0 10px 0 #16130F, 0 18px 30px rgba(0,0,0,0.35);
-  padding: 16px 24px;
-  max-width: 640px;
-  width: calc(100% - 32px);
-  text-align: center;
-  font-family: var(--display, system-ui);
-  pointer-events: auto;
-  animation: hudSlideDown 0.4s cubic-bezier(0.18, 1.25, 0.35, 1) forwards;
-}
-@keyframes hudSlideDown {
-  from { transform: translate(-50%, -100px); opacity: 0; }
-  to { transform: translate(-50%, 0); opacity: 1; }
-}
-.cdh-badge {
-  display: inline-block;
-  background: #C41C1C;
-  color: #fff;
-  font-family: var(--mono, monospace);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  padding: 3px 10px;
-  border-radius: 999px;
-  margin-bottom: 6px;
-  animation: badgeBlink 0.9s infinite alternate;
-}
-@keyframes badgeBlink {
-  from { background: #C41C1C; }
-  to { background: #E52424; box-shadow: 0 0 14px rgba(229, 36, 36, 0.7); }
-}
-.cdh-title {
-  font: 800 21px/1.2 var(--display, system-ui);
-  color: #16130F;
-  margin: 0 0 6px;
-}
-.cdh-desc {
-  font: 500 13.5px/1.4 var(--body, system-ui);
-  color: #4A4641;
-  margin: 0 0 12px;
-}
-.cdh-status-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  background: #F3EFE6;
-  border-radius: 12px;
-  padding: 10px 16px;
-  border: 1.5px solid #16130F;
-}
-.cdh-pocket {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 700;
-  font-size: 14px;
-}
-.cdh-hearts {
-  font-size: 22px;
-  letter-spacing: 4px;
-}
-
-/* Cursor pocket balloon */
-.cursor-pocket-balloon {
-  position: fixed;
-  pointer-events: none;
-  z-index: 10006;
-  font-size: 28px;
-  line-height: 1;
-  filter: drop-shadow(0 4px 10px rgba(255, 70, 70, 0.5));
-  transition: transform 0.08s ease-out;
-  transform: translate(16px, -28px);
-}
-
-/* Calm Shield Floating Timer HUD */
-.emo-calm-shield-hud {
-  position: fixed;
-  top: 76px;
-  right: 24px;
-  z-index: 9990;
-  background: #DDF3E6;
-  border: 2px solid #16130F;
-  border-radius: 999px;
-  box-shadow: 4px 4px 0 #16130F;
-  padding: 8px 18px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--display, system-ui);
-  color: #16130F;
-  animation: calmHudIn 0.4s ease-out forwards;
-}
-@keyframes calmHudIn {
-  from { transform: translateY(-50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-.ec-icon { font-size: 20px; animation: shieldSpin 3s linear infinite; }
-@keyframes shieldSpin {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.15) rotate(10deg); }
-  100% { transform: scale(1); }
-}
-.ec-text { font-weight: 800; font-size: 13.5px; }
-.ec-text b { font-family: var(--mono, monospace); color: #166534; font-size: 15px; margin-left: 4px; }
-.ec-desc { font-size: 11px; color: #355e3b; margin-left: 6px; }
-@media (max-width: 680px) { .ec-desc { display: none; } }
 
 /* Flower blooming, secret keys, candies, watering can */
 .emo-flower {
@@ -1304,82 +825,7 @@ html.emo-blankout .band {
   100% { transform: translate(15px, -15px) rotate(0deg); opacity: 0; }
 }
 
-/* Arsenal & Rampage Projectiles */
-.emo-rocket {
-  position: fixed;
-  font-size: 28px;
-  pointer-events: none;
-  z-index: 9999;
-  animation: rocketFly 0.65s linear forwards;
-}
-@keyframes rocketFly {
-  0% { transform: translate(0, 0) scale(0.6) rotate(var(--rot, 0deg)); opacity: 1; }
-  100% { transform: translate(var(--tx, 200px), var(--ty, -150px)) scale(1.2) rotate(var(--rot, 0deg)); opacity: 1; }
-}
-.emo-explosion {
-  position: fixed;
-  font-size: 42px;
-  pointer-events: none;
-  z-index: 10000;
-  animation: explosionPop 0.5s ease-out forwards;
-}
-@keyframes explosionPop {
-  0% { transform: translate(-50%, -50%) scale(0.2); opacity: 1; }
-  50% { transform: translate(-50%, -50%) scale(1.6); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(1.9); opacity: 0; }
-}
-.emo-laser-line {
-  position: fixed;
-  height: 4px;
-  background: linear-gradient(90deg, #FF1A1A, #FFE885, #FF1A1A);
-  box-shadow: 0 0 12px #FF1A1A, 0 0 20px #FFE885;
-  pointer-events: none;
-  z-index: 9999;
-  transform-origin: 0 50%;
-  animation: laserPulse 0.35s linear forwards;
-}
-@keyframes laserPulse {
-  0% { opacity: 1; transform: scaleY(2); }
-  100% { opacity: 0; transform: scaleY(0.2); }
-}
-.emo-bomb-item {
-  position: fixed;
-  font-size: 48px;
-  pointer-events: none;
-  z-index: 10001;
-  animation: bombTick 0.5s infinite alternate ease-in-out;
-  filter: drop-shadow(0 0 14px red);
-}
-@keyframes bombTick {
-  from { transform: translate(-50%, -50%) scale(1); }
-  to { transform: translate(-50%, -50%) scale(1.25) rotate(5deg); }
-}
 
-/* Brick by brick reconstruction */
-.brick-rebuild-grid {
-  position: fixed;
-  inset: 0;
-  z-index: 10002;
-  pointer-events: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-  grid-auto-rows: 40px;
-  gap: 6px;
-  padding: 12px;
-}
-.brick-particle {
-  background: #FFD23F;
-  border: 2px solid #16130F;
-  border-radius: 4px;
-  box-shadow: 2px 2px 0 #16130F;
-  transform: scale(0) rotate(10deg);
-  animation: brickSnap 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-@keyframes brickSnap {
-  0% { transform: translateY(-40px) scale(0); opacity: 0; }
-  70% { transform: translateY(4px) scale(1.1); }
-  100% { transform: translateY(0) scale(1); opacity: 0.95; }
-}
 
 /* ---------- drawer ---------- */
 .drawer{position:fixed; right:0; top:0; bottom:0; width:min(420px,100%); background:var(--card); border-left:1.5px solid var(--ink); z-index:90; box-shadow:-20px 0 40px -20px rgba(0,0,0,.25); display:grid; grid-template-rows:auto 1fr auto; padding-top:env(safe-area-inset-top,0px)}
@@ -1401,13 +847,7 @@ html.emo-blankout .band {
 </style>
 <link rel="stylesheet" href="about/about.css">
 
-<div class="emo-disclaimer" id="emoDisclaimer" role="alert">
-  <div class="ed-in">
-    <span class="ed-icon">⚠️</span>
-    <span class="ed-text"><b>PROTOCOL WARNING:</b> Emo is an emotionally attached companion. Never leave Emo unattended, or chaotic rampage protocols will activate!</span>
-    <span class="ed-badge">LIVE SURVEILLANCE</span>
-  </div>
-</div>
+
 
 <header class="hn" id="hn">
   <div class="hn-in">
@@ -1581,71 +1021,7 @@ html.emo-blankout .band {
       <span class="ab2-pm" aria-hidden="true">GHAZIABAD / NCR<br>★<br>2026</span>
     </div>
 
-    <!-- EMO'S SECRET WORKSHOP: WALL-E FRIEND -->
-    <div class="emo-workshop-card" id="emoWorkshop">
-      <div class="ew-header">
-        <span class="ew-badge">🛠️ EMO'S SECRET WORKSHOP &amp; INVENTORY</span>
-        <span class="ew-status">STATUS: BUILDING A BEST FRIEND</span>
-      </div>
-      <div class="ew-stage">
-        <div class="ew-bench">
-          <div class="ew-tools">
-            <span class="ew-tool" title="Mini screwdriver">🪛</span>
-            <span class="ew-tool" title="Spare cogs">⚙️</span>
-            <span class="ew-tool" title="Cardboard scraps">📦</span>
-            <span class="ew-tool" title="Spare bolts">🔩</span>
-          </div>
-          <div class="walle-bot" id="walleBot" tabindex="0" role="button" aria-label="WALL-E: Emo's handmade robot friend">
-            <svg class="walle-svg" viewBox="0 0 120 120" width="110" height="110" aria-hidden="true">
-              <defs>
-                <linearGradient id="walleRust" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#F2B533"/>
-                  <stop offset="50%" stop-color="#D9822B"/>
-                  <stop offset="100%" stop-color="#8C4A15"/>
-                </linearGradient>
-                <linearGradient id="walleLens" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#4CA1F5"/>
-                  <stop offset="100%" stop-color="#143A66"/>
-                </linearGradient>
-              </defs>
-              <polygon points="12,106 32,106 28,78 16,78" fill="#2E2820" stroke="#16130F" stroke-width="2.5"/>
-              <circle cx="17" cy="98" r="4" fill="#665A4B"/>
-              <circle cx="27" cy="98" r="4" fill="#665A4B"/>
-              <polygon points="88,106 108,106 104,78 92,78" fill="#2E2820" stroke="#16130F" stroke-width="2.5"/>
-              <circle cx="93" cy="98" r="4" fill="#665A4B"/>
-              <circle cx="103" cy="98" r="4" fill="#665A4B"/>
-              <rect x="26" y="60" width="68" height="42" rx="5" fill="url(#walleRust)" stroke="#16130F" stroke-width="3"/>
-              <rect x="36" y="70" width="48" height="18" rx="3" fill="#E6DAC8" stroke="#16130F" stroke-width="1.5"/>
-              <text x="60" y="83" text-anchor="middle" font-family="'DM Mono', monospace" font-size="7.5" font-weight="900" fill="#E5483C">WALL·E</text>
-              <rect x="38" y="93" width="22" height="4" rx="1" fill="#16130F"/>
-              <rect x="39" y="94" width="16" height="2" rx="1" fill="#2FA866"/>
-              <rect x="56" y="44" width="8" height="18" rx="2" fill="#7A7062" stroke="#16130F" stroke-width="2"/>
-              <circle cx="60" cy="46" r="3.5" fill="#16130F"/>
-              <g class="walle-eyes">
-                <path d="M38 24 L56 28 L54 44 L34 40 Z" fill="#D9822B" stroke="#16130F" stroke-width="2.5"/>
-                <circle cx="44" cy="33" r="8.5" fill="url(#walleLens)" stroke="#16130F" stroke-width="2"/>
-                <circle cx="42" cy="31" r="3" fill="#FFFFFF"/>
-                <path d="M82 24 L64 28 L66 44 L86 40 Z" fill="#D9822B" stroke="#16130F" stroke-width="2.5"/>
-                <circle cx="76" cy="33" r="8.5" fill="url(#walleLens)" stroke="#16130F" stroke-width="2"/>
-                <circle cx="74" cy="31" r="3" fill="#FFFFFF"/>
-              </g>
-              <path d="M26 72 L14 74 L10 82" stroke="#665A4B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-              <path d="M94 72 L106 74 L104 86" stroke="#665A4B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-              <path d="M100 84 L108 84 L114 88 L114 94 L102 94 Z" fill="#593E2B" stroke="#16130F" stroke-width="1.5"/>
-              <path d="M108 82 Q112 74 116 78 Q118 72 110 74" fill="#2FA866" stroke="#16130F" stroke-width="1.2"/>
-            </svg>
-            <div class="walle-speech" id="walleSpeech">♪ Waaall-e! 🌱</div>
-          </div>
-        </div>
-        <div class="ew-diary">
-          <div class="ew-note">
-            <b>Emo's Secret Inventory Log:</b>
-            <p>"If the cursor refuses to click me or play with me... I will build my own best friend out of cardboard and spare microservice components. Meet <strong>WALL·E</strong>! He has binoculars, holds a tiny green sprout 🌱 in an old boot, and promised he will never leave Emo alone."</p>
-          </div>
-          <button class="ew-btn" type="button" id="pokeWalleBtn">Say hi to WALL·E 🤖</button>
-        </div>
-      </div>
-    </div>
+
   </div>
 </section>
 <div class="wrap"></div>
@@ -1675,7 +1051,7 @@ html.emo-blankout .band {
   <span class="snore-z">z</span>
   <span class="snore-z">Z</span>
 </div>
-<div id="emoWeaponHolder" class="emo-weapon-holder" hidden></div>
+
 
 <aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Your feedback">
   <header><b>Your feedback</b><button type="button" id="fbClose">Close</button></header>
@@ -1755,7 +1131,7 @@ function semiSprite(W, kind, mat, color){
 class Buddy {
   constructor(canvas, sprite){ this.c = canvas; this.ctx = canvas.getContext('2d'); this.s = sprite;
     this.look=[0,0]; this.tl=[0,0]; this.hop=0; this.hv=0; this.blink=0; this.nb=2+Math.random()*3; this.state='idle'; this.t=0; this.squash=0;
-    this.colorTint = null; this.laserEyeBeam = false; }
+    this.colorTint = null; this.blush = 0; }
   doHop(){ if (this.hop===0 && !RM) this.hv = -1; }
   lookAt(dx, dy){ const m=Math.hypot(dx,dy)||1, k=Math.min(1, m/120); this.tl=[dx/m*k, dy/m*k]; }
   draw(dt){
@@ -1778,7 +1154,17 @@ class Buddy {
       ctx.fillRect(0, 0, W, W);
       ctx.restore();
     }
-    const asleep = this.state==='sleeping', angry = this.state==='angry', happy = this.state==='happy', er = s.er;
+    // Rosy blushing cheeks when petted or happy
+    if (this.blush > 0){
+      this.blush = Math.max(0, this.blush - dt * 0.4);
+      const [[x1, y1], [x2, y2]] = s.eyes, er = s.er;
+      ctx.save();
+      ctx.fillStyle = `rgba(255, 95, 140, ${Math.min(0.72, this.blush * 0.82)})`;
+      ctx.beginPath(); ctx.ellipse(x1 - er * 0.45, y1 + er * 0.95, er * 0.9, er * 0.5, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(x2 + er * 0.45, y2 + er * 0.95, er * 0.9, er * 0.5, 0, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    }
+    const asleep = this.state==='sleeping', happy = this.state==='happy', er = s.er;
     for (const [ex,ey] of s.eyes){
       const x = ex + this.look[0]*er*1.6, y = ey + this.look[1]*er*1.3;
       ctx.fillStyle = '#17120C';
@@ -1787,58 +1173,9 @@ class Buddy {
         ctx.strokeStyle='#17120C'; ctx.lineWidth=Math.max(1.8,er*.55); ctx.lineCap='round';
         ctx.beginPath(); ctx.arc(ex, ey+er*.15, er*.85, 1.15*Math.PI, 1.85*Math.PI); ctx.stroke(); continue;
       }
-      if (angry){
-        ctx.save();
-        ctx.fillStyle = '#E52424';
-        ctx.shadowColor = '#FF1A1A';
-        ctx.shadowBlur = er * 2.4;
-        ctx.beginPath(); ctx.ellipse(x, y, er * 1.15, er * 1.45, 0, 0, Math.PI*2); ctx.fill();
-        ctx.shadowBlur = 0;
-        ctx.fillStyle = '#FFFFFF';
-        ctx.beginPath(); ctx.arc(x, y, er * 0.35, 0, Math.PI*2); ctx.fill();
-        ctx.strokeStyle = '#4F0505';
-        ctx.lineWidth = Math.max(2, er * 0.75);
-        ctx.lineCap = 'round';
-        ctx.beginPath();
-        if (ex < W/2){ ctx.moveTo(x - er * 1.35, y - er * 1.15); ctx.lineTo(x + er * 1.25, y - er * 0.2); }
-        else { ctx.moveTo(x + er * 1.35, y - er * 1.15); ctx.lineTo(x - er * 1.25, y - er * 0.2); }
-        ctx.stroke();
-        ctx.restore();
-        continue;
-      }
       const h = this.blink>0 ? .12 : 1;
       ctx.beginPath(); ctx.ellipse(x, y, er, er*1.45*h, 0, 0, Math.PI*2); ctx.fill();
       if (h===1){ ctx.fillStyle='rgba(255,255,255,.9)'; ctx.beginPath(); ctx.arc(x-er*.35, y-er*.55, er*.32, 0, Math.PI*2); ctx.fill(); }
-    }
-    if (this.laserEyeBeam && angry){
-      ctx.save();
-      ctx.strokeStyle = '#FF1A1A';
-      ctx.lineWidth = Math.max(3, er * 0.9);
-      ctx.shadowColor = '#FF0000';
-      ctx.shadowBlur = 14;
-      for (const [ex, ey] of s.eyes){
-        ctx.beginPath();
-        ctx.moveTo(ex, ey);
-        ctx.lineTo(ex + (ex < W/2 ? -180 : 180), ey + 110);
-        ctx.stroke();
-      }
-      ctx.restore();
-    }
-    if (angry){
-      ctx.save();
-      ctx.strokeStyle = '#D61F1F';
-      ctx.lineWidth = Math.max(2, W * 0.024);
-      ctx.lineCap = 'round';
-      const vx = W * 0.22, vy = W * 0.24, vs = W * 0.065;
-      ctx.beginPath();
-      ctx.arc(vx - vs, vy, vs, -Math.PI*0.4, Math.PI*0.4);
-      ctx.arc(vx + vs, vy, vs, Math.PI*0.6, Math.PI*1.4);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(vx, vy - vs, vs, Math.PI*0.1, Math.PI*0.9);
-      ctx.arc(vx, vy + vs, vs, -Math.PI*0.9, -Math.PI*0.1);
-      ctx.stroke();
-      ctx.restore();
     }
     if (this.state==='working'){
       const [[x1,y1],[x2,y2]] = s.eyes, r = er*2.5;
@@ -1942,21 +1279,14 @@ document.addEventListener('click', e => { const t = e.target.closest('button,a')
 
 let mx = Math.max(160, innerWidth * 0.22), my = Math.max(220, innerHeight * 0.28), sx = mx, sy = my;
 let lastMove = performance.now(), idleFired = false;
-let wandering = false, wanderTarget = null, lastWanderHop = 0, lastTrail = 0;
-let rampageActive = false, blankoutActive = false;
+let wandering = false, wanderTarget = null, lastWanderHop = 0, lastTrail = 0, wanderInterval = 0;
 let lastMouseX = mx, lastMouseY = my, mouseSpeed = 0, lastSpeedCheck = performance.now();
 let lastNaughtySay = 0;
 
 const wake = () => {
   lastMove = performance.now();
   idleFired = false;
-  if (!rampageActive && !blankoutActive) {
-    if (wandering) {
-      wandering = false;
-      wanderTarget = null;
-      comp.doHop();
-      say(pick(["You're back! Did you see my tricks?", "Caught me! Okay, what are we clicking?", "Back with you!"]), null, 2400);
-    }
+  if (!wandering) {
     if (comp && comp.state === 'sleeping' && cfg.state !== 'sleeping') {
       comp.state = cfg.state;
       companion.classList.remove('baby-sleep');
@@ -1974,21 +1304,29 @@ addEventListener('pointermove', e => {
   lastMouseY = e.clientY;
   lastSpeedCheck = now;
 
-  if (comp && comp.state === 'sleeping' && mouseSpeed > 2200 && now - lastNaughtySay > 4000) {
-    lastNaughtySay = now;
-    comp.doHop();
-    say(pick(["Whoa! Easy there! You woke the baby!", "Hey! Don't shake so fast!", "Yawwwn... I was having a lovely nap."]), null, 2500);
-  }
-
   mx = e.clientX;
   my = e.clientY;
-  wake();
+
+  if (wandering) {
+    // When wandering: move cursor to Emo to pet and pat him!
+    const emoDist = Math.hypot((sx + 32) - mx, (sy + 32) - my);
+    if (emoDist < 55) {
+      if (typeof petEmo === 'function') petEmo('proximity');
+    }
+  } else {
+    if (comp && comp.state === 'sleeping' && mouseSpeed > 2200 && now - lastNaughtySay > 4000) {
+      lastNaughtySay = now;
+      comp.doHop();
+      say(pick(["Whoa! Easy there! You woke the baby!", "Hey! Don't shake so fast!", "Yawwwn... I was having a lovely nap."]), null, 2500);
+    }
+    wake();
+  }
 }, {passive:true});
-addEventListener('pointerdown', wake, {passive:true});
+addEventListener('pointerdown', () => { if (!wandering) wake(); }, {passive:true});
 let lastY = scrollY, lastYT = performance.now();
 addEventListener('scroll', () => { const t = performance.now(), dy = scrollY - lastY;
   if (dy < -900 && t - lastYT < 500) say('Going back? Same. I\'ll be analysing everything I said on the way home.');
-  if (t - lastYT > 400){ lastY = scrollY; lastYT = t; } if (!wandering && !rampageActive) wake(); }, {passive:true});
+  if (t - lastYT > 400){ lastY = scrollY; lastYT = t; } if (!wandering) wake(); }, {passive:true});
 
 /* ================= sections, dock, back, nav ================= */
 let secs = [], cur = 0, dest = null, said = new Set(), sayT;
@@ -2585,19 +1923,15 @@ $('#workBtn').addEventListener('click', e => { e.preventDefault(); goTo(AT_WORK)
 document.addEventListener('click', e => { const a = e.target.closest('a[href="#work"]'); if (!a) return; e.preventDefault(); goTo(AT_WORK); });
 if (location.hash === '#work') setTimeout(() => { const total = ub.offsetHeight - pin.clientHeight; scrollTo({top: ub.offsetTop + total * AT_WORK, behavior:'auto'}); }, 350);
 
-/* ================= Emo Interactive Emotional Engine ================= */
+/* ================= Emo Interactive Companion Engine ================= */
 let last = performance.now(), lastNudge = 0;
-let calmShieldUntil = 0; // ms timestamp for 3-minute immunity
-let balloonsGifted = 0, lastBalloonDelivery = 0;
-let lastFlowerSprout = 0, lastSecretDrop = 0, lastCandyEat = 0, lastPeekaboo = 0;
-let lastGachaVisit = 0, lastTourStep = 0, tourIndex = 0;
-let attackStep = 0, lastAttackAction = 0;
-let lastBabyRemark = 0;
+let lastFlowerSprout = 0, lastSecretDrop = 0, lastCandyEat = 0;
+let lastPetTime = 0, lastHappyTime = 0;
 
 function spawnEmoTrail(x, y, icon) {
   const p = document.createElement('span');
   p.className = 'emo-trail';
-  p.textContent = icon || pick(['✨', '💨', '⭐', '🎈', '⚡']);
+  p.textContent = icon || pick(['✨', '💨', '⭐', '🐾', '🌸']);
   p.style.left = (x - 10) + 'px';
   p.style.top = (y - 10) + 'px';
   p.style.setProperty('--tx', (Math.random() * 40 - 20) + 'px');
@@ -2667,681 +2001,290 @@ function spawnCandyNom(x, y) {
   setTimeout(() => c.remove(), 850);
 }
 
-// Color interpolation for gradual ramp-up (50s to 60s)
-function getRampageColor(k) {
-  const r = Math.round(255);
-  const g = Math.round(140 * (1 - k) + 20 * k);
-  const b = Math.round(20 * (1 - k) + 20 * k);
-  const a = (0.35 + 0.55 * k).toFixed(2);
-  return `rgba(${r}, ${g}, ${b}, ${a})`;
-}
-
-// Small projectiles fitting Emo's 64px body
-function fireMiniRocket(fromX, fromY, toX, toY) {
-  const r = document.createElement('div');
-  r.className = 'emo-rocket';
-  r.textContent = '🚀';
-  r.style.left = fromX + 'px';
-  r.style.top = fromY + 'px';
-  const tx = toX - fromX;
-  const ty = toY - fromY;
-  const angle = Math.atan2(ty, tx) * (180 / Math.PI);
-  r.style.setProperty('--tx', tx + 'px');
-  r.style.setProperty('--ty', ty + 'px');
-  r.style.setProperty('--rot', (angle + 45) + 'deg');
-  document.body.appendChild(r);
-  setTimeout(() => {
-    r.remove();
-    spawnExplosion(toX, toY);
-  }, 500);
-}
-
-function spawnExplosion(x, y) {
-  const ex = document.createElement('div');
-  ex.className = 'emo-explosion';
-  ex.textContent = pick(['💥', '🔥', '⚡']);
-  ex.style.left = x + 'px';
-  ex.style.top = y + 'px';
-  document.body.appendChild(ex);
-  setTimeout(() => ex.remove(), 450);
-}
-
-function fireMiniLaser(fromX, fromY, toX, toY) {
-  const l = document.createElement('div');
-  l.className = 'emo-laser-line';
-  const dist = Math.hypot(toX - fromX, toY - fromY);
-  const angle = Math.atan2(toY - fromY, toX - fromX) * (180 / Math.PI);
-  l.style.left = fromX + 'px';
-  l.style.top = fromY + 'px';
-  l.style.width = dist + 'px';
-  l.style.transform = `rotate(${angle}deg)`;
-  document.body.appendChild(l);
-  setTimeout(() => {
-    l.remove();
-    spawnExplosion(toX, toY);
-  }, 280);
-}
-
-// Guided Tour Stops across the website: Emo travels to each, window scrolls to follow!
-const TOUR_STOPS = [
-  { sel: '#heroH1', say: "Tour Stop 1: Welcome to Vaibhav's portfolio box! Let's explore!", type: 'greet' },
-  { sel: '#openBtn', say: "Here's the box trigger! Let's water some flowers here! 🌸", type: 'flower' },
-  { sel: '#slip', say: "Packing Slip: Four backend systems itemized! 📜", type: 'secret' },
-  { sel: '#files', say: "Case Files: Four production microservices! 🍬", type: 'candy' },
-  { sel: '#emoWorkshop', say: "Psst... look what I built in my inventory! It's WALL-E! 🤖", type: 'walle' },
-  { sel: '#till', say: "Career Receipt! 4+ years of distributed systems engineering! ✨", type: 'peekaboo' },
-  { sel: '#inside', say: "About Vaibhav: reads RFCs cover to cover! Flower power! 🌼", type: 'flower' },
-  { sel: '.gacha', say: "The Parting Gift Gacha! Free unlimited fortune cookies for Emo! 🥠", type: 'gacha' }
-];
-
-// WALL-E Interactive Chime & Interaction
-const walleBtn = $('#pokeWalleBtn');
-const walleBot = $('#walleBot');
-const onPokeWalle = () => {
-  if (SFX.walleChirp) SFX.walleChirp();
-  if (walleBot) {
-    walleBot.classList.add('speaking');
-    setTimeout(() => walleBot.classList.remove('speaking'), 2400);
+/* Floating heart & sparkle petting artifacts */
+function spawnPetHearts(cx, cy) {
+  const count = 7 + Math.floor(Math.random() * 4);
+  const symbols = ['💖', '💕', '🥰', '💗', '✨', '🌸', '⭐', '💓'];
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const h = document.createElement('span');
+      h.className = 'pet-heart';
+      h.textContent = pick(symbols);
+      h.style.left = (cx + (Math.random() - 0.5) * 48) + 'px';
+      h.style.top = (cy + (Math.random() - 0.5) * 36) + 'px';
+      h.style.setProperty('--tx', ((Math.random() - 0.5) * 64) + 'px');
+      h.style.setProperty('--ty', (-40 - Math.random() * 55) + 'px');
+      h.style.setProperty('--rot', ((Math.random() - 0.5) * 50) + 'deg');
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 1400);
+    }, i * 60);
   }
-  say(pick([
-    "WALL-E says: '♪ Waaall-e!' 🌱 He likes you! ...Even if you ignore me.",
-    "Hey! Don't distract my best friend! He's helping me monitor Kafka logs!",
-    "WALL-E tilted his binocular eyes at you! Isn't he the cutest robot in the world?",
-    "*sniff* You poke WALL-E but you don't play with Emo? ...Fine, he can be your friend too."
-  ]), null, 3600);
-  comp.doHop();
-};
-if (walleBtn) walleBtn.addEventListener('click', onPokeWalle);
-if (walleBot) walleBot.addEventListener('click', onPokeWalle);
-
-// Rampage Attack Targets: Emo physically dashes from element to element with small weapons!
-let rampageTarget = null;
-const ATTACK_STEPS = [
-  { sel: '#heroH1', weapon: '🪚', wClass: 'buzzing', damageClass: 'h1-damaged', say: "Mini Buzzing Chainsaw! 🪚 Slicing the headline!" },
-  { sel: '#slip', weapon: '🔫', wClass: 'active', damageClass: 'slip-damaged', say: "Mini Dual Blasters! 🔫 Pew pew pew at the packing slip!" },
-  { sel: '#files', weapon: '🚀', wClass: 'active', damageClass: 'files-damaged', say: "Mini Rocket Launcher! 🚀 Launching homing missiles at Case Studies!" },
-  { sel: '#emoWorkshop', weapon: '🔥', wClass: 'active', damageClass: 'workshop-damaged', say: "Mini Flamethrower! 🔥 Even WALL-E knows you don't love me!" },
-  { sel: '#till', weapon: '⚡', wClass: 'active', damageClass: 'till-damaged', say: "Laser Eyes of Fury! ⚡👀 Melting the career receipt!" },
-  { sel: '.bx-front', weapon: '💣', wClass: '', damageClass: 'box-damaged', say: "Mini Virus Bomb planted! 💣 3... 2... 1... ACTIVATING DIGITAL COLLAPSE!" }
-];
-
-// Phase 2: Full Rampage & Targeted Vandalism
-function triggerFullRampage() {
-  if (rampageActive || blankoutActive) return;
-  rampageActive = true;
-  wandering = false;
-  attackStep = 0;
-  comp.state = 'angry';
-  companion.classList.remove('baby-sleep');
-  const snores = $('#emoSnores'); if (snores) snores.hidden = true;
-  bubble.classList.add('angry-bubble');
-  document.documentElement.classList.add('emo-tantrum');
-
-  say("THAT'S IT! 60 SECONDS OF NEGLECT! EMO IS UNLEASHING HIS MINI ARSENAL!", null, 3200);
-
-  const wHolder = $('#emoWeaponHolder');
-
-  const attackInterval = setInterval(() => {
-    if (!rampageActive || blankoutActive) {
-      clearInterval(attackInterval);
-      if (wHolder) wHolder.hidden = true;
-      return;
-    }
-
-    if (attackStep >= ATTACK_STEPS.length) {
-      clearInterval(attackInterval);
-      if (wHolder) wHolder.hidden = true;
-      triggerStructuralCollapse();
-      return;
-    }
-
-    const step = ATTACK_STEPS[attackStep];
-    attackStep++;
-
-    const targetEl = $(step.sel);
-    if (targetEl) {
-      const rect = targetEl.getBoundingClientRect();
-      const targetDocY = window.scrollY + rect.top - (innerHeight * 0.35);
-      window.scrollTo({ top: Math.max(0, targetDocY), behavior: 'smooth' });
-
-      // Set target for smooth frame-by-frame flight!
-      rampageTarget = {
-        x: Math.max(40, Math.min(innerWidth - 100, rect.left + rect.width / 2 - 32)),
-        y: Math.max(80, Math.min(innerHeight - 100, rect.top - 40))
-      };
-
-      if (wHolder) {
-        wHolder.hidden = false;
-        wHolder.textContent = step.weapon;
-        wHolder.className = 'emo-weapon-holder ' + step.wClass;
-      }
-
-      setTimeout(() => {
-        if (step.damageClass) {
-          targetEl.classList.add(step.damageClass);
-        }
-        targetEl.classList.add('fluffy-bounce');
-        setTimeout(() => targetEl.classList.remove('fluffy-bounce'), 700);
-
-        const cx = sx + 32, cy = sy + 32;
-        const tx = rect.left + rect.width / 2, ty = rect.top + rect.height / 2;
-
-        if (step.weapon === '🚀') {
-          fireMiniRocket(cx, cy, tx, ty);
-        } else if (step.weapon === '🔫') {
-          fireMiniLaser(cx, cy, tx - 25, ty);
-          fireMiniLaser(cx, cy, tx + 25, ty);
-        } else if (step.weapon === '🪚') {
-          for (let i = 0; i < 6; i++) setTimeout(() => spawnEmoTrail(tx + (Math.random()-0.5)*80, ty + (Math.random()-0.5)*50, '⚡'), i * 60);
-        } else if (step.weapon === '🔥') {
-          for (let i = 0; i < 7; i++) setTimeout(() => spawnExplosion(tx + (Math.random()-0.5)*110, ty + (Math.random()-0.5)*70), i * 70);
-        } else if (step.weapon === '⚡') {
-          comp.laserEyeBeam = true;
-          setTimeout(() => { comp.laserEyeBeam = false; }, 1800);
-          spawnExplosion(tx, ty);
-        }
-      }, 500);
-
-      say(step.say, null, 2500);
-    }
-  }, 2400);
-}
-
-// Phase 3: Structural Collapse & Gravity Distortion
-function triggerStructuralCollapse() {
-  say("PHASE 2: STRUCTURAL COLLAPSE! Gravity is failing across the page!", null, 3000);
-  document.documentElement.classList.add('emo-structural-collapse');
-
-  // Spawn falling debris particles
-  for (let i = 0; i < 18; i++) {
-    setTimeout(spawnFallingDebris, i * 220);
+  for (let j = 0; j < 4; j++) {
+    setTimeout(() => {
+      const sp = document.createElement('span');
+      sp.className = 'pet-sparkle';
+      sp.textContent = pick(['✨', '⭐', '💫']);
+      sp.style.left = (cx + (Math.random() - 0.5) * 40) + 'px';
+      sp.style.top = (cy + (Math.random() - 0.5) * 30) + 'px';
+      sp.style.setProperty('--tx', ((Math.random() - 0.5) * 40) + 'px');
+      sp.style.setProperty('--ty', (-20 - Math.random() * 30) + 'px');
+      document.body.appendChild(sp);
+      setTimeout(() => sp.remove(), 950);
+    }, j * 80);
   }
-
-  // Ticking countdown to virus bomb detonation
-  let countdown = 3;
-  const tickInterval = setInterval(() => {
-    if (countdown > 0) {
-      say(`VIRUS BOMB DETONATION IN ${countdown}... 💣`, null, 900);
-      countdown--;
-    } else {
-      clearInterval(tickInterval);
-      detonateVirusBomb();
-    }
-  }, 1000);
 }
 
-function spawnFallingDebris() {
-  const d = document.createElement('div');
-  d.className = 'emo-debris';
-  d.textContent = pick(['🧱', '⚙️', '🔩', '📦', '💥', '⚡']);
-  d.style.left = (Math.random() * innerWidth) + 'px';
-  document.body.appendChild(d);
-  setTimeout(() => d.remove(), 1800);
-}
-
-// Phase 4: Digital Virus Wipe & Shockwave
-function detonateVirusBomb() {
-  const wHolder = $('#emoWeaponHolder');
-  if (wHolder) wHolder.hidden = true;
-
-  // Expanding shockwave ring
-  const sw = document.createElement('div');
-  sw.className = 'virus-shockwave';
-  document.body.appendChild(sw);
-  setTimeout(() => sw.remove(), 1600);
-
-  // Glitch scanlines
-  const gl = document.createElement('div');
-  gl.className = 'glitch-scanlines';
-  document.body.appendChild(gl);
-  setTimeout(() => gl.remove(), 2500);
-
-  // Explosions
-  for (let i = 0; i < 20; i++) {
-    setTimeout(() => spawnExplosion(innerWidth / 2 + (Math.random() - 0.5) * 500, innerHeight / 2 + (Math.random() - 0.5) * 400), i * 35);
+/* Audio synth helpers for cute petting and purring */
+function playPurrSound() {
+  try { if (localStorage.getItem('gacha:mute') === '1') return; } catch (e) {}
+  let a = keyAc;
+  try {
+    a = a || new (window.AudioContext || window.webkitAudioContext)();
+    keyAc = a;
+    if (a.state === 'suspended') a.resume();
+  } catch (e) { return; }
+  const t = a.currentTime;
+  for (let i = 0; i < 4; i++) {
+    const o = a.createOscillator(), g = a.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(260 + i * 25, t + i * 0.07);
+    o.frequency.exponentialRampToValueAtTime(390 + i * 18, t + i * 0.07 + 0.06);
+    g.gain.setValueAtTime(0.08, t + i * 0.07);
+    g.gain.exponentialRampToValueAtTime(0.001, t + i * 0.07 + 0.065);
+    o.connect(g).connect(a.destination);
+    o.start(t + i * 0.07);
+    o.stop(t + i * 0.07 + 0.07);
   }
-
-  setTimeout(() => {
-    document.documentElement.classList.remove('emo-structural-collapse');
-    enterBlankoutVoid();
-  }, 1200);
 }
 
-// Phase 5: Transition into Cyber Void & Cranky Baby Tantrum
-function enterBlankoutVoid() {
-  blankoutActive = true;
-  document.documentElement.classList.add('emo-blankout');
-  companion.classList.add('angry-baby');
+function playPetChirp() {
+  try { if (localStorage.getItem('gacha:mute') === '1') return; } catch (e) {}
+  let a = keyAc;
+  try {
+    a = a || new (window.AudioContext || window.webkitAudioContext)();
+    keyAc = a;
+    if (a.state === 'suspended') a.resume();
+  } catch (e) { return; }
+  const t = a.currentTime;
+  const o1 = a.createOscillator(), g1 = a.createGain();
+  o1.type = 'triangle';
+  o1.frequency.setValueAtTime(540, t);
+  o1.frequency.exponentialRampToValueAtTime(880, t + 0.12);
+  g1.gain.setValueAtTime(0.12, t);
+  g1.gain.exponentialRampToValueAtTime(0.001, t + 0.14);
+  o1.connect(g1).connect(a.destination);
+  o1.start(t);
+  o1.stop(t + 0.15);
 
-  // Void overlay with floating items plus WALL-E floating peacefully with sprout
-  const voidOverlay = document.createElement('div');
-  voidOverlay.className = 'emo-void-overlay';
-  voidOverlay.id = 'emoVoidOverlay';
-  voidOverlay.innerHTML = `
-    <div class="void-grid"></div>
-    <div class="void-floating-item" style="left:15%; top:25%">☕</div>
-    <div class="void-floating-item" style="left:82%; top:30%">🕶️</div>
-    <div class="void-floating-item" style="left:28%; top:75%">🗝️</div>
-    <div class="void-floating-item" style="left:74%; top:70%">🪿</div>
-    <div class="void-floating-item" style="left:50%; top:82%">🍕</div>
-    <div class="void-floating-item" style="left:10%; top:60%">📄</div>
-    <div class="void-floating-item" style="left:88%; top:15%">💻</div>
-    <div class="void-floating-item" style="left:70%; top:20%" title="WALL-E holding his plant sprout 🌱">🤖🌱</div>
-  `;
-  document.body.appendChild(voidOverlay);
-
-  // Mount Emergency Care Defense HUD cleanly below navbar
-  const hud = document.createElement('div');
-  hud.className = 'care-defense-hud';
-  hud.id = 'careDefenseHud';
-  hud.innerHTML = `
-    <span class="cdh-badge">🚨 EMERGENCY SECURITY DEFENSE SYSTEM</span>
-    <h2 class="cdh-title">EMOTIONAL CARE PROTOCOL ACTIVATED</h2>
-    <p class="cdh-desc">Emo is throwing a toddler tantrum and hates the cursor! Chase him and give him 3 pocket balloons to calm him down!</p>
-    <div class="cdh-status-row">
-      <div class="cdh-pocket">
-        <span>🎒 Cursor Pocket:</span>
-        <b id="pocketBalloonLabel">3 Balloons Ready 🎈</b>
-      </div>
-      <div class="cdh-pocket">
-        <span>Appeasement:</span>
-        <div class="cdh-hearts" id="appeaseHearts">🤍 🤍 🤍</div>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(hud);
-
-  // Add pocket balloon indicator to cursor
-  const curBalloon = document.createElement('div');
-  curBalloon.className = 'cursor-pocket-balloon';
-  curBalloon.id = 'cursorBalloon';
-  curBalloon.textContent = '🎈';
-  document.body.appendChild(curBalloon);
-
-  say("HMPH! 😤 The website is gone! I have WALL-E now! Go away cursor, I HATE YOU!", null, 4000);
+  const o2 = a.createOscillator(), g2 = a.createGain();
+  o2.type = 'sine';
+  o2.frequency.setValueAtTime(880, t + 0.08);
+  o2.frequency.exponentialRampToValueAtTime(1200, t + 0.22);
+  g2.gain.setValueAtTime(0.1, t + 0.08);
+  g2.gain.exponentialRampToValueAtTime(0.001, t + 0.24);
+  o2.connect(g2).connect(a.destination);
+  o2.start(t + 0.08);
+  o2.stop(t + 0.25);
 }
 
-// Deliver balloon from pocket to Emo
-function deliverPocketBalloon() {
-  if (!blankoutActive) return;
+/* Master Petting & Patting Function: works on all shapes, materials, and colours */
+function petEmo(source = 'proximity') {
   const now = performance.now();
-  if (now - lastBalloonDelivery < 1200) return;
-  lastBalloonDelivery = now;
+  if (now - lastPetTime < 600) return;
+  lastPetTime = now;
+  lastHappyTime = now;
 
-  balloonsGifted++;
+  const wasWandering = wandering;
+  wandering = false;
+  wanderTarget = null;
+  lastMove = now;
+  idleFired = false;
+
+  // Visual affection: smiling happy eyes + warm blush + squishy wiggle
+  comp.state = 'happy';
+  comp.blush = 1.0;
   comp.doHop();
-  comp.squash = 0.5;
+  comp.squash = 0.44;
 
-  // Floating gift balloon animation from cursor to Emo
-  const gb = document.createElement('div');
-  gb.className = 'cursor-pocket-balloon';
-  gb.textContent = pick(['🎈', '💖', '🎈']);
-  gb.style.left = mx + 'px';
-  gb.style.top = my + 'px';
-  gb.style.transition = 'all 0.6s cubic-bezier(0.18, 1.25, 0.35, 1)';
-  document.body.appendChild(gb);
-  setTimeout(() => {
-    gb.style.left = sx + 'px';
-    gb.style.top = sy + 'px';
-    gb.style.transform = 'scale(1.3)';
-    setTimeout(() => gb.remove(), 600);
-  }, 20);
+  companion.classList.remove('baby-sleep');
+  companion.classList.remove('emo-petted');
+  void companion.offsetWidth;
+  companion.classList.add('emo-petted');
+  setTimeout(() => companion.classList.remove('emo-petted'), 700);
 
-  const hEl = $('#appeaseHearts');
-  const pEl = $('#pocketBalloonLabel');
+  const snores = $('#emoSnores');
+  if (snores) snores.hidden = true;
 
-  if (balloonsGifted === 1) {
-    if (hEl) hEl.textContent = '🎈 🤍 🤍';
-    if (pEl) pEl.textContent = '2 Balloons Left 🎈';
-    comp.colorTint = 'rgba(255, 120, 0, 0.65)'; // Soften from crimson to amber
-    say("Hmph! One balloon from your pocket?! ...I still hate you, cursor! 😤 (1 / 3)", null, 3500);
-  } else if (balloonsGifted === 2) {
-    if (hEl) hEl.textContent = '🎈 🎈 🤍';
-    if (pEl) pEl.textContent = '1 Balloon Left 🎈';
-    comp.colorTint = 'rgba(255, 210, 63, 0.65)'; // Soften to golden
-    companion.classList.add('angry-baby-blush');
-    say("Is that... my favorite color heart balloon?! ...N-no! Don't look at me like that, I'm still super mad! 🥺 (2 / 3)", null, 3500);
-  } else if (balloonsGifted >= 3) {
-    if (hEl) hEl.textContent = '🎈 🎈 🎈 (RESTORED!)';
-    if (pEl) pEl.textContent = 'All Balloons Gifted! ✨';
-    comp.colorTint = null; // Back to natural Jaipur Blue
-    comp.state = 'happy';
-    companion.classList.remove('angry-baby', 'angry-baby-blush');
-    bubble.classList.remove('angry-bubble');
-    say("WAAAAAAH! 😭 You really DO love me! I don't hate you anymore! Hold me! ❤️ (3 / 3)", null, 4000);
-    setTimeout(rebuildWebsiteBrickByBrick, 1200);
-  }
-}
+  // Spawn heart artifacts
+  spawnPetHearts(sx + 32, sy + 32);
 
-// Rebuild the website brick by brick
-function rebuildWebsiteBrickByBrick() {
-  const curB = $('#cursorBalloon');
-  if (curB) curB.remove();
+  // Play audio
+  playPurrSound();
+  playPetChirp();
 
-  const hud = $('#careDefenseHud');
-  if (hud) hud.innerHTML = `
-    <span class="cdh-badge" style="background:#2A9D4E">🔨 RECONSTRUCTION IN PROGRESS</span>
-    <h2 class="cdh-title">REBUILDING WEBSITE BRICK BY BRICK</h2>
-    <p class="cdh-desc">Emo is repairing all backend servers, microservices, and DOM nodes with golden bricks!</p>
-    <div class="cdh-status-row">
-      <b>Progress: <span id="rebuildPercent">0%</span></b>
-    </div>
-  `;
-
-  const grid = document.createElement('div');
-  grid.className = 'brick-rebuild-grid';
-  document.body.appendChild(grid);
-
-  const totalBricks = 48;
-  for (let i = 0; i < totalBricks; i++) {
-    const b = document.createElement('div');
-    b.className = 'brick-particle';
-    b.textContent = pick(['🧱', '✨', '⚡', '🧱']);
-    b.style.animationDelay = (i * 25) + 'ms';
-    grid.appendChild(b);
-  }
-
-  let progress = 0;
-  const pInterval = setInterval(() => {
-    progress += 8;
-    const pEl = $('#rebuildPercent');
-    if (pEl) pEl.textContent = Math.min(100, progress) + '%';
-    if (progress >= 100) {
-      clearInterval(pInterval);
-      setTimeout(() => {
-        document.documentElement.classList.remove('emo-blankout', 'emo-tantrum', 'emo-structural-collapse');
-        $$('.h1-damaged, .slip-damaged, .files-damaged, .workshop-damaged, .till-damaged, .box-damaged').forEach(el => {
-          el.classList.remove('h1-damaged', 'slip-damaged', 'files-damaged', 'workshop-damaged', 'till-damaged', 'box-damaged');
-        });
-        $$('.s').forEach(sec => sec.style.removeProperty('--tear-rot'));
-        comp.state = cfg.state === 'angry' ? 'idle' : cfg.state;
-        comp.squash = 0.45;
-        rampageActive = false;
-        blankoutActive = false;
-        balloonsGifted = 0;
-        lastMove = performance.now();
-
-        const vOv = $('#emoVoidOverlay'); if (vOv) vOv.remove();
-        if (hud) hud.remove();
-        grid.remove();
-
-        // Celebration confetti burst
-        for (let i = 0; i < 30; i++) {
-          setTimeout(() => spawnEmoTrail(innerWidth / 2 + (Math.random() - 0.5) * 450, innerHeight / 2 + (Math.random() - 0.5) * 350, pick(['🎉', '✨', '🌟', '💖', '⭐'])), i * 30);
-        }
-
-        // Activate 3-minute immunity calm shield
-        activateCalmShield(180);
-
-        say("Website restored 100%! I'm on a 3-minute calm shield so you can browse peacefully!", null, 4500);
-      }, 500);
-    }
-  }, 100);
-}
-
-// Activate 3-minute Calm Shield
-function activateCalmShield(seconds) {
-  calmShieldUntil = performance.now() + seconds * 1000;
-  let hud = $('#emoCalmShield');
-  if (!hud) {
-    hud = document.createElement('div');
-    hud.className = 'emo-calm-shield-hud';
-    hud.id = 'emoCalmShield';
-    hud.innerHTML = `
-      <span class="ec-icon">🛡️</span>
-      <div class="ec-text">EMO CALM SHIELD: <b id="ecTimer">03:00</b></div>
-      <span class="ec-desc">Emo is feeling loved & calm</span>
-    `;
-    document.body.appendChild(hud);
-  }
-}
-
-function updateCalmShieldTimer(now) {
-  const hud = $('#emoCalmShield');
-  if (!hud) return;
-  const remMs = calmShieldUntil - now;
-  if (remMs <= 0) {
-    hud.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    hud.style.opacity = '0';
-    hud.style.transform = 'translateY(-30px)';
-    setTimeout(() => hud.remove(), 600);
-    say("My calm shield expired, but I'll stay on my best behavior!", null, 3000);
-    return;
-  }
-  const totalSec = Math.ceil(remMs / 1000);
-  const m = String(Math.floor(totalSec / 60)).padStart(2, '0');
-  const s = String(totalSec % 60).padStart(2, '0');
-  const tEl = $('#ecTimer');
-  if (tEl) tEl.textContent = `${m}:${s}`;
-}
-
-companion.addEventListener('click', () => {
-  if (blankoutActive) {
-    deliverPocketBalloon();
+  // Affectionate dialogue
+  if (wasWandering) {
+    say(pick([
+      "Purrrrrr~ 🥰 Headpats are the best! I'm coming along with you!",
+      "Awww, pats! ❤️ You found me! Lead the way, cursor friend!",
+      "*happy wiggles* 🥰 I'm following you again! Let's explore!",
+      "Purrr~ 🥰 My favorite cursor is back! I'm right behind you!",
+      "Hehe that tickles! 💕 I'll come along everywhere you go!"
+    ]), null, 3400);
   } else {
-    comp.doHop();
-    comp.squash = 0.4;
-    say(pick(['That tickles!', 'Boing! Hehe.', 'Need help exploring?', 'At your service!']), null, 2000);
+    say(pick([
+      "Purrrrrr~ 🥰 *nuzzles cursor*",
+      "Hehe, gentle pats! ❤️ That tickles!",
+      "*happy wiggles* 🥰 More headpats please!",
+      "Boop! 🥰 You're the best companion ever!"
+    ]), null, 2400);
   }
+}
+
+companion.addEventListener('pointerenter', () => {
+  if (wandering) petEmo('hover');
 });
+companion.addEventListener('pointerdown', () => petEmo('click'));
+companion.addEventListener('click', () => petEmo('click'));
 
 function loop(t){
   const dt = Math.min(.05, (t-last)/1000); last = t;
   if (cfg.on){
     const docked = (COARSE && !matchMedia('(pointer: fine)').matches);
     const idle = (t - lastMove)/1000;
-    const isShielded = t < calmShieldUntil;
 
-    if (isShielded) {
-      updateCalmShieldTimer(t);
+    // Reset temporary 'happy' state back to configured mood after 4 seconds
+    if (comp.state === 'happy' && t - lastHappyTime > 4000) {
+      comp.state = cfg.state;
     }
 
-    // --- TIMELINE STATE MACHINE ---
-
-    // 1. Rampage & Website Blankout Mode (idle >= 65s and not shielded)
-    if (idle >= 65 && !isShielded && !rampageActive && !blankoutActive && !docked) {
-      triggerFullRampage();
-    }
-
-    if (blankoutActive) {
-      // In void: Emo acts like an angry baby who hates the cursor!
-      // Size remains cute and normal (NO giant scaling!)
-      const dx = (sx + 32) - mx;
-      const dy = (sy + 32) - my;
-      const dist = Math.hypot(dx, dy);
-
-      if (dist < 160) {
-        // Cranky baby scurries away from cursor!
-        const fleeSpeed = (160 - dist) * 2.4;
-        sx += (dx / Math.max(1, dist)) * Math.min(220, dt * fleeSpeed);
-        sy += (dy / Math.max(1, dist)) * Math.min(220, dt * fleeSpeed);
-        comp.squash = Math.sin(t * 0.02) * 0.18; // cute stomping feet
-
-        if (t - lastBabyRemark > 3200) {
-          lastBabyRemark = t;
-          say(pick([
-            "Hmph! 😤 Go away cursor! I hate you right now!",
-            "Don't touch me! You left me alone for a whole minute!",
-            "I'm an angry baby and I'm not listening! Lalala! 🙈",
-            "Turn around! We are NOT friends anymore! 😤",
-            "Stop chasing me! You can't bribe me with headpats!"
-          ]), null, 2400);
-        }
-      } else {
-        // Pout in place with arms crossed / stomping
-        const angle = t * 0.002;
-        sx += Math.sin(angle) * 0.6;
-        sy += Math.cos(angle * 1.5) * 0.4;
-      }
-
-      // Check distance to deliver balloon (if user catches Emo within 70px)
-      if (dist < 70) {
-        deliverPocketBalloon();
-      }
-
-      companion.style.transform = `translate(${sx}px, ${sy}px)`;
-      comp.lookAt(dx, dy); // Look away from cursor (hating cursor)
-
-      // Cursor balloon follows cursor
-      const curB = $('#cursorBalloon');
-      if (curB) {
-        curB.style.left = (mx + 14) + 'px';
-        curB.style.top = (my - 28) + 'px';
-      }
-
-    } else if (rampageActive) {
-      // Small weapons are equipped in ATTACK_STEPS: Emo smoothly flies from element to element!
-      if (rampageTarget) {
-        const dx = rampageTarget.x - sx;
-        const dy = rampageTarget.y - sy;
-        const dist = Math.hypot(dx, dy);
-        const speed = Math.min(8.0, 3.2 + dist * 0.012);
-        sx += dx * Math.min(1, dt * speed);
-        sy += dy * Math.min(1, dt * speed);
-        comp.lookAt(dx, dy);
-
-        // Flame / thruster trail while swooping
-        if (t - lastTrail > 90) {
-          lastTrail = t;
-          spawnEmoTrail(sx + 32, sy + 32, pick(['🔥', '⚡', '💨', '💥']));
-        }
-      }
-
-      companion.style.transform = `translate(${sx}px, ${sy}px) rotate(${Math.sin(t * 0.012) * 6}deg)`;
-
-      const wHolder = $('#emoWeaponHolder');
-      if (wHolder && !wHolder.hidden) {
-        wHolder.style.left = (sx + 42) + 'px';
-        wHolder.style.top = (sy + 16) + 'px';
-      }
-
-    } else if (idle >= 50 && idle < 65 && !isShielded && !docked) {
-      // 2. Impatience & Gradual Color Transition (50s to 65s)
+    if (idle >= 20 && !docked) {
+      // 1. RANDOM WANDERING MODE (idle >= 20s): Emo roams randomly across the page
       const snores = $('#emoSnores'); if (snores) snores.hidden = true;
       companion.classList.remove('baby-sleep');
-      wandering = false;
-      comp.state = 'angry';
 
-      const k = (idle - 50) / 15;
-      comp.colorTint = getRampageColor(k);
-
-      if (t - lastTrail > 350) {
-        lastTrail = t;
-        spawnEmoTrail(sx + 32, sy + 12, '💨');
+      if (!wandering) {
+        wandering = true;
+        wanderTarget = null;
+        lastWanderHop = 0;
+        wanderInterval = 0;
+        if (comp.state === 'sleeping') comp.state = 'idle';
+        say(pick([
+          "Time for an adventure! 🌸 Strolling around the website!",
+          "I'm off to explore! Come pet me to bring me along! 💕",
+          "Wheee! Exploring on my own! 🐾"
+        ]), null, 3000);
       }
 
-      if (idle >= 50 && idle < 51 && t - lastNaughtySay > 4000) {
-        lastNaughtySay = t;
-        say("Wait... are you STILL not paying attention to me?! 50 seconds?!", null, 3000);
-      } else if (idle >= 56 && idle < 57 && t - lastNaughtySay > 4000) {
-        lastNaughtySay = t;
-        say("I built WALL-E and you STILL didn't look at me?! Fine. FINE.", null, 3000);
-      } else if (idle >= 61 && idle < 62 && t - lastNaughtySay > 4000) {
-        lastNaughtySay = t;
-        say("Puff! Steam is shooting out of my ears! 3... 2... 1...", null, 2500);
-      }
+      // Pick next random target coordinate or element
+      if (!wanderTarget || t - lastWanderHop > wanderInterval) {
+        lastWanderHop = t;
+        wanderInterval = 3200 + Math.random() * 2600; // 3.2s to 5.8s
 
-      const tx = docked ? innerWidth - 80 : mx + 20;
-      const ty = docked ? innerHeight - 140 : my + 16;
-      sx += (tx - sx) * Math.min(1, dt * 5.5);
-      sy += (ty - sy) * Math.min(1, dt * 5.5);
-      companion.style.transform = `translate(${sx}px, ${sy}px)`;
-      comp.lookAt(mx - sx - 32, my - sy - 32);
-
-    } else if (idle >= 20 && !docked) {
-      // 3. Guided Tour Across Website: Emo travels to each stop, camera follows him, Emo ALWAYS on screen!
-      const snores = $('#emoSnores'); if (snores) snores.hidden = true;
-      companion.classList.remove('baby-sleep');
-      wandering = true;
-      comp.colorTint = null;
-      if (comp.state === 'sleeping') comp.state = 'idle';
-
-      if (!wanderTarget || t - lastTourStep > 3600) {
-        lastTourStep = t;
-        tourIndex = (tourIndex + 1) % TOUR_STOPS.length;
-        const currentStop = TOUR_STOPS[tourIndex];
-        const targetEl = $(currentStop.sel);
-
-        if (targetEl) {
-          // Smoothly scroll camera to keep Emo and landmark centered on screen!
-          const rect = targetEl.getBoundingClientRect();
-          const targetDocY = window.scrollY + rect.top - (innerHeight * 0.38);
-          window.scrollTo({ top: Math.max(0, targetDocY), behavior: 'smooth' });
-
-          wanderTarget = {
-            el: targetEl,
-            x: rect.left + rect.width / 2,
-            y: rect.top - 20
-          };
-
-          // Execute playful landmark action
-          if (currentStop.type === 'flower') {
-            spawnBloomingFlower(rect.left + rect.width / 2, rect.top + 20);
-          } else if (currentStop.type === 'secret') {
-            spawnSecretKey(rect.left + rect.width / 2, rect.top + 20);
-          } else if (currentStop.type === 'candy') {
-            spawnCandyNom(rect.left + rect.width / 2, rect.top + 20);
-          } else if (currentStop.type === 'walle') {
-            if (SFX.walleChirp) SFX.walleChirp();
-            say(pick([
-              "*sniff* You never click me... so I built my own best friend! Meet WALL-E! 🤖",
-              "Look at WALL-E's binocular eyes! He won't ignore me when I talk about Kafka topics...",
-              "WALL-E has a little plant in a boot 🌱. He promised he will never leave me alone!"
-            ]), null, 4200);
-            const wBot = $('#walleBot');
-            if (wBot) {
-              wBot.classList.add('speaking');
-              setTimeout(() => wBot.classList.remove('speaking'), 3000);
-            }
-          } else if (currentStop.type === 'gacha' && $('.gacha')) {
-            const g = $('.gacha');
-            g.classList.add('turn');
-            setTimeout(() => g.classList.remove('turn'), 800);
-            say(pick([
-              "🥠 Fortune for Emo: 'A wise cursor will soon return with unlimited headpats.'",
-              "🥠 Fortune for Emo: 'Your chaos index will reach peak cuteness today!'",
-              "🥠 Fortune for Emo: 'Beware of idle mice; where there are no clicks, candy flourishes.'",
-              "🥠 Fortune for Emo: 'Today is a glorious day to water flowers and do parkour!'",
-              "🥠 Fortune for Emo: 'The best backend engineers always keep their companion happy.'"
-            ]), null, 4200);
+        // 50% chance: Random element on page, 50% chance: Random coordinate
+        if (Math.random() < 0.5) {
+          const candidates = $$('button:not(#semi):not(#semiBtn), a, .case, .cd, .srow, .gacha, .ab2-card, .photo, mark');
+          const visible = candidates.filter(el => {
+            if (!el || el.offsetParent === null) return false;
+            const r = el.getBoundingClientRect();
+            return r.width > 0 && r.height > 0 && r.top >= 40 && r.bottom <= innerHeight && r.left >= 0 && r.right <= innerWidth;
+          });
+          if (visible.length) {
+            const targetEl = pick(visible);
+            const r = targetEl.getBoundingClientRect();
+            wanderTarget = {
+              x: Math.max(50, Math.min(innerWidth - 90, r.left + r.width / 2)),
+              y: Math.max(80, Math.min(innerHeight - 90, r.top + r.height / 2)),
+              el: targetEl,
+              type: targetEl.classList.contains('gacha') ? 'gacha' : 'element'
+            };
+          } else {
+            wanderTarget = {
+              x: 50 + Math.random() * (innerWidth - 130),
+              y: 80 + Math.random() * (innerHeight - 150),
+              type: 'random'
+            };
           }
+        } else {
+          wanderTarget = {
+            x: 50 + Math.random() * (innerWidth - 130),
+            y: 80 + Math.random() * (innerHeight - 150),
+            type: 'random'
+          };
+        }
 
-          let bounceEl = targetEl;
-          if (targetEl.classList.contains('cd')) bounceEl = targetEl.querySelector('.cd-in') || targetEl;
+        // Random playful companion event
+        const roll = Math.random();
+        if (roll < 0.25) {
+          spawnBloomingFlower(sx + 32, sy + 32);
+        } else if (roll < 0.45) {
+          spawnCandyNom(sx + 32, sy + 32);
+        } else if (roll < 0.60) {
+          spawnSecretKey(sx + 32, sy + 32);
+        }
+
+        if (wanderTarget.type === 'gacha' && $('.gacha')) {
+          const g = $('.gacha');
+          g.classList.add('turn');
+          setTimeout(() => g.classList.remove('turn'), 800);
+          say(pick([
+            "🥠 Fortune for Emo: 'A wise cursor will soon return with unlimited headpats.'",
+            "🥠 Fortune for Emo: 'Your chaos index will reach peak cuteness today!'",
+            "🥠 Fortune for Emo: 'Beware of idle mice; where there are no clicks, candy flourishes.'",
+            "🥠 Fortune for Emo: 'Today is a glorious day to water flowers and do parkour!'",
+            "🥠 Fortune for Emo: 'The best backend engineers always keep their companion happy.'"
+          ]), null, 4200);
+        } else if (wanderTarget.el) {
+          let bounceEl = wanderTarget.el;
+          if (bounceEl.classList.contains('cd')) bounceEl = bounceEl.querySelector('.cd-in') || bounceEl;
           if (bounceEl && !bounceEl.classList.contains('fluffy-bounce')) {
             bounceEl.style.setProperty('--emo-tilt', Math.random() > 0.5 ? '1' : '-1');
             bounceEl.classList.add('fluffy-bounce');
             setTimeout(() => bounceEl.classList.remove('fluffy-bounce'), 700);
           }
-
-          comp.doHop();
-          comp.squash = 0.35;
-          if (currentStop.type !== 'gacha' && currentStop.type !== 'walle') {
-            say(currentStop.say, null, 2800);
-          }
+        } else if (t - lastNaughtySay > 5500 && Math.random() > 0.4) {
+          lastNaughtySay = t;
+          say(pick([
+            "La la la~ Exploring the DOM tree! 🌸",
+            "Doing parkour on the CSS grid! ✨",
+            "Move your cursor over me to pet me! 💕",
+            "Watering the backend microservices... 🌼",
+            "Snacking on cache cookies! 🍬",
+            "Looking for secrets behind the cards! 🗝️"
+          ]), null, 2600);
         }
+
+        comp.doHop();
+        comp.squash = 0.35;
       }
 
+      // Smooth random wandering movement
       const wx = wanderTarget ? wanderTarget.x - 32 : innerWidth / 2 - 32;
       const wy = wanderTarget ? wanderTarget.y - 32 : innerHeight / 2 - 32;
-      sx += (wx - sx) * Math.min(1, dt * 4.5);
-      sy += (wy - sy) * Math.min(1, dt * 4.5);
+      sx += (wx - sx) * Math.min(1, dt * 3.4);
+      sy += (wy - sy) * Math.min(1, dt * 3.4);
       companion.style.transform = `translate(${sx}px, ${sy}px)`;
       comp.lookAt(wx - sx, wy - sy);
 
-      if (t - lastTrail > 160) {
+      if (t - lastTrail > 180) {
         lastTrail = t;
-        spawnEmoTrail(sx + 32, sy + 32);
+        spawnEmoTrail(sx + 32, sy + 32, pick(['✨', '🐾', '⭐', '🌸', '💫']));
+      }
+
+      // Proximity check: petting triggers when cursor moves close to Emo!
+      const dist = Math.hypot((sx + 32) - mx, (sy + 32) - my);
+      if (dist < 55) {
+        petEmo('proximity');
       }
 
     } else if (idle >= 5 && idle < 20 && !docked) {
-      // 4. Baby Sleeping Mode (5s to 20s): Emo sleeps peacefully like a baby curled up beside cursor
+      // 2. BABY SLEEPING MODE (5s to 20s): Emo sleeps peacefully like a baby curled up beside cursor
       wandering = false;
+      wanderTarget = null;
       comp.state = 'sleeping';
       companion.classList.add('baby-sleep');
-      comp.colorTint = null;
 
-      // Position Emo nestled right next to cursor
+      // Nestled right next to cursor
       const tx = mx + 14;
       const ty = my + 10;
       sx += (tx - sx) * Math.min(1, dt * 5.0);
@@ -3349,7 +2292,7 @@ function loop(t){
       companion.style.transform = `translate(${sx}px, ${sy}px)`;
       comp.lookAt(0, 2);
 
-      // Sweet baby snores directly above Emo
+      // Floating baby snores directly above Emo
       const snores = $('#emoSnores');
       if (snores) {
         snores.hidden = false;
@@ -3358,11 +2301,11 @@ function loop(t){
       }
 
     } else {
-      // 5. Normal cursor following mode (idle < 5s)
+      // 3. NORMAL CURSOR FOLLOWING MODE (idle < 5s)
       const snores = $('#emoSnores'); if (snores) snores.hidden = true;
       companion.classList.remove('baby-sleep');
       wandering = false;
-      comp.colorTint = null;
+      wanderTarget = null;
       if (comp.state === 'sleeping') comp.state = cfg.state;
 
       const tx = docked ? innerWidth - 80 : mx + 18;
@@ -3377,7 +2320,7 @@ function loop(t){
         if (t - lastNudge > 1200) {
           lastNudge = t;
           const cx = sx + 32, cy = sy + 32;
-          const candidates = $$('button:not(#semi):not(#semiBtn), a, .case, .cd, .itm, .pst, .ab2-bk, .fold, .lbl, mark, .gacha, .tape-v, .print-fragile, .print-up, .photo, .clip, .spark, #pokeWalleBtn, #walleBot');
+          const candidates = $$('button:not(#semi):not(#semiBtn), a, .case, .cd, .itm, .pst, .ab2-bk, .fold, .lbl, mark, .gacha, .tape-v, .print-fragile, .print-up, .photo, .clip, .spark');
           let closest = null, closestDist = 95;
           for (const el of candidates) {
             if (!el || el.offsetParent === null) continue;
@@ -3630,7 +2573,8 @@ const SFX = {
   paper(){ const a = ctx(); if (!a) return; const t = a.currentTime; for (let i = 0; i < 8; i++) noise(a, .07, 5000, 3000, 3, .05, t + i*.05 + Math.random()*.02); },
   ding(){ const a = ctx(); if (!a) return; const t = a.currentTime; tone(a, 880, 870, .5, .18, t, 'triangle'); tone(a, 1320, 1310, .6, .12, t + .12, 'triangle'); },
   nope(){ const a = ctx(); if (!a) return; const t = a.currentTime; tone(a, 220, 180, .14, .2, t, 'square'); tone(a, 180, 150, .18, .2, t + .16, 'square'); },
-  walleChirp(){ const a = ctx(); if (!a) return; const t = a.currentTime; tone(a, 620, 920, .14, .18, t, 'sine'); tone(a, 920, 1380, .18, .22, t + .12, 'triangle'); noise(a, .07, 1400, 2600, 2, .06, t + .14); }
+  purr(){ const a = ctx(); if (!a) return; const t = a.currentTime; for (let i = 0; i < 4; i++){ tone(a, 260 + i*25, 390 + i*18, .07, .08, t + i*.07, 'sine'); } },
+  pet(){ const a = ctx(); if (!a) return; const t = a.currentTime; tone(a, 540, 880, .12, .12, t, 'triangle'); tone(a, 880, 1200, .18, .10, t + .08, 'sine'); }
 };
 function setMute(v){ muted = v; muteB.setAttribute('aria-pressed', String(v)); $('.l', muteB).textContent = v ? 'Sound off' : 'Sound on'; muteB.setAttribute('aria-label', v ? 'Sound is off. Turn sound on' : 'Sound is on. Turn sound off'); try { localStorage.setItem('gacha:mute', v ? '1' : '0'); } catch(e){} }
 setMute(muted); muteB.addEventListener('click', () => setMute(!muted));
