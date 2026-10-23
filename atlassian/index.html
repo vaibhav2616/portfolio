@@ -135,7 +135,7 @@ footer{padding:0 0 40px; font-size:13px; color:var(--ink3)}
   </div>
   <div class="hn-pop" id="semiPop" hidden role="dialog" aria-label="Choose your Emo">
     <div class="hn-pop-head"><canvas id="semiPreview" width="168" height="168" aria-hidden="true"></canvas><div><b>Pick your Emo</b><p>It came in the box. It has opinions. Every version is called Emo.</p></div></div>
-    <div class="hn-switch">Emo follows me <button type="button" id="semiOn" aria-pressed="true" aria-label="Semi on"></button></div>
+    <div class="hn-switch">Emo follows me <button type="button" id="semiOn" aria-pressed="true" aria-label="Emo on"></button></div>
     <div><span class="hn-lbl">Shape</span><div class="hn-seg" id="sShape"><button type="button" data-v="round">Round</button><button type="button" data-v="clover">Clover</button><button type="button" data-v="flower">Flower</button><button type="button" data-v="square">Square</button></div></div>
     <div><span class="hn-lbl">Material</span><div class="hn-seg" id="sMat"><button type="button" data-v="fabric">Fabric</button><button type="button" data-v="glass">Glass</button><button type="button" data-v="glow">Glow</button><button type="button" data-v="plastic">Plastic</button></div></div>
     <div><span class="hn-lbl">Colour</span><div class="hn-seg" id="sCol"></div></div>
@@ -339,7 +339,7 @@ $('#fbOpen').addEventListener('click', () => { const H = SEMI.hooks; if (H.feedb
 /* ================= voice ================= */
 const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let sayUntil = 0, shown = null, hideT;
-function paint(text, img, label){ bubble.innerHTML = `<small>${esc(label || 'Semi')}</small>` + (img ? `<img src="${img}" alt="">` : '') + esc(text); bubble.classList.add('on'); }
+function paint(text, img, label){ bubble.innerHTML = `<small>${esc(label || 'Emo')}</small>` + (img ? `<img src="${img}" alt="">` : '') + esc(text); bubble.classList.add('on'); }
 function say(text, img, ms){
   if (!cfg.on) return;
   ms = ms || Math.max(2600, text.length*55);
@@ -394,7 +394,7 @@ function loop(t){
   if (el !== cur){ if (H.onPick) H.onPick(el, cur); cur = el; if (el){ mobileHide = t + 4500; comp.doHop(); } }
   if (cfg.on){
     if (t > sayUntil){
-      if (cur){ if (shown !== cur){ paint(cur.getAttribute('data-note'), null, touring ? 'Semi · tour' : 'Semi'); shown = cur; }
+      if (cur){ if (shown !== cur){ paint(cur.getAttribute('data-note'), null, touring ? 'Emo · tour' : 'Emo'); shown = cur; }
         if (narrow && !touring && t > mobileHide) bubble.classList.remove('on'); }
       else { bubble.classList.remove('on'); shown = null; }
     }
